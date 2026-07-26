@@ -531,3 +531,109 @@ fuveskonyv .fuve-chapo {
   font-size: 12.5px;
   line-height: 1.55;
 }
+
+/* ==================================================
+   FÜVESKÖNYV — ONGLETS
+================================================== */
+
+fuveskonyv .fuve-tabs > input {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+fuveskonyv .fuve-tablist {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--fuve-line);
+  scrollbar-width: none;
+}
+
+fuveskonyv .fuve-tablist::-webkit-scrollbar {
+  display: none;
+}
+
+fuveskonyv .fuve-tablist label {
+  position: relative;
+  flex: 1 0 110px;
+  min-width: 110px;
+  padding: 0 8px 14px;
+  color: var(--fuve-soft);
+  cursor: pointer;
+  font: 600 11px/1.2 system-ui, -apple-system, "Segoe UI",
+        Roboto, Ubuntu, sans-serif;
+  letter-spacing: .07em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: color .25s ease;
+}
+
+fuveskonyv .fuve-tablist label:hover {
+  color: #b8b6a6;
+}
+
+fuveskonyv .fuve-tablist label::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  bottom: -1px;
+  left: 50%;
+  height: 2px;
+  border-radius: 20px;
+  background: currentColor;
+  opacity: .65;
+  box-shadow: 0 0 5px currentColor;
+  transition:
+    right .25s ease,
+    left .25s ease,
+    opacity .25s ease;
+}
+
+
+/* Couleur de l’onglet actif */
+
+#fuve-tab-all:checked
+~ .fuve-tablist
+label[for="fuve-tab-all"] {
+  color: var(--fuve-all);
+}
+
+#fuve-tab-summer:checked
+~ .fuve-tablist
+label[for="fuve-tab-summer"] {
+  color: var(--fuve-summer);
+}
+
+#fuve-tab-autumn:checked
+~ .fuve-tablist
+label[for="fuve-tab-autumn"] {
+  color: var(--fuve-autumn);
+}
+
+#fuve-tab-poison:checked
+~ .fuve-tablist
+label[for="fuve-tab-poison"] {
+  color: var(--fuve-poison);
+}
+
+#fuve-tab-all:checked
+~ .fuve-tablist
+label[for="fuve-tab-all"]::after,
+
+#fuve-tab-summer:checked
+~ .fuve-tablist
+label[for="fuve-tab-summer"]::after,
+
+#fuve-tab-autumn:checked
+~ .fuve-tablist
+label[for="fuve-tab-autumn"]::after,
+
+#fuve-tab-poison:checked
+~ .fuve-tablist
+label[for="fuve-tab-poison"]::after {
+  right: 22%;
+  left: 22%;
+  opacity: .85;
+}
