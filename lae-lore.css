@@ -1,2 +1,11 @@
 /* test de chargement */
-.lore-sheet { outline: 3px solid red !important; }
+.jsdelivr-test {
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid #c5b876;
+  border-radius: 12px;
+  background: #663366;
+  color: #ffffff;
+  font: 700 18px/1.4 system-ui, sans-serif;
+  text-align: center;
+}
