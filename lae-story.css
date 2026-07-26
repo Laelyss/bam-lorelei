@@ -1,5 +1,207 @@
-@import url("https://laelyss.github.io/bam-lorelei/lae-tabs.css?v=1");
+@import url("https://laelyss.github.io/bam-lorelei/lae-tabs.css?v=2");
 
 @import url("https://fonts.cdnfonts.com/css/morgalen");
 
-@import url("https://fonts.googleapis.com/css2?family=Bitter:ital@0;1&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap");
+
+
+/* ==================================================
+   STORY — STRUCTURE
+================================================== */
+
+laetabs.story {
+  --tabs-width: 700px;
+  --tabs-margin: 24px auto;
+  --tabs-line: rgba(151, 151, 131, .22);
+  --tabs-min-width: 120px;
+  --tabs-mobile-width: 96px;
+  --tabs-label-padding: 0 12px 14px;
+  --tabs-color: #77766f;
+  --tabs-hover: #aaa88f;
+  --tabs-active: #c5b876;
+
+  --panels-height: 720px;
+  --panels-max-height: 78vh;
+  --panels-padding: 28px 26px 34px;
+  --panels-mobile-height: 74vh;
+  --panels-mobile-padding: 24px 13px 30px;
+  --panels-scrollbar: #777451;
+
+  color: #a1a198;
+  font: 300 15px/1.75 "Newsreader", serif;
+}
+
+
+/* Titre général */
+
+laetabs.story storytitle {
+  display: block;
+  margin: 0 0 24px;
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    #3d4927,
+    #a49d62,
+    #3d4927
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  font: 32px/1 "Morgalen", serif;
+  letter-spacing: 5px;
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Navigation */
+
+laetabs.story laenav label {
+  font: 13px/1 "Newsreader", serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+laetabs.story laenav label::after {
+  box-shadow:
+    0 0 4px rgba(197, 184, 118, .25),
+    0 0 10px rgba(197, 184, 118, .10);
+}
+
+
+/* Chapitres */
+
+laetabs.story chapitre {
+  display: block;
+}
+
+laetabs.story chaphead {
+  display: block;
+  margin: 0 0 28px;
+  text-align: center;
+}
+
+laetabs.story chaptitre {
+  display: block;
+  color: #c5b876;
+  font: 27px/1.1 "Morgalen", serif;
+  letter-spacing: 3px;
+}
+
+laetabs.story chapsous {
+  display: block;
+  margin-top: 7px;
+  color: #77786f;
+  font: italic 14px/1.4 "Instrument Serif", serif;
+  letter-spacing: .4px;
+}
+
+laetabs.story chapline {
+  display: block;
+  width: 110px;
+  height: 1px;
+  margin: 16px auto 12px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(197, 184, 118, .55),
+    transparent
+  );
+}
+
+laetabs.story lieu {
+  display: block;
+  color: #828473;
+  font: 11px/1.4 "Newsreader", serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+
+/* Récit */
+
+laetabs.story recit {
+  display: block;
+  color: #a1a198;
+  font: 300 15px/1.75 "Newsreader", serif;
+  text-align: justify;
+}
+
+laetabs.story recit + recit {
+  margin-top: 20px;
+}
+
+laetabs.story pensee {
+  color: #b2ad8c;
+  font-style: italic;
+}
+
+laetabs.story storysep {
+  display: block;
+  width: 45%;
+  height: 1px;
+  margin: 30px auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(160, 156, 109, .34),
+    transparent
+  );
+}
+
+
+/* Tabulation */
+
+laetabs.story sple {
+  display: inline-block;
+  width: 2.5em;
+}
+
+
+/* Dialogues */
+
+laetabs.story lorelei,
+laetabs.story dori,
+laetabs.story eid,
+laetabs.story ori {
+  display: inline;
+}
+
+laetabs.story lorelei {
+  color: #9d5266;
+}
+
+laetabs.story dori {
+  color: #9d5428;
+}
+
+laetabs.story eid {
+  color: #056f61;
+}
+
+laetabs.story ori {
+  font-style: italic;
+  font-weight: 600;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  laetabs.story storytitle {
+    font-size: 26px;
+    letter-spacing: 3px;
+  }
+
+  laetabs.story chaptitre {
+    font-size: 23px;
+  }
+
+  laetabs.story recit {
+    text-align: left;
+  }
+
+  laetabs.story storysep {
+    width: 65%;
+  }
+}
