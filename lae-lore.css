@@ -186,3 +186,199 @@ lotab {
   hyphens: auto;
   text-align: justify;
 }
+
+/* ==================================================
+   CHRONOLOGIE — STRUCTURE ET ONGLETS
+================================================== */
+
+.lore-history-wrapper {
+  margin: 0 20px;
+}
+
+.lore-history,
+.lore-history * {
+  box-sizing: border-box;
+}
+
+.lore-history {
+  width: min(650px, 100%);
+  margin: 24px auto 0;
+  color: #a1a1a1;
+  font: 14px/1.5 "Newsreader", serif;
+}
+
+
+/* Boutons cachés */
+
+.lore-history > input {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+
+/* Onglets */
+
+.lore-history-tabs {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  overflow-x: auto;
+  border-bottom: 1px solid rgba(126, 126, 114, .24);
+  scrollbar-width: none;
+}
+
+.lore-history-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.lore-history-tabs label {
+  position: relative;
+  flex: 1 0 90px;
+  min-width: 90px;
+  padding: 0 10px 14px;
+  color: #77766f;
+  cursor: pointer;
+  font: 15px/1 "Newsreader", serif;
+  text-align: center;
+  transition: color .25s ease;
+}
+
+.lore-history-tabs label:hover {
+  color: #a5a38e;
+}
+
+.lore-history-tabs label::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  bottom: -1px;
+  left: 50%;
+  height: 2px;
+  border-radius: 20px;
+  background: #8f9a3c7d;
+  box-shadow:
+    0 0 3px rgba(220, 236, 126, .16),
+    0 0 8px rgba(198, 220, 103, .12);
+  transition:
+    right .25s ease,
+    left .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+}
+
+
+/* Onglet actif */
+
+#lore-history-racines:checked
+~ .lore-history-tabs
+label[for="lore-history-racines"],
+
+#lore-history-zemplen:checked
+~ .lore-history-tabs
+label[for="lore-history-zemplen"],
+
+#lore-history-vienne:checked
+~ .lore-history-tabs
+label[for="lore-history-vienne"],
+
+#lore-history-aujourdhui:checked
+~ .lore-history-tabs
+label[for="lore-history-aujourdhui"] {
+  color: #c8c58f;
+}
+
+#lore-history-racines:checked
+~ .lore-history-tabs
+label[for="lore-history-racines"]::after,
+
+#lore-history-zemplen:checked
+~ .lore-history-tabs
+label[for="lore-history-zemplen"]::after,
+
+#lore-history-vienne:checked
+~ .lore-history-tabs
+label[for="lore-history-vienne"]::after,
+
+#lore-history-aujourdhui:checked
+~ .lore-history-tabs
+label[for="lore-history-aujourdhui"]::after {
+  right: 24%;
+  left: 24%;
+  background: #aaa86f;
+  box-shadow:
+    0 0 4px rgba(170, 168, 111, .30),
+    0 0 9px rgba(170, 168, 111, .12);
+}
+
+
+/* Ancienne séparation devenue inutile */
+
+.lore-history-divider {
+  display: none;
+}
+
+
+/* Fenêtre de lecture */
+
+.lore-history-content {
+  width: 100%;
+  height: 750px;
+  max-height: 78vh;
+  padding: 24px 20px 30px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: #777451 transparent;
+  scrollbar-width: thin;
+}
+
+.lore-history-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.lore-history-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lore-history-content::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #777451;
+}
+
+
+/* Panneaux */
+
+.lore-history-panel {
+  display: none;
+  animation: lore-history-appearance .28s ease;
+}
+
+#lore-history-racines:checked
+~ .lore-history-content
+.lore-history-racines,
+
+#lore-history-zemplen:checked
+~ .lore-history-content
+.lore-history-zemplen,
+
+#lore-history-vienne:checked
+~ .lore-history-content
+.lore-history-vienne,
+
+#lore-history-aujourdhui:checked
+~ .lore-history-content
+.lore-history-aujourdhui {
+  display: block;
+}
+
+@keyframes lore-history-appearance {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
