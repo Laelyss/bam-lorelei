@@ -491,15 +491,10 @@ label[for="lore-history-aujourdhui"]::after {
 
 
 /* ==================================================
-   FÜVESKÖNYV
+   FÜVESKÖNYV — PARTICULARITÉS
 ================================================== */
 
-fuveskonyv,
-fuveskonyv * {
-  box-sizing: border-box;
-}
-
-fuveskonyv {
+laetabs.fuve {
   --fuve-text: #b9b9b2;
   --fuve-soft: #8d8d85;
   --fuve-line: rgba(164, 164, 151, .20);
@@ -509,9 +504,22 @@ fuveskonyv {
   --fuve-poison: #b96d74;
   --fuve-price: #d0c995;
 
-  display: block;
-  width: min(650px, 100%);
-  margin: 24px auto;
+  --tabs-width: 650px;
+  --tabs-margin: 24px auto;
+  --tabs-line: var(--fuve-line);
+  --tabs-min-width: 110px;
+  --tabs-mobile-width: 92px;
+  --tabs-label-padding: 0 8px 14px;
+  --tabs-color: var(--fuve-soft);
+  --tabs-hover: #b8b6a6;
+
+  --panels-height: 650px;
+  --panels-max-height: 72vh;
+  --panels-padding: 20px 18px 0;
+  --panels-mobile-height: 68vh;
+  --panels-mobile-padding: 18px 10px 0;
+  --panels-scrollbar: #8d895f;
+
   color: var(--fuve-text);
   font: 400 13px/1.6 system-ui, -apple-system,
         "Segoe UI", Roboto, Ubuntu, sans-serif;
@@ -520,7 +528,7 @@ fuveskonyv {
 
 /* Introduction */
 
-fuveintro {
+laetabs.fuve fuveintro {
   display: block;
   max-width: 560px;
   margin: 3px auto 22px;
@@ -531,185 +539,62 @@ fuveintro {
 }
 
 
-/* Radios cachés */
+/* Navigation */
 
-fuveskonyv > input {
-  position: absolute;
-  left: -9999px;
-  opacity: 0;
-}
-
-
-/* Onglets */
-
-fuvenav {
-  display: flex;
-  align-items: flex-end;
-  width: 100%;
-  overflow-x: auto;
-  border-bottom: 1px solid var(--fuve-line);
-  scrollbar-width: none;
-}
-
-fuvenav::-webkit-scrollbar {
-  display: none;
-}
-
-fuvenav label {
-  position: relative;
-  flex: 1 0 110px;
-  min-width: 110px;
-  padding: 0 8px 14px;
-  color: var(--fuve-soft);
-  cursor: pointer;
+laetabs.fuve laenav label {
   font-size: 11px;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: .07em;
-  text-align: center;
   text-transform: uppercase;
-  transition: color .25s ease;
-}
-
-fuvenav label:hover {
-  color: #b8b6a6;
-}
-
-fuvenav label::after {
-  content: "";
-  position: absolute;
-  right: 50%;
-  bottom: -1px;
-  left: 50%;
-  height: 2px;
-  border-radius: 20px;
-  background: currentColor;
-  opacity: .65;
-  box-shadow: 0 0 5px currentColor;
-  transition:
-    right .25s ease,
-    left .25s ease,
-    opacity .25s ease;
 }
 
 
-/* Onglets actifs */
+/* Couleurs des onglets */
 
-#fuve-tab-all:checked
-~ fuvenav label[for="fuve-tab-all"] {
+laetabs.fuve > input:nth-of-type(1):checked
+~ laenav label:nth-of-type(1) {
   color: var(--fuve-all);
 }
 
-#fuve-tab-summer:checked
-~ fuvenav label[for="fuve-tab-summer"] {
+laetabs.fuve > input:nth-of-type(2):checked
+~ laenav label:nth-of-type(2) {
   color: var(--fuve-summer);
 }
 
-#fuve-tab-autumn:checked
-~ fuvenav label[for="fuve-tab-autumn"] {
+laetabs.fuve > input:nth-of-type(3):checked
+~ laenav label:nth-of-type(3) {
   color: var(--fuve-autumn);
 }
 
-#fuve-tab-poison:checked
-~ fuvenav label[for="fuve-tab-poison"] {
+laetabs.fuve > input:nth-of-type(4):checked
+~ laenav label:nth-of-type(4) {
   color: var(--fuve-poison);
 }
 
-#fuve-tab-all:checked
-~ fuvenav label[for="fuve-tab-all"]::after,
 
-#fuve-tab-summer:checked
-~ fuvenav label[for="fuve-tab-summer"]::after,
+/* Couleurs internes des panneaux */
 
-#fuve-tab-autumn:checked
-~ fuvenav label[for="fuve-tab-autumn"]::after,
-
-#fuve-tab-poison:checked
-~ fuvenav label[for="fuve-tab-poison"]::after {
-  right: 22%;
-  left: 22%;
-  opacity: .85;
-}
-
-
-/* Panneaux */
-
-fuvepanels {
-  display: block;
-  width: 100%;
-  height: 650px;
-  max-height: 72vh;
-  padding: 20px 18px 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-color: #8d895f transparent;
-  scrollbar-width: thin;
-}
-
-fuvepanels::-webkit-scrollbar {
-  width: 4px;
-}
-
-fuvepanels::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-fuvepanels::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background: #8d895f;
-}
-
-fuvepanel {
-  display: none;
-  animation: fuve-fade .28s ease;
-}
-
-#fuve-tab-all:checked
-~ fuvepanels #fuve-panel-all,
-
-#fuve-tab-summer:checked
-~ fuvepanels #fuve-panel-summer,
-
-#fuve-tab-autumn:checked
-~ fuvepanels #fuve-panel-autumn,
-
-#fuve-tab-poison:checked
-~ fuvepanels #fuve-panel-poison {
-  display: block;
-}
-
-@keyframes fuve-fade {
-  from {
-    opacity: 0;
-    transform: translateY(3px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* Couleurs des sections */
-
-#fuve-panel-all {
+laetabs.fuve laepanel:nth-of-type(1) {
   --fuve-accent: var(--fuve-all);
 }
 
-#fuve-panel-summer {
+laetabs.fuve laepanel:nth-of-type(2) {
   --fuve-accent: var(--fuve-summer);
 }
 
-#fuve-panel-autumn {
+laetabs.fuve laepanel:nth-of-type(3) {
   --fuve-accent: var(--fuve-autumn);
 }
 
-#fuve-panel-poison {
+laetabs.fuve laepanel:nth-of-type(4) {
   --fuve-accent: var(--fuve-poison);
 }
 
-fuvenote {
+
+/* Note d’onglet */
+
+laetabs.fuve fuvenote {
   display: block;
   margin: 0 0 18px;
   color: var(--fuve-accent);
@@ -722,7 +607,7 @@ fuvenote {
 
 /* Plantes */
 
-plante {
+laetabs.fuve plante {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -732,7 +617,7 @@ plante {
   padding: 0 0 14px;
 }
 
-plante::after {
+laetabs.fuve plante::after {
   content: "";
   position: absolute;
   right: 7%;
@@ -747,19 +632,19 @@ plante::after {
   );
 }
 
-plante:last-of-type {
+laetabs.fuve plante:last-of-type {
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
-plante:last-of-type::after {
+laetabs.fuve plante:last-of-type::after {
   display: none;
 }
 
 
 /* Nom */
 
-plante nom {
+laetabs.fuve plante nom {
   display: block;
   grid-column: 1;
   color: var(--fuve-accent);
@@ -768,7 +653,7 @@ plante nom {
   line-height: 1.35;
 }
 
-plante nom em {
+laetabs.fuve plante nom em {
   margin-left: 9px;
   color: #9a9a92;
   font-size: 11.5px;
@@ -778,7 +663,7 @@ plante nom em {
 
 /* Prix */
 
-plante prix {
+laetabs.fuve plante prix {
   display: block;
   grid-column: 2;
   color: var(--fuve-price);
@@ -789,7 +674,7 @@ plante prix {
   white-space: nowrap;
 }
 
-plante prix small {
+laetabs.fuve plante prix small {
   display: block;
   margin-top: 3px;
   color: #92928a;
@@ -800,9 +685,9 @@ plante prix small {
 
 /* Descriptions */
 
-plante usage,
-plante magie,
-plante toxique {
+laetabs.fuve plante usage,
+laetabs.fuve plante magie,
+laetabs.fuve plante toxique {
   display: block;
   grid-column: 1 / -1;
   max-width: 470px;
@@ -812,27 +697,27 @@ plante toxique {
   line-height: 1.62;
 }
 
-plante magie {
+laetabs.fuve plante magie {
   color: #aeb995;
 }
 
-plante magie b {
+laetabs.fuve plante magie b {
   color: #c6c08e;
   font-weight: 400;
 }
 
-plante toxique {
+laetabs.fuve plante toxique {
   color: #c27c82;
 }
 
-plante toxique b {
+laetabs.fuve plante toxique b {
   font-weight: 600;
 }
 
 
 /* Note finale */
 
-fuvefooter {
+laetabs.fuve fuvefooter {
   display: block;
   margin: 20px 18px 0;
   padding: 14px 16px 0;
@@ -842,4 +727,42 @@ fuvefooter {
   font-style: italic;
   line-height: 1.5;
   text-align: center;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  laetabs.fuve laenav label {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 10px;
+  }
+
+  laetabs.fuve plante {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3px;
+  }
+
+  laetabs.fuve plante nom,
+  laetabs.fuve plante prix {
+    grid-column: 1;
+  }
+
+  laetabs.fuve plante prix {
+    margin-top: 2px;
+    text-align: left;
+    white-space: normal;
+  }
+
+  laetabs.fuve plante prix small {
+    display: inline;
+    margin-left: 5px;
+  }
+
+  laetabs.fuve fuvefooter {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }
