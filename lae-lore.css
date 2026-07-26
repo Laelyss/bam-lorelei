@@ -165,24 +165,25 @@ lotab {
   -webkit-text-fill-color: transparent;
 }
 
-.lore-section k {
+.lore-section sept {
+  display: block;
   color: #748153c7;
-  font: 14px/1.4 "Instrument Serif", serif;
+  font: 17px/1.4 "Instrument Serif", serif;
   letter-spacing: .3px;
 }
 
-.lore-section t {
+.lore-section septdet {
   display: block;
   padding-left: 18px;
   color: #8a8a7e;
-  font: 300 12.5px/1.8 "Newsreader", serif;
+  font: 300 15px/1.8 "Newsreader", serif;
 }
 
 .lore-columns {
   column-count: 2;
   column-gap: 34px;
   color: #8a8a7e;
-  font: 300 13px/1.5 "Newsreader", serif;
+  font: 300 15px/1.5 "Newsreader", serif;
   hyphens: auto;
   text-align: justify;
 }
