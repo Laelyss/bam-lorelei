@@ -8,6 +8,47 @@
    FICHE PRINCIPALE
 ================================================== */
 
+/* ==================================================
+   VARIABLES ET COULEURS DE LA FICHE
+================================================== */
+
+lei,
+lei *,
+.lolo,
+.lolo * {
+  --accent0: #1f2d0abf !important;
+  --accent1: #393012 !important;
+  --accent2: #c5b876ad !important;
+  --accent3: #67851e9c !important;
+  --accent4: #3e4113 !important;
+  --accent5: #191919 !important;
+}
+
+
+/* ==================================================
+   AJUSTEMENTS DU TEMPLATE FORUMACTIF
+================================================== */
+
+lei u3,
+lei u4 {
+  text-shadow: var(--text-shadow);
+}
+
+lei m1,
+.lolo m1 {
+  color: var(--accent3) !important;
+}
+
+lei m2 {
+  color: var(--textColor3);
+}
+
+lei t1,
+lei tbox {
+  background:
+    linear-gradient(#191919bf, #191919bf),
+    url("https://zupimages.net/up/26/29/fdbs.jpg") center / cover fixed !important;
+}
 
 /* test de chargement */
 
