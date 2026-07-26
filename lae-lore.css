@@ -736,3 +736,132 @@ fuveskonyv .fuve-note {
         "Segoe UI", Roboto, Ubuntu, sans-serif;
   opacity: .88;
 }
+
+/* ==================================================
+   FÜVESKÖNYV — ENTRÉES DE PLANTES
+================================================== */
+
+fuveskonyv .fuve-plant {
+  position: relative;
+  margin: 0 0 14px;
+  padding: 0 0 14px;
+}
+
+fuveskonyv .fuve-plant::after {
+  content: "";
+  position: absolute;
+  right: 7%;
+  bottom: 0;
+  left: 7%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(153, 150, 107, .28),
+    transparent
+  );
+}
+
+fuveskonyv .fuve-plant:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+fuveskonyv .fuve-plant:last-child::after {
+  display: none;
+}
+
+
+/* Nom et prix */
+
+fuveskonyv .fuve-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 18px;
+}
+
+fuveskonyv .fuve-name {
+  margin: 0;
+  color: var(--fuve-accent);
+  font-family: system-ui, -apple-system, "Segoe UI",
+               Roboto, Ubuntu, sans-serif;
+  font-size: 14.5px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+fuveskonyv .fuve-name em {
+  display: inline;
+  margin-left: 9px;
+  color: #9a9a92;
+  font-size: 11.5px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+fuveskonyv .fuve-price {
+  margin: 0;
+  color: var(--fuve-price);
+  font-family: system-ui, -apple-system, "Segoe UI",
+               Roboto, Ubuntu, sans-serif;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.25;
+  text-align: right;
+  white-space: nowrap;
+}
+
+fuveskonyv .fuve-price span {
+  display: block;
+  margin-top: 3px;
+  color: #92928a;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+
+/* Descriptions */
+
+fuveskonyv .fuve-use,
+fuveskonyv .fuve-magic,
+fuveskonyv .fuve-toxic {
+  max-width: 470px;
+  margin: 7px 0 0;
+  color: var(--fuve-text);
+  font-size: 12.5px;
+  line-height: 1.62;
+  text-align: left;
+}
+
+fuveskonyv .fuve-magic {
+  color: #aeb995;
+}
+
+fuveskonyv .fuve-magic b {
+  color: #c6c08e;
+  font-weight: 400;
+}
+
+fuveskonyv .fuve-toxic {
+  color: #c27c82;
+}
+
+fuveskonyv .fuve-toxic b {
+  font-weight: 600;
+}
+
+/* ==================================================
+   FÜVESKÖNYV — NOTE FINALE
+================================================== */
+
+fuveskonyv .fuve-footer {
+  margin: 20px 18px 0;
+  padding: 14px 16px 0;
+  border-top: 1px solid var(--fuve-line);
+  color: #96968d;
+  font-size: 11.5px;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: center;
+}
