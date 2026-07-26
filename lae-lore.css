@@ -66,3 +66,55 @@ lei tbox {
   gap: .5em;
   height: 350px;
 }
+
+/* ==================================================
+   CHAMPS DU FORMULAIRE
+================================================== */
+
+.lore-field {
+  display: flex;
+  gap: 1em;
+  margin: 2em 0;
+}
+
+.lore-field-label,
+.lore-field-number,
+.lore-field-data {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.lore-field-label {
+  color: #c5b876;
+  font-size: 15px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.lore-field-number {
+  margin-right: 6px;
+  color: #3e4113;
+  font-size: 10px;
+}
+
+.lore-field-text,
+.lore-field-data {
+  flex: 1;
+}
+
+.lore-field-data {
+  font-size: 14px;
+}
+
+.lore-highlight {
+  color: #c5b876;
+}
+
+.lore-magazine {
+  color: #9a9a8a;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+lotab {
+  display: inline-block;
+  width: 2.5em;
+}
