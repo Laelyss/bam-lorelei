@@ -146,3 +146,43 @@ lotab {
   font-style: italic;
   font-weight: 600;
 }
+
+/* ==================================================
+   BLOCS DU LIEN À L’ÉTHER
+================================================== */
+
+.lore-section {
+  padding: 10px;
+}
+
+.lore-section-title {
+  color: transparent;
+  background: linear-gradient(90deg, #273719fa, #6a7d49);
+  background-clip: text;
+  -webkit-background-clip: text;
+  font: 19px/1 "Morgalen", serif;
+  letter-spacing: 5px;
+  -webkit-text-fill-color: transparent;
+}
+
+.lore-section k {
+  color: #748153c7;
+  font: 14px/1.4 "Instrument Serif", serif;
+  letter-spacing: .3px;
+}
+
+.lore-section t {
+  display: block;
+  padding-left: 18px;
+  color: #8a8a7e;
+  font: 300 12.5px/1.8 "Newsreader", serif;
+}
+
+.lore-columns {
+  column-count: 2;
+  column-gap: 34px;
+  color: #8a8a7e;
+  font: 300 13px/1.5 "Newsreader", serif;
+  hyphens: auto;
+  text-align: justify;
+}
