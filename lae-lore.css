@@ -3,11 +3,8 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Bitter:ital@0;1&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono&family=Josefin+Sans&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap");
 
-@import url("https://laelyss.github.io/bam-lorelei/lae-tabs.css?v=1");
+@import url("https://laelyss.github.io/bam-lorelei/lae-tabs.css?v=2");
 
-/* ==================================================
-   FICHE PRINCIPALE
-================================================== */
 
 /* ==================================================
    VARIABLES ET COULEURS DE LA FICHE
@@ -51,6 +48,7 @@ lei tbox {
     url("https://zupimages.net/up/26/29/fdbs.jpg") center / cover fixed !important;
 }
 
+
 /* ==================================================
    STRUCTURE GÉNÉRALE
 ================================================== */
@@ -68,10 +66,12 @@ lei tbox {
   height: 350px;
 }
 
-sple {
-   display: inline-block; 
-   width: 2.5em;
+sple,
+lotab {
+  display: inline-block;
+  width: 2.5em;
 }
+
 
 /* ==================================================
    CHAMPS DU FORMULAIRE
@@ -120,10 +120,6 @@ sple {
   font-family: "Josefin Sans", sans-serif;
 }
 
-lotab {
-  display: inline-block;
-  width: 2.5em;
-}
 
 /* ==================================================
    COULEURS DES DIALOGUES
@@ -152,6 +148,7 @@ lotab {
   font-style: italic;
   font-weight: 600;
 }
+
 
 /* ==================================================
    BLOCS DU LIEN À L’ÉTHER
@@ -194,8 +191,9 @@ lotab {
   text-align: justify;
 }
 
+
 /* ==================================================
-   CHRONOLOGIE — PARTICULARITÉS
+   CHRONOLOGIE
 ================================================== */
 
 laetabs.chrono {
@@ -220,9 +218,6 @@ laetabs.chrono {
   font: 14px/1.55 "Newsreader", serif;
 }
 
-
-/* Navigation */
-
 laetabs.chrono laenav label {
   font: 15px/1 "Newsreader", serif;
 }
@@ -232,9 +227,6 @@ laetabs.chrono laenav label::after {
     0 0 4px rgba(170, 168, 111, .25),
     0 0 9px rgba(170, 168, 111, .10);
 }
-
-
-/* Entrées */
 
 laetabs.chrono entree {
   position: relative;
@@ -280,9 +272,6 @@ laetabs.chrono entree:last-child::after {
   display: none;
 }
 
-
-/* Dates */
-
 laetabs.chrono entree date {
   display: block;
   margin-bottom: 7px;
@@ -292,19 +281,8 @@ laetabs.chrono entree date {
 }
 
 
-/* Mobile */
-
-@media (max-width: 700px) {
-
-  laetabs.chrono entree {
-    padding-left: 15px;
-    text-align: left;
-  }
-}
-
-
 /* ==================================================
-   FÜVESKÖNYV — PARTICULARITÉS
+   FÜVESKÖNYV
 ================================================== */
 
 laetabs.fuve {
@@ -338,9 +316,6 @@ laetabs.fuve {
         "Segoe UI", Roboto, Ubuntu, sans-serif;
 }
 
-
-/* Introduction */
-
 laetabs.fuve fuveintro {
   display: block;
   max-width: 560px;
@@ -350,9 +325,6 @@ laetabs.fuve fuveintro {
   line-height: 1.55;
   text-align: center;
 }
-
-
-/* Navigation */
 
 laetabs.fuve laenav label {
   font-size: 11px;
@@ -386,7 +358,7 @@ laetabs.fuve > input:nth-of-type(4):checked
 }
 
 
-/* Couleurs internes des panneaux */
+/* Couleurs internes */
 
 laetabs.fuve laepanel:nth-of-type(1) {
   --fuve-accent: var(--fuve-all);
@@ -403,9 +375,6 @@ laetabs.fuve laepanel:nth-of-type(3) {
 laetabs.fuve laepanel:nth-of-type(4) {
   --fuve-accent: var(--fuve-poison);
 }
-
-
-/* Note d’onglet */
 
 laetabs.fuve fuvenote {
   display: block;
@@ -454,9 +423,6 @@ laetabs.fuve plante:last-of-type::after {
   display: none;
 }
 
-
-/* Nom */
-
 laetabs.fuve plante nom {
   display: block;
   grid-column: 1;
@@ -472,9 +438,6 @@ laetabs.fuve plante nom em {
   font-size: 11.5px;
   font-weight: 400;
 }
-
-
-/* Prix */
 
 laetabs.fuve plante prix {
   display: block;
@@ -494,9 +457,6 @@ laetabs.fuve plante prix small {
   font-size: 10px;
   font-weight: 400;
 }
-
-
-/* Descriptions */
 
 laetabs.fuve plante usage,
 laetabs.fuve plante magie,
@@ -527,9 +487,6 @@ laetabs.fuve plante toxique b {
   font-weight: 600;
 }
 
-
-/* Note finale */
-
 laetabs.fuve fuvefooter {
   display: block;
   margin: 20px 18px 0;
@@ -543,7 +500,33 @@ laetabs.fuve fuvefooter {
 }
 
 
-/* Mobile */
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 700px) {
+
+  .lore-profile-row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .lore-field {
+    flex-direction: column;
+    gap: 4px;
+    margin: 1.5em 0;
+  }
+
+  .lore-columns {
+    column-count: 1;
+    text-align: left;
+  }
+
+  laetabs.chrono entree {
+    padding-left: 15px;
+    text-align: left;
+  }
+}
 
 @media (max-width: 600px) {
 
