@@ -118,3 +118,31 @@ lotab {
   display: inline-block;
   width: 2.5em;
 }
+
+/* ==================================================
+   COULEURS DES DIALOGUES
+================================================== */
+
+.lore-sheet lorelei,
+.lore-sheet dori,
+.lore-sheet eid,
+.lore-sheet ori {
+  display: inline;
+}
+
+.lore-sheet lorelei {
+  color: #9d5266;
+}
+
+.lore-sheet dori {
+  color: #9d5428;
+}
+
+.lore-sheet eid {
+  color: #056f61;
+}
+
+.lore-sheet ori {
+  font-style: italic;
+  font-weight: 600;
+}
