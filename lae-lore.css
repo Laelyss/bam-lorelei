@@ -68,8 +68,8 @@ lei tbox {
 }
 
 sple {
-  display: inline-block;
-  width: 2.5em;
+   display: inline-block; 
+   width: 2.5em;
 }
 
 /* ==================================================
