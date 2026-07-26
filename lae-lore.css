@@ -637,3 +637,102 @@ label[for="fuve-tab-poison"]::after {
   left: 22%;
   opacity: .85;
 }
+
+/* ==================================================
+   FÜVESKÖNYV — PANNEAUX
+================================================== */
+
+fuveskonyv .fuve-panels {
+  width: 100%;
+  height: 650px;
+  max-height: 72vh;
+  padding: 20px 18px 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: #8d895f transparent;
+  scrollbar-width: thin;
+}
+
+fuveskonyv .fuve-panels::-webkit-scrollbar {
+  width: 4px;
+}
+
+fuveskonyv .fuve-panels::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+fuveskonyv .fuve-panels::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #8d895f;
+}
+
+
+/* Panneaux cachés */
+
+fuveskonyv .fuve-panel {
+  display: none;
+  animation: fuve-fade .28s ease;
+}
+
+
+/* Panneau actif */
+
+#fuve-tab-all:checked
+~ .fuve-panels
+#fuve-panel-all,
+
+#fuve-tab-summer:checked
+~ .fuve-panels
+#fuve-panel-summer,
+
+#fuve-tab-autumn:checked
+~ .fuve-panels
+#fuve-panel-autumn,
+
+#fuve-tab-poison:checked
+~ .fuve-panels
+#fuve-panel-poison {
+  display: block;
+}
+
+@keyframes fuve-fade {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Couleur interne de chaque onglet */
+
+#fuve-panel-all {
+  --fuve-accent: var(--fuve-all);
+}
+
+#fuve-panel-summer {
+  --fuve-accent: var(--fuve-summer);
+}
+
+#fuve-panel-autumn {
+  --fuve-accent: var(--fuve-autumn);
+}
+
+#fuve-panel-poison {
+  --fuve-accent: var(--fuve-poison);
+}
+
+
+/* Petite note d’introduction */
+
+fuveskonyv .fuve-note {
+  margin: 0 0 18px;
+  color: var(--fuve-accent);
+  font: italic 400 12px/1.5 system-ui, -apple-system,
+        "Segoe UI", Roboto, Ubuntu, sans-serif;
+  opacity: .88;
+}
