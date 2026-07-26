@@ -346,7 +346,9 @@ label[for="lore-history-aujourdhui"]::after {
 }
 
 
-/* Panneaux */
+/* ==================================================
+   CHRONOLOGIE — PANNEAUX
+================================================== */
 
 .lore-history-panel {
   display: none;
@@ -383,8 +385,9 @@ label[for="lore-history-aujourdhui"]::after {
   }
 }
 
+
 /* ==================================================
-   CHRONOLOGIE — ENTRÉES ET DATES
+   CHRONOLOGIE — ENTRÉES
 ================================================== */
 
 .lore-history-entry {
@@ -418,7 +421,7 @@ label[for="lore-history-aujourdhui"]::after {
 }
 
 
-/* Petit repère à gauche */
+/* Repère à gauche */
 
 .lore-history-fleuron {
   position: absolute;
@@ -430,6 +433,7 @@ label[for="lore-history-aujourdhui"]::after {
   border: 1px solid #99966b;
   color: transparent;
   font-size: 0;
+  line-height: 0;
   transform: rotate(45deg);
 }
 
@@ -454,7 +458,9 @@ label[for="lore-history-aujourdhui"]::after {
 }
 
 
-/* Mobile */
+/* ==================================================
+   CHRONOLOGIE — MOBILE
+================================================== */
 
 @media (max-width: 700px) {
   .lore-history-wrapper {
