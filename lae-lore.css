@@ -67,6 +67,11 @@ lei tbox {
   height: 350px;
 }
 
+sple {
+  display: inline-block;
+  width: 2.5em;
+}
+
 /* ==================================================
    CHAMPS DU FORMULAIRE
 ================================================== */
