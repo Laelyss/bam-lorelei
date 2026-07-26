@@ -195,215 +195,68 @@ lotab {
 }
 
 /* ==================================================
-   CHRONOLOGIE — STRUCTURE ET ONGLETS
+   CHRONOLOGIE — PARTICULARITÉS
 ================================================== */
 
-.lore-history-wrapper {
-  margin: 0 20px;
-}
+laetabs.chrono {
+  --tabs-width: 650px;
+  --tabs-margin: 24px auto 0;
+  --tabs-line: rgba(126, 126, 114, .24);
+  --tabs-min-width: 90px;
+  --tabs-mobile-width: 78px;
+  --tabs-label-padding: 0 10px 14px;
+  --tabs-color: #77766f;
+  --tabs-hover: #a5a38e;
+  --tabs-active: #c8c58f;
 
-.lore-history,
-.lore-history * {
-  box-sizing: border-box;
-}
+  --panels-height: 750px;
+  --panels-max-height: 78vh;
+  --panels-padding: 24px 20px 30px;
+  --panels-mobile-height: 72vh;
+  --panels-mobile-padding: 24px 12px 30px;
+  --panels-scrollbar: #777451;
 
-.lore-history {
-  width: min(650px, 100%);
-  margin: 24px auto 0;
   color: #a1a1a1;
-  font: 14px/1.5 "Newsreader", serif;
+  font: 14px/1.55 "Newsreader", serif;
 }
 
 
-/* Boutons cachés */
+/* Navigation */
 
-.lore-history > input {
-  position: absolute;
-  left: -9999px;
-  opacity: 0;
-}
-
-
-/* Onglets */
-
-.lore-history-tabs {
-  display: flex;
-  align-items: flex-end;
-  width: 100%;
-  overflow-x: auto;
-  border-bottom: 1px solid rgba(126, 126, 114, .24);
-  scrollbar-width: none;
-}
-
-.lore-history-tabs::-webkit-scrollbar {
-  display: none;
-}
-
-.lore-history-tabs label {
-  position: relative;
-  flex: 1 0 90px;
-  min-width: 90px;
-  padding: 0 10px 14px;
-  color: #77766f;
-  cursor: pointer;
+laetabs.chrono laenav label {
   font: 15px/1 "Newsreader", serif;
-  text-align: center;
-  transition: color .25s ease;
 }
 
-.lore-history-tabs label:hover {
-  color: #a5a38e;
-}
-
-.lore-history-tabs label::after {
-  content: "";
-  position: absolute;
-  right: 50%;
-  bottom: -1px;
-  left: 50%;
-  height: 2px;
-  border-radius: 20px;
-  background: #8f9a3c7d;
+laetabs.chrono laenav label::after {
   box-shadow:
-    0 0 3px rgba(220, 236, 126, .16),
-    0 0 8px rgba(198, 220, 103, .12);
-  transition:
-    right .25s ease,
-    left .25s ease,
-    background .25s ease,
-    box-shadow .25s ease;
+    0 0 4px rgba(170, 168, 111, .25),
+    0 0 9px rgba(170, 168, 111, .10);
 }
 
 
-/* Onglet actif */
+/* Entrées */
 
-#lore-history-racines:checked
-~ .lore-history-tabs
-label[for="lore-history-racines"],
-
-#lore-history-zemplen:checked
-~ .lore-history-tabs
-label[for="lore-history-zemplen"],
-
-#lore-history-vienne:checked
-~ .lore-history-tabs
-label[for="lore-history-vienne"],
-
-#lore-history-aujourdhui:checked
-~ .lore-history-tabs
-label[for="lore-history-aujourdhui"] {
-  color: #c8c58f;
-}
-
-#lore-history-racines:checked
-~ .lore-history-tabs
-label[for="lore-history-racines"]::after,
-
-#lore-history-zemplen:checked
-~ .lore-history-tabs
-label[for="lore-history-zemplen"]::after,
-
-#lore-history-vienne:checked
-~ .lore-history-tabs
-label[for="lore-history-vienne"]::after,
-
-#lore-history-aujourdhui:checked
-~ .lore-history-tabs
-label[for="lore-history-aujourdhui"]::after {
-  right: 24%;
-  left: 24%;
-  background: #aaa86f;
-  box-shadow:
-    0 0 4px rgba(170, 168, 111, .30),
-    0 0 9px rgba(170, 168, 111, .12);
-}
-
-
-/* Ancienne séparation devenue inutile */
-
-.lore-history-divider {
-  display: none;
-}
-
-
-/* Fenêtre de lecture */
-
-.lore-history-content {
-  width: 100%;
-  height: 750px;
-  max-height: 78vh;
-  padding: 24px 20px 30px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-color: #777451 transparent;
-  scrollbar-width: thin;
-}
-
-.lore-history-content::-webkit-scrollbar {
-  width: 4px;
-}
-
-.lore-history-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.lore-history-content::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background: #777451;
-}
-
-
-/* ==================================================
-   CHRONOLOGIE — PANNEAUX
-================================================== */
-
-.lore-history-panel {
-  display: none;
-  animation: lore-history-appearance .28s ease;
-}
-
-#lore-history-racines:checked
-~ .lore-history-content
-.lore-history-racines,
-
-#lore-history-zemplen:checked
-~ .lore-history-content
-.lore-history-zemplen,
-
-#lore-history-vienne:checked
-~ .lore-history-content
-.lore-history-vienne,
-
-#lore-history-aujourdhui:checked
-~ .lore-history-content
-.lore-history-aujourdhui {
-  display: block;
-}
-
-@keyframes lore-history-appearance {
-  from {
-    opacity: 0;
-    transform: translateY(3px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* ==================================================
-   CHRONOLOGIE — ENTRÉES
-================================================== */
-
-.lore-history-entry {
+laetabs.chrono entree {
   position: relative;
+  display: block;
   margin: 0 0 16px;
   padding: 0 0 16px 18px;
+  color: #a1a1a1;
+  text-align: justify;
 }
 
-.lore-history-entry::after {
+laetabs.chrono entree::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  width: 5px;
+  height: 5px;
+  border: 1px solid #99966b;
+  transform: rotate(45deg);
+}
+
+laetabs.chrono entree::after {
   content: "";
   position: absolute;
   right: 10%;
@@ -418,74 +271,34 @@ label[for="lore-history-aujourdhui"]::after {
   );
 }
 
-.lore-history-entry:last-child {
+laetabs.chrono entree:last-child {
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
-.lore-history-entry:last-child::after {
+laetabs.chrono entree:last-child::after {
   display: none;
-}
-
-
-/* Repère à gauche */
-
-.lore-history-fleuron {
-  position: absolute;
-  top: 5px;
-  left: 1px;
-  width: 5px;
-  height: 5px;
-  overflow: hidden;
-  border: 1px solid #99966b;
-  color: transparent;
-  font-size: 0;
-  line-height: 0;
-  transform: rotate(45deg);
 }
 
 
 /* Dates */
 
-.lore-history-date {
-  margin: 0 0 7px;
+laetabs.chrono entree date {
+  display: block;
+  margin-bottom: 7px;
   color: #a39f70;
   font: 17px/1.1 "Morgalen", serif;
   letter-spacing: 1px;
 }
 
 
-/* Texte */
-
-.lore-history-text {
-  margin: 0;
-  color: #a1a1a1;
-  font: 14px/1.55 "Newsreader", serif !important;
-  text-align: justify;
-}
-
-
-/* ==================================================
-   CHRONOLOGIE — MOBILE
-================================================== */
+/* Mobile */
 
 @media (max-width: 700px) {
-  .lore-history-wrapper {
-    margin: 0 8px;
-  }
 
-  .lore-history-tabs label {
-    flex: 0 0 78px;
-    min-width: 78px;
-  }
-
-  .lore-history-content {
-    height: 72vh;
-    padding: 24px 12px 30px;
-  }
-
-  .lore-history-entry {
+  laetabs.chrono entree {
     padding-left: 15px;
+    text-align: left;
   }
 }
 
