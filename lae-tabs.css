@@ -9,6 +9,7 @@ laetabs * {
 }
 
 laetabs {
+  position: relative;
   display: block;
   width: min(var(--tabs-width, 650px), 100%);
   margin: var(--tabs-margin, 24px auto);
@@ -26,7 +27,7 @@ laetabs > input {
 
 /* Navigation */
 
-laenav {
+laetabs laenav {
   display: flex;
   align-items: flex-end;
   width: 100%;
@@ -36,11 +37,11 @@ laenav {
   scrollbar-width: none;
 }
 
-laenav::-webkit-scrollbar {
+laetabs laenav::-webkit-scrollbar {
   display: none;
 }
 
-laenav label {
+laetabs laenav label {
   position: relative;
   flex: 1 0 var(--tabs-min-width, 90px);
   min-width: var(--tabs-min-width, 90px);
@@ -51,11 +52,11 @@ laenav label {
   transition: color .25s ease;
 }
 
-laenav label:hover {
+laetabs laenav label:hover {
   color: var(--tabs-hover, #a5a38e);
 }
 
-laenav label::after {
+laetabs laenav label::after {
   content: "";
   position: absolute;
   right: 50%;
@@ -108,7 +109,7 @@ laetabs > input:nth-of-type(4):checked
 
 /* Fenêtre de lecture */
 
-laepanels {
+laetabs laepanels {
   display: block;
   width: 100%;
   height: var(--panels-height, 650px);
@@ -122,15 +123,15 @@ laepanels {
   scrollbar-width: thin;
 }
 
-laepanels::-webkit-scrollbar {
+laetabs laepanels::-webkit-scrollbar {
   width: 4px;
 }
 
-laepanels::-webkit-scrollbar-track {
+laetabs laepanels::-webkit-scrollbar-track {
   background: transparent;
 }
 
-laepanels::-webkit-scrollbar-thumb {
+laetabs laepanels::-webkit-scrollbar-thumb {
   border-radius: 8px;
   background: var(--panels-scrollbar, #777451);
 }
@@ -138,7 +139,7 @@ laepanels::-webkit-scrollbar-thumb {
 
 /* Panneaux */
 
-laepanel {
+laetabs laepanel {
   display: none;
   animation: lae-tabs-appearance .28s ease;
 }
@@ -174,12 +175,12 @@ laetabs > input:nth-of-type(4):checked
 
 @media (max-width: 700px) {
 
-  laenav label {
+  laetabs laenav label {
     flex-basis: var(--tabs-mobile-width, 78px);
     min-width: var(--tabs-mobile-width, 78px);
   }
 
-  laepanels {
+  laetabs laepanels {
     height: var(--panels-mobile-height, 72vh);
     padding: var(--panels-mobile-padding, 20px 12px 0);
   }
