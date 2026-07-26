@@ -1,0 +1,186 @@
+/* ==================================================
+   SYSTÈME COMMUN DES ONGLETS
+   Chronologie · Füveskönyv · Story
+================================================== */
+
+laetabs,
+laetabs * {
+  box-sizing: border-box;
+}
+
+laetabs {
+  display: block;
+  width: min(var(--tabs-width, 650px), 100%);
+  margin: var(--tabs-margin, 24px auto);
+}
+
+
+/* Radios cachés */
+
+laetabs > input {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+
+/* Navigation */
+
+laenav {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  overflow-x: auto;
+  border-bottom: 1px solid
+    var(--tabs-line, rgba(126, 126, 114, .24));
+  scrollbar-width: none;
+}
+
+laenav::-webkit-scrollbar {
+  display: none;
+}
+
+laenav label {
+  position: relative;
+  flex: 1 0 var(--tabs-min-width, 90px);
+  min-width: var(--tabs-min-width, 90px);
+  padding: var(--tabs-label-padding, 0 10px 14px);
+  color: var(--tabs-color, #77766f);
+  cursor: pointer;
+  text-align: center;
+  transition: color .25s ease;
+}
+
+laenav label:hover {
+  color: var(--tabs-hover, #a5a38e);
+}
+
+laenav label::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  bottom: -1px;
+  left: 50%;
+  height: 2px;
+  border-radius: 20px;
+  background: currentColor;
+  opacity: .45;
+  box-shadow: 0 0 5px currentColor;
+  transition:
+    right .25s ease,
+    left .25s ease,
+    opacity .25s ease;
+}
+
+
+/* Onglet actif */
+
+laetabs > input:nth-of-type(1):checked
+~ laenav label:nth-of-type(1),
+
+laetabs > input:nth-of-type(2):checked
+~ laenav label:nth-of-type(2),
+
+laetabs > input:nth-of-type(3):checked
+~ laenav label:nth-of-type(3),
+
+laetabs > input:nth-of-type(4):checked
+~ laenav label:nth-of-type(4) {
+  color: var(--tabs-active, #c8c58f);
+}
+
+laetabs > input:nth-of-type(1):checked
+~ laenav label:nth-of-type(1)::after,
+
+laetabs > input:nth-of-type(2):checked
+~ laenav label:nth-of-type(2)::after,
+
+laetabs > input:nth-of-type(3):checked
+~ laenav label:nth-of-type(3)::after,
+
+laetabs > input:nth-of-type(4):checked
+~ laenav label:nth-of-type(4)::after {
+  right: 22%;
+  left: 22%;
+  opacity: .85;
+}
+
+
+/* Fenêtre de lecture */
+
+laepanels {
+  display: block;
+  width: 100%;
+  height: var(--panels-height, 650px);
+  max-height: var(--panels-max-height, 72vh);
+  padding: var(--panels-padding, 20px 18px 0);
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color:
+    var(--panels-scrollbar, #777451)
+    transparent;
+  scrollbar-width: thin;
+}
+
+laepanels::-webkit-scrollbar {
+  width: 4px;
+}
+
+laepanels::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+laepanels::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: var(--panels-scrollbar, #777451);
+}
+
+
+/* Panneaux */
+
+laepanel {
+  display: none;
+  animation: lae-tabs-appearance .28s ease;
+}
+
+laetabs > input:nth-of-type(1):checked
+~ laepanels > laepanel:nth-of-type(1),
+
+laetabs > input:nth-of-type(2):checked
+~ laepanels > laepanel:nth-of-type(2),
+
+laetabs > input:nth-of-type(3):checked
+~ laepanels > laepanel:nth-of-type(3),
+
+laetabs > input:nth-of-type(4):checked
+~ laepanels > laepanel:nth-of-type(4) {
+  display: block;
+}
+
+@keyframes lae-tabs-appearance {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  laenav label {
+    flex-basis: var(--tabs-mobile-width, 78px);
+    min-width: var(--tabs-mobile-width, 78px);
+  }
+
+  laepanels {
+    height: var(--panels-mobile-height, 72vh);
+    padding: var(--panels-mobile-padding, 20px 12px 0);
+  }
+}
