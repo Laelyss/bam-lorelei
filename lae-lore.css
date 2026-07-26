@@ -50,15 +50,19 @@ lei tbox {
     url("https://zupimages.net/up/26/29/fdbs.jpg") center / cover fixed !important;
 }
 
-/* test de chargement */
+/* ==================================================
+   STRUCTURE GÉNÉRALE
+================================================== */
 
-.jsdelivr-test {
-  margin: 20px;
-  padding: 20px;
-  border: 2px solid #c5b876;
-  border-radius: 12px;
-  background: #663366;
-  color: #ffffff;
-  font: 700 18px/1.4 system-ui, sans-serif;
-  text-align: center;
+.lore-sheet .lore-content,
+.lore-sheet blockquote,
+.lore-sheet .lore-history-wrapper {
+  color: #8a8a7e;
+  font: 14px/1.7 "Bitter", serif !important;
+}
+
+.lore-profile-row {
+  display: flex;
+  gap: .5em;
+  height: 350px;
 }
