@@ -382,3 +382,96 @@ label[for="lore-history-aujourdhui"]::after {
     transform: translateY(0);
   }
 }
+
+/* ==================================================
+   CHRONOLOGIE — ENTRÉES ET DATES
+================================================== */
+
+.lore-history-entry {
+  position: relative;
+  margin: 0 0 16px;
+  padding: 0 0 16px 18px;
+}
+
+.lore-history-entry::after {
+  content: "";
+  position: absolute;
+  right: 10%;
+  bottom: 0;
+  left: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(153, 150, 107, .28),
+    transparent
+  );
+}
+
+.lore-history-entry:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.lore-history-entry:last-child::after {
+  display: none;
+}
+
+
+/* Petit repère à gauche */
+
+.lore-history-fleuron {
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  width: 5px;
+  height: 5px;
+  overflow: hidden;
+  border: 1px solid #99966b;
+  color: transparent;
+  font-size: 0;
+  transform: rotate(45deg);
+}
+
+
+/* Dates */
+
+.lore-history-date {
+  margin: 0 0 7px;
+  color: #a39f70;
+  font: 17px/1.1 "Morgalen", serif;
+  letter-spacing: 1px;
+}
+
+
+/* Texte */
+
+.lore-history-text {
+  margin: 0;
+  color: #a1a1a1;
+  font: 14px/1.55 "Newsreader", serif !important;
+  text-align: justify;
+}
+
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .lore-history-wrapper {
+    margin: 0 8px;
+  }
+
+  .lore-history-tabs label {
+    flex: 0 0 78px;
+    min-width: 78px;
+  }
+
+  .lore-history-content {
+    height: 72vh;
+    padding: 24px 12px 30px;
+  }
+
+  .lore-history-entry {
+    padding-left: 15px;
+  }
+}
