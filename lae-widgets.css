@@ -1,0 +1,183 @@
+@import url("https://fonts.cdnfonts.com/css/morgalen");
+@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap");
+
+:is(slim, astro, focus),
+:is(slim, astro, focus) * {
+  box-sizing: border-box;
+}
+
+:is(astro, focus) {
+  --widget-text: var(--textColor3, #8a8a7e);
+
+  --widget-soft: #77766f;
+  --widget-soft:
+    color-mix(in srgb, var(--widget-text) 68%, transparent);
+
+  --widget-line: rgba(126, 126, 114, .22);
+  --widget-line:
+    color-mix(in srgb, var(--widget-text) 22%, transparent);
+
+  --widget-gold: #9d7e18;
+  --widget-gold:
+    color-mix(in srgb, #9d7e18 78%, var(--widget-text));
+
+  --widget-green: #585f22;
+  --widget-green:
+    color-mix(in srgb, #585f22 78%, var(--widget-text));
+
+  --widget-green-alt: #45552d;
+  --widget-green-alt:
+    color-mix(in srgb, #45552d 78%, var(--widget-text));
+}
+
+
+/* ==================================================
+   PUBLICITÉ SLIMNATURALL
+================================================== */
+
+slim {
+  display: block;
+  width: min(300px, 100%);
+  margin: 18px auto;
+  padding: 11px 14px;
+  border-radius: 18px;
+  background: #262626;
+  color: #efefef;
+  font: 10px/1.45 Arial, sans-serif;
+}
+
+slim > :is(small, b, p, a) {
+  display: block;
+}
+
+slim > small {
+  margin-bottom: 6px;
+  color: #969696;
+  font-size: 10px;
+}
+
+slim > b {
+  font-size: 12px;
+}
+
+slim > p {
+  margin: 4px 0 0;
+  color: #b2b2b2;
+}
+
+slim > a {
+  width: fit-content;
+  margin-top: 10px;
+  color: #8dbf72;
+  text-decoration: none;
+}
+
+slim > a:hover {
+  text-decoration: underline;
+}
+
+
+/* ==================================================
+   CARTE ASTRO
+================================================== */
+
+astro {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  width: min(250px, 100%);
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid var(--widget-line);
+  border-radius: 22px;
+
+  background: rgba(251, 251, 250, .14);
+  background:
+    color-mix(in srgb, var(--widget-text) 7%, transparent);
+
+  color: var(--widget-text);
+  font-family: Arial, sans-serif;
+}
+
+astro > :is(small, b, i, p) {
+  display: block;
+  grid-column: 1;
+}
+
+astro > small {
+  color: var(--widget-gold);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+astro > b {
+  margin-top: 2px;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+astro > i {
+  color: var(--widget-gold);
+  font-size: 11px;
+  font-style: normal;
+}
+
+astro > em {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  font-size: 28px;
+  font-style: normal;
+  opacity: .25;
+}
+
+astro > p {
+  grid-column: 1 / -1;
+  margin: 18px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--widget-line);
+  font-size: 11px;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+
+/* ==================================================
+   FOCUS
+================================================== */
+
+focus {
+  display: block;
+  color: var(--widget-text);
+  text-align: center;
+}
+
+focus > :is(strong, small, span) {
+  display: block;
+}
+
+focus > strong {
+  color: var(--widget-green-alt);
+  font: 48px/1 "Morgalen", serif;
+}
+
+focus > small {
+  margin-top: 2px;
+  color: var(--widget-soft);
+  font: 10px/1.15 "Bitter", serif;
+  text-transform: uppercase;
+}
+
+focus > span {
+  margin-top: 6px;
+  font: 14px/1 "Bitter", serif;
+}
+
+focus > span > b {
+  color: var(--widget-green);
+  font-weight: 700;
+}
+
+focus > span > b:nth-of-type(3) {
+  color: var(--widget-green-alt);
+}
