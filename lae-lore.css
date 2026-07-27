@@ -50,7 +50,7 @@ lei tbox {
 }
 
 .lore-sheet :is(.lore-content, blockquote, .lore-history-wrapper) {
-  color: var(--lore-text);
+  color: #8a8a7e;
   font: 14px/1.7 "Bitter", serif !important;
 }
 
@@ -212,14 +212,14 @@ lotab {
 .lore-section septdet {
   display: block;
   padding-left: 18px;
-  color: var(--lore-text);
+  color: #8a8a7e;
   font: 300 15px/1.8 "Newsreader", serif;
 }
 
 .lore-columns {
   column-count: 2;
   column-gap: 34px;
-  color: var(--lore-text);
+  color: #8a8a7e;
   font: 300 15px/1.5 "Newsreader", serif;
   hyphens: auto;
   text-align: justify;
@@ -242,7 +242,6 @@ tabs.chrono {
   --panels-padding: 24px 20px 30px;
   --panels-mobile-height: 72vh;
   --panels-mobile-padding: 24px 12px 30px;
-  --panels-scrollbar: var(--lore-soft);
 
   font: 14px/1.55 "Newsreader", serif;
 }
@@ -331,7 +330,6 @@ tabs.fuve {
   --panels-padding: 20px 18px 0;
   --panels-mobile-height: 68vh;
   --panels-mobile-padding: 18px 10px 0;
-  --panels-scrollbar: var(--fuve-soft);
 
   font: 400 13px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
 }
