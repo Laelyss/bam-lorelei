@@ -1,4 +1,4 @@
-@import url("https://laelyss.github.io/bam-lorelei/lae-tabs.css?v=compact-theme1");
+@import url("https://laelyss.github.io/bam-lorelei/lae-tabs.css?v=chrono-final2");
 @import url("https://fonts.cdnfonts.com/css/morgalen");
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap");
 
@@ -103,6 +103,14 @@ tabs.story pn {
   color: #b2ad8c;
   color: color-mix(in srgb, var(--story-gold) 45%, var(--story-text));
   font-style: italic;
+}
+
+tabs.story sig {
+  display: block;
+  margin-top: 22px;
+  color: var(--story-soft);
+  font-style: italic;
+  text-align: right;
 }
 
 tabs.story sep {
