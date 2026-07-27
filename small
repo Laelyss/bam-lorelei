@@ -163,7 +163,7 @@ focus > strong {
 
 focus > small {
   margin-top: 2px;
-  color: var(--widget-soft);
+  color: #8a8a7a;
   font: 10px/1.15 "Bitter", serif;
   text-transform: uppercase;
 }
@@ -174,7 +174,7 @@ focus > span {
 }
 
 focus > span > b {
-  color: var(--widget-green);
+  color: #323729;
   font-weight: 700;
 }
 
