@@ -54,10 +54,6 @@ lei tbox {
   font: 14px/1.7 "Bitter", serif !important;
 }
 
-.lore-sheet fiche > section {
-  color: #8a8a7e;
-}
-
 .lore-profile-row {
   display: flex;
   gap: .5em;
