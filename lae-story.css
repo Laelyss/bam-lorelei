@@ -1,49 +1,44 @@
-@import url("https://laelyss.github.io/bam-lorelei/lae-tabs.css?v=2");
-
+@import url("https://laelyss.github.io/bam-lorelei/lae-tabs.css?v=compact-theme1");
 @import url("https://fonts.cdnfonts.com/css/morgalen");
-
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap");
 
+tabs.story {
+  --story-text: #a1a198;
+  --story-text: color-mix(in srgb, var(--lae-ink) 86%, #a1a198);
+  --story-soft: #77786f;
+  --story-soft: color-mix(in srgb, var(--lae-ink) 68%, transparent);
+  --story-gold: #c5b876;
+  --story-gold: color-mix(in srgb, #c5b876 76%, var(--lae-ink));
+  --story-green: #3d4927;
+  --story-green: color-mix(in srgb, #3d4927 72%, var(--lae-ink));
+  --story-line: rgba(151, 151, 131, .22);
+  --story-line: color-mix(in srgb, var(--lae-ink) 22%, transparent);
 
-/* ==================================================
-   STORY — STRUCTURE
-================================================== */
-
-laetabs.story {
   --tabs-width: 700px;
-  --tabs-margin: 24px auto;
-  --tabs-line: rgba(151, 151, 131, .22);
+  --tabs-line: var(--story-line);
   --tabs-min-width: 120px;
   --tabs-mobile-width: 96px;
   --tabs-label-padding: 0 12px 14px;
-  --tabs-color: #77766f;
-  --tabs-hover: #aaa88f;
-  --tabs-active: #c5b876;
-
+  --tabs-color: var(--story-soft);
+  --tabs-hover: var(--story-gold);
+  --tabs-active: var(--story-gold);
+  --tabs-text: var(--story-text);
   --panels-height: 720px;
   --panels-max-height: 78vh;
   --panels-padding: 28px 26px 34px;
   --panels-mobile-height: 74vh;
   --panels-mobile-padding: 24px 13px 30px;
-  --panels-scrollbar: #777451;
+  --panels-scrollbar: var(--story-soft);
 
-  color: #a1a198;
   font: 300 15px/1.75 "Newsreader", serif;
 }
 
-
-/* Titre général */
-
-laetabs.story storytitle {
-  display: block;
+tabs.story > storytitle {
+  order: -1;
+  flex: 0 0 100%;
   margin: 0 0 24px;
   color: transparent;
-  background: linear-gradient(
-    90deg,
-    #3d4927,
-    #a49d62,
-    #3d4927
-  );
+  background: linear-gradient(90deg, var(--story-green), var(--story-gold), var(--story-green));
   background-clip: text;
   -webkit-background-clip: text;
   font: 32px/1 "Morgalen", serif;
@@ -52,156 +47,119 @@ laetabs.story storytitle {
   -webkit-text-fill-color: transparent;
 }
 
-
-/* Navigation */
-
-laetabs.story laenav label {
+tabs.story > label {
   font: 13px/1 "Newsreader", serif;
   letter-spacing: .12em;
   text-transform: uppercase;
 }
 
-laetabs.story laenav label::after {
-  box-shadow:
-    0 0 4px rgba(197, 184, 118, .25),
-    0 0 10px rgba(197, 184, 118, .10);
-}
-
-
-/* Chapitres */
-
-laetabs.story chapitre {
-  display: block;
-}
-
-laetabs.story chaphead {
-  display: block;
-  margin: 0 0 28px;
-  text-align: center;
-}
-
-laetabs.story chaptitre {
-  display: block;
-  color: #c5b876;
-  font: 27px/1.1 "Morgalen", serif;
-  letter-spacing: 3px;
-}
-
-laetabs.story chapsous {
-  display: block;
-  margin-top: 7px;
-  color: #77786f;
-  font: italic 14px/1.4 "Instrument Serif", serif;
-  letter-spacing: .4px;
-}
-
-laetabs.story chapline {
-  display: block;
-  width: 110px;
-  height: 1px;
-  margin: 16px auto 12px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(197, 184, 118, .55),
-    transparent
-  );
-}
-
-laetabs.story lieu {
-  display: block;
-  color: #828473;
-  font: 11px/1.4 "Newsreader", serif;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-
-/* Récit */
-
-laetabs.story recit {
-  display: block;
-  color: #a1a198;
+tabs.story > panel {
   font: 300 15px/1.75 "Newsreader", serif;
   text-align: justify;
 }
 
-laetabs.story recit + recit {
-  margin-top: 20px;
+tabs.story ct,
+tabs.story cs,
+tabs.story loc,
+tabs.story sep {
+  display: block;
 }
 
-laetabs.story pensee {
+tabs.story ct {
+  color: var(--story-gold);
+  font: 27px/1.1 "Morgalen", serif;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+tabs.story cs {
+  margin-top: 7px;
+  color: var(--story-soft);
+  font: italic 14px/1.4 "Instrument Serif", serif;
+  letter-spacing: .4px;
+  text-align: center;
+}
+
+tabs.story cs::after {
+  content: "";
+  display: block;
+  width: 110px;
+  height: 1px;
+  margin: 16px auto 12px;
+  background: linear-gradient(90deg, transparent, var(--story-gold), transparent);
+  opacity: .55;
+}
+
+tabs.story loc {
+  margin-bottom: 28px;
+  color: var(--story-soft);
+  font: 11px/1.4 "Newsreader", serif;
+  letter-spacing: .12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+tabs.story pn {
   color: #b2ad8c;
+  color: color-mix(in srgb, var(--story-gold) 45%, var(--story-text));
   font-style: italic;
 }
 
-laetabs.story storysep {
-  display: block;
+tabs.story sep {
   width: 45%;
   height: 1px;
   margin: 30px auto;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(160, 156, 109, .34),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--story-gold), transparent);
+  opacity: .34;
 }
 
-
-/* Tabulation */
-
-laetabs.story sple {
+tabs.story sp {
   display: inline-block;
   width: 2.5em;
 }
 
-
-/* Dialogues */
-
-laetabs.story lorelei,
-laetabs.story dori,
-laetabs.story eid,
-laetabs.story ori {
+tabs.story lo,
+tabs.story do,
+tabs.story ei,
+tabs.story or {
   display: inline;
 }
 
-laetabs.story lorelei {
+tabs.story lo {
   color: #9d5266;
+  color: color-mix(in srgb, #9d5266 78%, var(--lae-ink));
 }
 
-laetabs.story dori {
+tabs.story do {
   color: #9d5428;
+  color: color-mix(in srgb, #9d5428 78%, var(--lae-ink));
 }
 
-laetabs.story eid {
+tabs.story ei {
   color: #056f61;
+  color: color-mix(in srgb, #056f61 78%, var(--lae-ink));
 }
 
-laetabs.story ori {
+tabs.story or {
   font-style: italic;
   font-weight: 600;
 }
 
-
-/* Mobile */
-
 @media (max-width: 700px) {
-
-  laetabs.story storytitle {
+  tabs.story > storytitle {
     font-size: 26px;
     letter-spacing: 3px;
   }
 
-  laetabs.story chaptitre {
-    font-size: 23px;
-  }
-
-  laetabs.story recit {
+  tabs.story > panel {
     text-align: left;
   }
 
-  laetabs.story storysep {
+  tabs.story ct {
+    font-size: 23px;
+  }
+
+  tabs.story sep {
     width: 65%;
   }
 }
