@@ -1,62 +1,56 @@
-/* ==================================================
-   SYSTÈME COMMUN DES ONGLETS
-   Chronologie · Füveskönyv · Story
-================================================== */
+/* MOTEUR COMMUN — structure compacte :
+   <tabs><input><label></label><panel>...</panel>...</tabs> */
 
-laetabs,
-laetabs * {
+tabs,
+tabs * {
   box-sizing: border-box;
 }
 
-laetabs {
+tabs {
+  --lae-ink: var(--textColor3, #8a8a7e);
+  --tabs-line: rgba(126, 126, 114, .24);
+  --tabs-color: var(--lae-ink);
+  --tabs-hover: var(--tabs-active, #a5a38e);
+  --tabs-active: #c8c58f;
+  --panels-scrollbar: #777451;
+
   position: relative;
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
   width: min(var(--tabs-width, 650px), 100%);
   margin: var(--tabs-margin, 24px auto);
 }
 
-
-/* Radios cachés */
-
-laetabs > input {
+tabs > input {
   position: absolute;
-  left: -9999px;
+  width: 1px;
+  height: 1px;
   opacity: 0;
+  pointer-events: none;
 }
 
-
-/* Navigation */
-
-laetabs laenav {
-  display: flex;
-  align-items: flex-end;
-  width: 100%;
-  overflow-x: auto;
-  border-bottom: 1px solid
-    var(--tabs-line, rgba(126, 126, 114, .24));
-  scrollbar-width: none;
-}
-
-laetabs laenav::-webkit-scrollbar {
-  display: none;
-}
-
-laetabs laenav label {
+tabs > label {
   position: relative;
-  flex: 1 0 var(--tabs-min-width, 90px);
+  order: 0;
+  flex: 1 1 var(--tabs-min-width, 90px);
   min-width: var(--tabs-min-width, 90px);
   padding: var(--tabs-label-padding, 0 10px 14px);
-  color: var(--tabs-color, #77766f);
+  border-bottom: 1px solid var(--tabs-line);
+  color: var(--tabs-color);
   cursor: pointer;
   text-align: center;
   transition: color .25s ease;
 }
 
-laetabs laenav label:hover {
-  color: var(--tabs-hover, #a5a38e);
+tabs > label:hover {
+  color: var(--tabs-hover);
 }
 
-laetabs laenav label::after {
+tabs > input:checked + label {
+  color: var(--tabs-active);
+}
+
+tabs > label::after {
   content: "";
   position: absolute;
   right: 50%;
@@ -67,120 +61,71 @@ laetabs laenav label::after {
   background: currentColor;
   opacity: .45;
   box-shadow: 0 0 5px currentColor;
-  transition:
-    right .25s ease,
-    left .25s ease,
-    opacity .25s ease;
+  transition: right .25s ease, left .25s ease, opacity .25s ease;
 }
 
-
-/* Onglet actif */
-
-laetabs > input:nth-of-type(1):checked
-~ laenav label:nth-of-type(1),
-
-laetabs > input:nth-of-type(2):checked
-~ laenav label:nth-of-type(2),
-
-laetabs > input:nth-of-type(3):checked
-~ laenav label:nth-of-type(3),
-
-laetabs > input:nth-of-type(4):checked
-~ laenav label:nth-of-type(4) {
-  color: var(--tabs-active, #c8c58f);
-}
-
-laetabs > input:nth-of-type(1):checked
-~ laenav label:nth-of-type(1)::after,
-
-laetabs > input:nth-of-type(2):checked
-~ laenav label:nth-of-type(2)::after,
-
-laetabs > input:nth-of-type(3):checked
-~ laenav label:nth-of-type(3)::after,
-
-laetabs > input:nth-of-type(4):checked
-~ laenav label:nth-of-type(4)::after {
+tabs > input:checked + label::after {
   right: 22%;
   left: 22%;
   opacity: .85;
 }
 
+tabs > input:focus-visible + label {
+  outline: 1px dashed currentColor;
+  outline-offset: -4px;
+}
 
-/* Fenêtre de lecture */
-
-laetabs laepanels {
-  display: block;
+tabs > panel {
+  display: none;
+  order: 2;
+  flex: 0 0 100%;
   width: 100%;
   height: var(--panels-height, 650px);
   max-height: var(--panels-max-height, 72vh);
   padding: var(--panels-padding, 20px 18px 0);
   overflow-x: hidden;
   overflow-y: auto;
-  scrollbar-color:
-    var(--panels-scrollbar, #777451)
-    transparent;
+  color: var(--tabs-text, var(--lae-ink));
+  scrollbar-color: var(--panels-scrollbar) transparent;
   scrollbar-width: thin;
+  animation: lae-tabs-in .28s ease;
 }
 
-laetabs laepanels::-webkit-scrollbar {
-  width: 4px;
-}
-
-laetabs laepanels::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-laetabs laepanels::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  background: var(--panels-scrollbar, #777451);
-}
-
-
-/* Panneaux */
-
-laetabs laepanel {
-  display: none;
-  animation: lae-tabs-appearance .28s ease;
-}
-
-laetabs > input:nth-of-type(1):checked
-~ laepanels > laepanel:nth-of-type(1),
-
-laetabs > input:nth-of-type(2):checked
-~ laepanels > laepanel:nth-of-type(2),
-
-laetabs > input:nth-of-type(3):checked
-~ laepanels > laepanel:nth-of-type(3),
-
-laetabs > input:nth-of-type(4):checked
-~ laepanels > laepanel:nth-of-type(4) {
+tabs > input:checked + label + panel {
   display: block;
 }
 
-@keyframes lae-tabs-appearance {
+tabs > panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+tabs > panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+tabs > panel::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: var(--panels-scrollbar);
+}
+
+@keyframes lae-tabs-in {
   from {
     opacity: 0;
     transform: translateY(3px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-
-/* Mobile */
-
 @media (max-width: 700px) {
-
-  laetabs laenav label {
+  tabs > label {
     flex-basis: var(--tabs-mobile-width, 78px);
     min-width: var(--tabs-mobile-width, 78px);
   }
 
-  laetabs laepanels {
+  tabs > panel {
     height: var(--panels-mobile-height, 72vh);
     padding: var(--panels-mobile-padding, 20px 12px 0);
   }
