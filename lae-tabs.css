@@ -130,3 +130,52 @@ tabs > panel::-webkit-scrollbar-thumb {
     padding: var(--panels-mobile-padding, 20px 12px 0);
   }
 }
+
+/* Compatibilité Forumactif — limitée aux trois modules d’onglets */
+tabs.chrono,
+tabs.fuve,
+tabs.story {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+tabs.chrono > input,
+tabs.fuve > input,
+tabs.story > input {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+tabs.chrono > label,
+tabs.fuve > label,
+tabs.story > label {
+  display: block !important;
+  order: 0 !important;
+  flex: 1 1 var(--tabs-min-width, 90px) !important;
+  width: auto !important;
+  min-width: var(--tabs-min-width, 90px) !important;
+  max-width: none !important;
+  margin: 0 !important;
+  float: none !important;
+  clear: none !important;
+}
+
+tabs.chrono > panel,
+tabs.fuve > panel,
+tabs.story > panel {
+  order: 2 !important;
+  flex: 0 0 100% !important;
+  width: 100% !important;
+}
+
+@media (max-width: 700px) {
+  tabs.chrono > label,
+  tabs.fuve > label,
+  tabs.story > label {
+    flex-basis: var(--tabs-mobile-width, 78px) !important;
+    min-width: var(--tabs-mobile-width, 78px) !important;
+  }
+}
