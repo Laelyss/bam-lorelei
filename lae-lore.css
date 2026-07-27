@@ -50,8 +50,12 @@ lei tbox {
 }
 
 .lore-sheet :is(.lore-content, blockquote, .lore-history-wrapper) {
-  color: var(--lore-text);
+  color: #8a8a7e;
   font: 14px/1.7 "Bitter", serif !important;
+}
+
+.lore-sheet fiche > section {
+  color: #8a8a7e;
 }
 
 .lore-profile-row {
