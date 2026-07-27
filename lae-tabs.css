@@ -137,6 +137,11 @@ tabs.fuve,
 tabs.story {
   display: flex !important;
   flex-wrap: wrap !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+  row-gap: 0 !important;
+  column-gap: 0 !important;
 }
 
 tabs.chrono > input,
@@ -154,7 +159,7 @@ tabs.fuve > label,
 tabs.story > label {
   display: block !important;
   order: 0 !important;
-  flex: 1 1 var(--tabs-min-width, 90px) !important;
+  flex: 1 1 0 !important;
   width: auto !important;
   min-width: var(--tabs-min-width, 90px) !important;
   max-width: none !important;
