@@ -1,0 +1,1194 @@
+@import url("https://fonts.cdnfonts.com/css/morgalen");
+@import url("https://fonts.cdnfonts.com/css/astone-nouvea");
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&family=Josefin+Sans:wght@400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap");
+
+/* ===== MOTEUR D’ONGLETS ===== */
+/* MOTEUR COMMUN — structure compacte :
+   <tabs><input><label></label><panel>...</panel>...</tabs> */
+
+tabs,
+tabs * {
+  box-sizing: border-box;
+}
+
+tabs {
+  --lae-ink: var(--textColor3, #8a8a7e);
+  --tabs-line: rgba(126, 126, 114, .24);
+  --tabs-color: var(--lae-ink);
+  --tabs-hover: var(--tabs-active, #a5a38e);
+  --tabs-active: #c8c58f;
+  --panels-scrollbar: #777451;
+
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: min(var(--tabs-width, 650px), 100%);
+  margin: var(--tabs-margin, 24px auto);
+}
+
+tabs > input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+tabs > label {
+  position: relative;
+  order: 0;
+  flex: 1 1 var(--tabs-min-width, 90px);
+  min-width: var(--tabs-min-width, 90px);
+  padding: var(--tabs-label-padding, 0 10px 14px);
+  border-bottom: 1px solid var(--tabs-line);
+  color: var(--tabs-color);
+  cursor: pointer;
+  text-align: center;
+  transition: color .25s ease;
+}
+
+tabs > label:hover {
+  color: var(--tabs-hover);
+}
+
+tabs > input:checked + label {
+  color: var(--tabs-active);
+}
+
+tabs > label::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  bottom: -1px;
+  left: 50%;
+  height: 2px;
+  border-radius: 20px;
+  background: currentColor;
+  opacity: .45;
+  box-shadow: 0 0 5px currentColor;
+  transition: right .25s ease, left .25s ease, opacity .25s ease;
+}
+
+tabs > input:checked + label::after {
+  right: 22%;
+  left: 22%;
+  opacity: .85;
+}
+
+tabs > input:focus-visible + label {
+  outline: 1px dashed currentColor;
+  outline-offset: -4px;
+}
+
+tabs > panel {
+  display: none;
+  order: 2;
+  flex: 0 0 100%;
+  width: 100%;
+  height: var(--panels-height, 650px);
+  max-height: var(--panels-max-height, 72vh);
+  padding: var(--panels-padding, 20px 18px 0);
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: var(--tabs-text, var(--lae-ink));
+  scrollbar-color: var(--panels-scrollbar) transparent;
+  scrollbar-width: thin;
+  animation: lae-tabs-in .28s ease;
+}
+
+tabs > input:checked + label + panel {
+  display: block;
+}
+
+tabs > panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+tabs > panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+tabs > panel::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: var(--panels-scrollbar);
+}
+
+@keyframes lae-tabs-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 700px) {
+  tabs > label {
+    flex-basis: var(--tabs-mobile-width, 78px);
+    min-width: var(--tabs-mobile-width, 78px);
+  }
+
+  tabs > panel {
+    height: var(--panels-mobile-height, 72vh);
+    padding: var(--panels-mobile-padding, 20px 12px 0);
+  }
+}
+
+/* Compatibilité Forumactif — limitée aux trois modules d’onglets */
+tabs.chrono,
+tabs.fuve,
+tabs.story {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+  row-gap: 0 !important;
+  column-gap: 0 !important;
+}
+
+tabs.chrono > input,
+tabs.fuve > input,
+tabs.story > input {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+tabs.chrono > label,
+tabs.fuve > label,
+tabs.story > label {
+  display: block !important;
+  order: 0 !important;
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: var(--tabs-min-width, 90px) !important;
+  max-width: none !important;
+  margin: 0 !important;
+  float: none !important;
+  clear: none !important;
+}
+
+tabs.chrono > panel,
+tabs.fuve > panel,
+tabs.story > panel {
+  order: 2 !important;
+  flex: 0 0 100% !important;
+  width: 100% !important;
+}
+
+@media (max-width: 700px) {
+  tabs.chrono > label,
+  tabs.fuve > label,
+  tabs.story > label {
+    flex-basis: var(--tabs-mobile-width, 78px) !important;
+    min-width: var(--tabs-mobile-width, 78px) !important;
+  }
+}
+
+/* ===== FICHE LORELEÏ ===== */
+/* Palette liée au thème du forum par --textColor3. */
+lei,
+.lolo,
+.lore-sheet {
+  --lore-text: var(--textColor3, #8a8a7e);
+  --lore-soft: #77766f;
+  --lore-soft: color-mix(in srgb, var(--lore-text) 68%, transparent);
+  --lore-line: rgba(126, 126, 114, .24);
+  --lore-line: color-mix(in srgb, var(--lore-text) 22%, transparent);
+  --lore-gold: #c5b876;
+  --lore-gold: color-mix(in srgb, #c5b876 76%, var(--lore-text));
+  --lore-green: #67851e;
+  --lore-green: color-mix(in srgb, #67851e 76%, var(--lore-text));
+  --lore-deep: #3e4113;
+  --lore-deep: color-mix(in srgb, #3e4113 78%, var(--lore-text));
+}
+
+lei,
+.lolo {
+  --accent0: #1f2d0abf !important;
+  --accent1: #393012 !important;
+  --accent2: var(--lore-gold) !important;
+  --accent3: var(--lore-green) !important;
+  --accent4: var(--lore-deep) !important;
+  --accent5: #191919 !important;
+}
+
+lei u3,
+lei u4 {
+  text-shadow: var(--text-shadow);
+}
+
+lei m1,
+.lolo m1 {
+  color: var(--accent3) !important;
+}
+
+lei m2 {
+  color: var(--lore-text);
+}
+
+lei t1,
+lei tbox {
+  background: linear-gradient(#191919bf, #191919bf), url("https://zupimages.net/up/26/29/fdbs.jpg") center / cover fixed !important;
+}
+
+.lore-sheet :is(.lore-content, blockquote, .lore-history-wrapper) {
+  color: #8a8a7e;
+  font: 14px/1.7 "Bitter", serif !important;
+}
+
+.lore-profile-row {
+  display: flex;
+  gap: .5em;
+  height: 350px;
+}
+
+sple,
+lotab {
+  display: inline-block;
+  width: 2.5em;
+}
+
+/* Formulaire */
+.lore-field {
+  display: flex;
+  gap: 1em;
+  margin: 2em 0;
+}
+
+.lore-field :is(.lore-field-label, .lore-field-number, .lore-field-data) {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.lore-field-label,
+.lore-sheet flabel {
+  color: var(--lore-gold);
+  font-size: 15px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.lore-field-number {
+  margin-right: 6px;
+  color: var(--lore-deep);
+  font-size: 10px;
+}
+
+.lore-field :is(.lore-field-text, .lore-field-data) {
+  flex: 1;
+}
+
+.lore-field-data {
+  font-size: 14px;
+}
+
+.lore-highlight {
+  color: var(--lore-gold);
+}
+
+.lore-magazine {
+  color: var(--lore-soft);
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/* Éléments ponctuels de la fiche */
+.lore-sheet lintro {
+  display: block;
+  margin: 0 0 18px;
+  font-family: 'Astone Nouvea';
+  font-size: 35px;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #434343 0%, #45552dab 60%, #142519 100%);
+  background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.lore-sheet :is(secr, kow) {
+  display: inline;
+}
+
+.lore-sheet secr {
+  color: #7a8a89;
+  color: color-mix(in srgb, #7a8a89 78%, var(--lore-text));
+}
+
+.lore-sheet kow {
+  color: #663333;
+  color: color-mix(in srgb, #663333 78%, var(--lore-text));
+}
+
+.lore-sheet flabel {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.lore-sheet ethfin {
+  display: block;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--lore-line);
+  color: #545d3c;
+  color: color-mix(in srgb, var(--lore-green) 72%, var(--lore-text));
+  font: 17px/1.5 "Instrument Serif", serif;
+}
+
+.lore-sheet ethnote {
+  display: block;
+  break-inside: avoid;
+  margin: 20px 0;
+  padding: 16px 0;
+  border-block: 1px solid var(--lore-deep);
+  color: #a5b596;
+  color: color-mix(in srgb, #a5b596 72%, var(--lore-text));
+  font: 17px/1.45 "Instrument Serif", serif;
+}
+
+/* Dialogues */
+.lore-sheet :is(lorelei, dori, eid, ori) {
+  display: inline;
+}
+
+.lore-sheet lorelei {
+  color: #9d5266;
+  color: color-mix(in srgb, #9d5266 78%, var(--lore-text));
+}
+
+.lore-sheet dori {
+  color: #9d5428;
+  color: color-mix(in srgb, #9d5428 78%, var(--lore-text));
+}
+
+.lore-sheet eid {
+  color: #056f61;
+  color: color-mix(in srgb, #056f61 78%, var(--lore-text));
+}
+
+.lore-sheet ori {
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Lien à l'Éther */
+.lore-section {
+  padding: 10px;
+  color: #8a8a7e;
+}
+
+.lore-section-title {
+  color: transparent;
+  background: linear-gradient(90deg, var(--lore-deep), var(--lore-green));
+  background-clip: text;
+  -webkit-background-clip: text;
+  font: 19px/1 "Morgalen", serif;
+  letter-spacing: 5px;
+  -webkit-text-fill-color: transparent;
+}
+
+.lore-section sept {
+  display: block;
+  color: #748153;
+  color: color-mix(in srgb, var(--lore-green) 72%, var(--lore-text));
+  font: 17px/1.4 "Instrument Serif", serif;
+  letter-spacing: .3px;
+}
+
+.lore-section septdet {
+  display: block;
+  padding-left: 18px;
+  color: #8a8a7e;
+  font: 300 15px/1.8 "Newsreader", serif;
+}
+
+.lore-columns {
+  column-count: 2;
+  column-gap: 34px;
+  color: #8a8a7e;
+  font: 300 15px/1.5 "Newsreader", serif;
+  hyphens: auto;
+  text-align: justify;
+}
+
+/* Chronologie */
+tabs.chrono {
+  --lae-ink: var(--lore-text);
+  --tabs-width: 650px;
+  --tabs-margin: 24px auto 0;
+  --tabs-line: var(--lore-line);
+  --tabs-min-width: 90px;
+  --tabs-mobile-width: 78px;
+  --tabs-color: var(--lore-soft);
+  --tabs-hover: var(--lore-gold);
+  --tabs-active: var(--lore-gold);
+  --tabs-text: var(--lore-text);
+  --panels-height: 750px;
+  --panels-max-height: 78vh;
+  --panels-padding: 24px 20px 30px;
+  --panels-mobile-height: 72vh;
+  --panels-mobile-padding: 24px 12px 30px;
+  --panels-scrollbar: var(--lore-soft);
+
+  font: 14px/1.55 "Newsreader", serif;
+}
+
+tabs.chrono > label {
+  font: 15px/1 "Newsreader", serif;
+}
+
+tabs.chrono entree {
+  position: relative;
+  display: block;
+  margin-bottom: 16px;
+  padding: 0 0 16px 18px;
+  text-align: justify;
+}
+
+tabs.chrono entree::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  width: 5px;
+  height: 5px;
+  border: 1px solid var(--lore-gold);
+  transform: rotate(45deg);
+}
+
+tabs.chrono entree::after,
+tabs.fuve plante::after {
+  content: "";
+  position: absolute;
+  right: var(--line-inset, 10%);
+  bottom: 0;
+  left: var(--line-inset, 10%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lore-gold), transparent);
+  opacity: .28;
+}
+
+tabs.chrono entree:last-child,
+tabs.fuve plante:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+tabs.chrono entree:last-child::after,
+tabs.fuve plante:last-of-type::after {
+  display: none;
+}
+
+tabs.chrono entree > date {
+  position: static !important;
+  display: block !important;
+  float: none !important;
+  clear: none !important;
+  width: auto !important;
+  margin: 0 0 7px !important;
+  padding: 0 !important;
+  color: var(--lore-gold);
+  font: 17px/1.1 "Morgalen", serif;
+  letter-spacing: 1px;
+  text-align: left !important;
+}
+
+/* Füveskönyv */
+tabs.fuve {
+  --fuve-text: var(--lore-text);
+  --fuve-soft: var(--lore-soft);
+  --fuve-line: var(--lore-line);
+  --fuve-all: #a6b38a;
+  --fuve-all: color-mix(in srgb, #a6b38a 78%, var(--lore-text));
+  --fuve-summer: #c68a5d;
+  --fuve-summer: color-mix(in srgb, #c68a5d 78%, var(--lore-text));
+  --fuve-autumn: #874c12;
+  --fuve-autumn: color-mix(in srgb, #874c12 78%, var(--lore-text));
+  --fuve-poison: #b96d74;
+  --fuve-poison: color-mix(in srgb, #b96d74 78%, var(--lore-text));
+  --fuve-price: var(--lore-gold);
+
+  --lae-ink: var(--lore-text);
+  --tabs-width: 650px;
+  --tabs-line: var(--fuve-line);
+  --tabs-min-width: 110px;
+  --tabs-mobile-width: 92px;
+  --tabs-label-padding: 0 8px 14px;
+  --tabs-color: var(--fuve-soft);
+  --tabs-hover: var(--fuve-all);
+  --tabs-active: var(--fuve-all);
+  --tabs-text: var(--fuve-text);
+  --panels-height: 650px;
+  --panels-max-height: 72vh;
+  --panels-padding: 20px 18px 0;
+  --panels-mobile-height: 68vh;
+  --panels-mobile-padding: 18px 10px 0;
+  --panels-scrollbar: var(--fuve-soft);
+
+  font: 400 13px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+}
+
+tabs.fuve > fuveintro {
+  order: -1;
+  flex: 0 0 100%;
+  max-width: 560px;
+  margin: 3px auto 22px;
+  color: var(--fuve-soft);
+  font-size: 12.5px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+tabs.fuve > label {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+tabs.fuve > input:nth-of-type(1):checked + label { color: var(--fuve-all); }
+tabs.fuve > input:nth-of-type(2):checked + label { color: var(--fuve-summer); }
+tabs.fuve > input:nth-of-type(3):checked + label { color: var(--fuve-autumn); }
+tabs.fuve > input:nth-of-type(4):checked + label { color: var(--fuve-poison); }
+
+tabs.fuve > panel:nth-of-type(1) { --fuve-accent: var(--fuve-all); }
+tabs.fuve > panel:nth-of-type(2) { --fuve-accent: var(--fuve-summer); }
+tabs.fuve > panel:nth-of-type(3) { --fuve-accent: var(--fuve-autumn); }
+tabs.fuve > panel:nth-of-type(4) { --fuve-accent: var(--fuve-poison); }
+
+tabs.fuve fuvenote {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--fuve-accent);
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.5;
+  opacity: .88;
+}
+
+tabs.fuve plante {
+  --line-inset: 7%;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0 18px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+}
+
+tabs.fuve nom,
+tabs.fuve prix,
+tabs.fuve usage,
+tabs.fuve magie,
+tabs.fuve toxique {
+  display: block;
+}
+
+tabs.fuve nom {
+  grid-column: 1;
+  color: var(--fuve-accent);
+  font-size: 14.5px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+tabs.fuve nom em {
+  margin-left: 9px;
+  color: var(--fuve-soft);
+  font-size: 11.5px;
+  font-weight: 400;
+}
+
+tabs.fuve prix {
+  grid-column: 2;
+  color: var(--fuve-price);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.25;
+  text-align: right;
+  white-space: nowrap;
+}
+
+tabs.fuve prix small {
+  display: block;
+  margin-top: 3px;
+  color: var(--fuve-soft);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+tabs.fuve :is(usage, magie, toxique) {
+  grid-column: 1 / -1;
+  max-width: 470px;
+  margin-top: 7px;
+  font-size: 12.5px;
+  line-height: 1.62;
+}
+
+tabs.fuve magie {
+  color: #aeb995;
+  color: color-mix(in srgb, var(--fuve-all) 72%, var(--fuve-text));
+}
+
+tabs.fuve magie b {
+  color: var(--fuve-price);
+  font-weight: 400;
+}
+
+tabs.fuve toxique {
+  color: var(--fuve-poison);
+}
+
+tabs.fuve toxique b {
+  font-weight: 600;
+}
+
+tabs.fuve fuvefooter {
+  display: block;
+  margin: 20px 18px 0;
+  padding: 14px 16px 0;
+  border-top: 1px solid var(--fuve-line);
+  color: var(--fuve-soft);
+  font-size: 11.5px;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .lore-profile-row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .lore-field {
+    flex-direction: column;
+    gap: 4px;
+    margin: 1.5em 0;
+  }
+
+  .lore-columns,
+  tabs.chrono entree {
+    text-align: left;
+  }
+
+  .lore-columns {
+    column-count: 1;
+  }
+
+  tabs.chrono entree {
+    padding-left: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  tabs.fuve > label {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 10px;
+  }
+
+  tabs.fuve plante {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  tabs.fuve :is(nom, prix) {
+    grid-column: 1;
+  }
+
+  tabs.fuve prix {
+    margin-top: 2px;
+    text-align: left;
+    white-space: normal;
+  }
+
+  tabs.fuve prix small {
+    display: inline;
+    margin-left: 5px;
+  }
+
+  tabs.fuve fuvefooter {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+/* ===== WIDGETS ===== */
+:is(slim, astro, focus),
+:is(slim, astro, focus) * {
+  box-sizing: border-box;
+}
+
+:is(astro, focus) {
+  --widget-text: var(--textColor3, #8a8a7e);
+
+  --widget-soft: #77766f;
+  --widget-soft:
+    color-mix(in srgb, var(--widget-text) 68%, transparent);
+
+  --widget-line: rgba(126, 126, 114, .22);
+  --widget-line:
+    color-mix(in srgb, var(--widget-text) 22%, transparent);
+
+  --widget-gold: #9d7e18;
+  --widget-gold:
+    color-mix(in srgb, #9d7e18 78%, var(--widget-text));
+
+  --widget-green: #585f22;
+  --widget-green:
+    color-mix(in srgb, #585f22 78%, var(--widget-text));
+
+  --widget-green-alt: #45552d;
+  --widget-green-alt:
+    color-mix(in srgb, #45552d 78%, var(--widget-text));
+}
+
+
+/* ==================================================
+   PUBLICITÉ SLIMNATURALL
+================================================== */
+
+slim {
+  display: block;
+  width: min(300px, 100%);
+  margin: 18px auto;
+  padding: 11px 14px;
+  border-radius: 18px;
+  background: #262626;
+  color: #efefef;
+  font: 10px/1.45 Arial, sans-serif;
+}
+
+slim > :is(small, b, p, a) {
+  display: block;
+}
+
+slim > small {
+  margin-bottom: 6px;
+  color: #969696;
+  font-size: 10px;
+}
+
+slim > b {
+  font-size: 12px;
+}
+
+slim > p {
+  margin: 4px 0 0;
+  color: #b2b2b2;
+}
+
+slim > a {
+  width: fit-content;
+  margin-top: 10px;
+  color: #8dbf72;
+  text-decoration: none;
+}
+
+slim > a:hover {
+  text-decoration: underline;
+}
+
+
+/* ==================================================
+   CARTE ASTRO
+================================================== */
+
+astro {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  width: min(250px, 100%);
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid var(--widget-line);
+  border-radius: 22px;
+
+  background: rgba(251, 251, 250, .14);
+  background:
+    color-mix(in srgb, var(--widget-text) 7%, transparent);
+
+  color: var(--widget-text);
+  font-family: Arial, sans-serif;
+}
+
+astro > :is(small, b, i, p) {
+  display: block;
+  grid-column: 1;
+}
+
+astro > small {
+  color: var(--widget-gold);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+astro > b {
+  margin-top: 2px;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+astro > i {
+  color: var(--widget-gold);
+  font-size: 11px;
+  font-style: normal;
+}
+
+astro > em {
+  grid-column: 2;
+  grid-row: 1 / 4;
+  font-size: 28px;
+  font-style: normal;
+  opacity: .25;
+}
+
+astro > p {
+  grid-column: 1 / -1;
+  margin: 18px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--widget-line);
+  font-size: 11px;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+
+/* ==================================================
+   FOCUS
+================================================== */
+
+focus {
+  display: block;
+  color: var(--widget-text);
+  text-align: center;
+}
+
+focus > :is(strong, small, span) {
+  display: block;
+}
+
+focus > strong {
+  color: var(--widget-green-alt);
+  font: 48px/1 "Morgalen", serif;
+}
+
+focus > small {
+  margin-top: 2px;
+  color: var(--widget-soft);
+  font: 10px/1.15 "Bitter", serif;
+  text-transform: uppercase;
+}
+
+focus > span {
+  margin-top: 6px;
+  font: 14px/1 "Bitter", serif;
+}
+
+focus > span > b {
+  color: var(--widget-green);
+  font-weight: 700;
+}
+
+focus > span > b:nth-of-type(3) {
+  color: var(--widget-green-alt);
+}
+
+/* ===== SMS ===== */
+/* ==================================================
+   SMS — CONVERSATION, GAUCHE, DROITE ET ÉCHEC
+================================================== */
+
+sms,
+sms * {
+  box-sizing: border-box;
+}
+
+sms {
+  --sms-in: #26262b;
+  --sms-out: #4b4f67;
+  --sms-text: #f4f4f5;
+  --sms-error: #c95252;
+
+  display: block;
+  margin: 20px 0;
+  font: 400 11px/1.5 system-ui, -apple-system,
+        "Segoe UI", Arial, sans-serif;
+}
+
+sms[data-name]::before {
+  content: attr(data-name);
+  display: block;
+  margin: 0 10px 8px;
+  color: #8b8b95;
+  color: color-mix(
+    in srgb,
+    var(--textColor3, #8b8b95) 72%,
+    transparent
+  );
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .03em;
+}
+
+sms :is(recu, envoi) {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 50%;
+  margin: 12px 0;
+  padding: 8px 13px;
+  color: var(--sms-text);
+  text-align: left;
+}
+
+sms recu {
+  margin-right: auto;
+  border-radius: 18px 18px 18px 6px;
+  background: var(--sms-in);
+}
+
+sms envoi {
+  margin-right: 12px;
+  margin-left: auto;
+  border-radius: 18px 18px 6px 18px;
+  background: var(--sms-out);
+}
+
+sms :is(recu, envoi)::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 12px;
+  height: 14px;
+  background: inherit;
+}
+
+sms recu::before {
+  left: -5px;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+sms envoi::before {
+  right: -5px;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+sms envoi.fail {
+  margin-bottom: 34px;
+}
+
+sms envoi.fail::after {
+  content: "⚠ Réessayer";
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  color: var(--sms-error);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  sms :is(recu, envoi) {
+    max-width: 72%;
+  }
+}
+
+/* ===== HISTOIRE ===== */
+tabs.story {
+  --story-text: #a1a198;
+  --story-text: color-mix(in srgb, var(--lae-ink) 86%, #a1a198);
+  --story-soft: #77786f;
+  --story-soft: color-mix(in srgb, var(--lae-ink) 68%, transparent);
+  --story-gold: #c5b876;
+  --story-gold: color-mix(in srgb, #c5b876 76%, var(--lae-ink));
+  --story-green: #3d4927;
+  --story-green: color-mix(in srgb, #3d4927 72%, var(--lae-ink));
+  --story-line: rgba(151, 151, 131, .22);
+  --story-line: color-mix(in srgb, var(--lae-ink) 22%, transparent);
+
+  --tabs-width: 700px;
+  --tabs-line: var(--story-line);
+  --tabs-min-width: 120px;
+  --tabs-mobile-width: 96px;
+  --tabs-label-padding: 0 12px 14px;
+  --tabs-color: var(--story-soft);
+  --tabs-hover: var(--story-gold);
+  --tabs-active: var(--story-gold);
+  --tabs-text: var(--story-text);
+  --panels-height: 720px;
+  --panels-max-height: 78vh;
+  --panels-padding: 28px 26px 34px;
+  --panels-mobile-height: 74vh;
+  --panels-mobile-padding: 24px 13px 30px;
+  --panels-scrollbar: var(--story-soft);
+
+  font: 300 15px/1.75 "Newsreader", serif;
+}
+
+tabs.story > storytitle {
+  order: -1;
+  flex: 0 0 100%;
+  margin: 0 0 24px;
+  color: transparent;
+  background: linear-gradient(90deg, var(--story-green), var(--story-gold), var(--story-green));
+  background-clip: text;
+  -webkit-background-clip: text;
+  font: 32px/1 "Morgalen", serif;
+  letter-spacing: 5px;
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+}
+
+tabs.story > label {
+  font: 13px/1 "Newsreader", serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+tabs.story > panel {
+  font: 300 15px/1.75 "Newsreader", serif;
+  text-align: justify;
+}
+
+tabs.story ct,
+tabs.story cs,
+tabs.story loc,
+tabs.story sep {
+  display: block;
+}
+
+tabs.story ct {
+  color: var(--story-gold);
+  font: 27px/1.1 "Morgalen", serif;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+tabs.story cs {
+  margin-top: 7px;
+  color: var(--story-soft);
+  font: italic 14px/1.4 "Instrument Serif", serif;
+  letter-spacing: .4px;
+  text-align: center;
+}
+
+tabs.story cs::after {
+  content: "";
+  display: block;
+  width: 110px;
+  height: 1px;
+  margin: 16px auto 12px;
+  background: linear-gradient(90deg, transparent, var(--story-gold), transparent);
+  opacity: .55;
+}
+
+tabs.story loc {
+  display: block;
+  margin-bottom: 22px;
+  color: #7a7a70;
+  font-size: 13px;
+  font-style: italic;
+  text-align: right;
+}
+
+tabs.story pn {
+  color: #b2ad8c;
+  color: color-mix(in srgb, var(--story-gold) 45%, var(--story-text));
+  font-style: italic;
+}
+
+tabs.story sig {
+  display: block;
+  margin-bottom: 22px;
+  color: #7a7a70;
+  font-size: 13px;
+  font-style: italic;
+  text-align: right;
+}
+
+tabs.story sep {
+  width: 45%;
+  height: 1px;
+  margin: 30px auto;
+  background: linear-gradient(90deg, transparent, var(--story-gold), transparent);
+  opacity: .34;
+}
+
+tabs.story sp {
+  display: inline-block;
+  width: 2.5em;
+}
+
+tabs.story lo,
+tabs.story do,
+tabs.story ei,
+tabs.story or {
+  display: inline;
+}
+
+tabs.story lo {
+  color: #9d5266;
+  color: color-mix(in srgb, #9d5266 78%, var(--lae-ink));
+}
+
+tabs.story do {
+  color: #9d5428;
+  color: color-mix(in srgb, #9d5428 78%, var(--lae-ink));
+}
+
+tabs.story ei {
+  color: #056f61;
+  color: color-mix(in srgb, #056f61 78%, var(--lae-ink));
+}
+
+tabs.story or {
+  font-style: italic;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  tabs.story > storytitle {
+    font-size: 26px;
+    letter-spacing: 3px;
+  }
+
+  tabs.story > panel {
+    text-align: left;
+  }
+
+  tabs.story ct {
+    font-size: 23px;
+  }
+
+  tabs.story sep {
+    width: 65%;
+  }
+}
