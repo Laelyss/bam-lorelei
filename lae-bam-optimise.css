@@ -252,7 +252,7 @@ lei m2 {
 
 lei t1,
 lei tbox {
-  background: linear-gradient(#191919bf, #191919bf), url("https://zupimages.net/up/26/29/fdbs.jpg") center / cover fixed !important;
+  background: linear-gradient(#191919bf, #191919bf), url("https://zupimages.net/up/26/29/fdbs.jpg") center / cover no-repeat !important;
 }
 
 .lore-sheet :is(.lore-content, blockquote, .lore-history-wrapper) {
