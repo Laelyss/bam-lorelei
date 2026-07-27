@@ -77,7 +77,8 @@ lotab {
   font-family: "JetBrains Mono", monospace;
 }
 
-.lore-field-label {
+.lore-field-label,
+.lore-sheet flabel {
   color: var(--lore-gold);
   font-size: 15px;
   letter-spacing: 5px;
@@ -105,6 +106,59 @@ lotab {
 .lore-magazine {
   color: var(--lore-soft);
   font-family: "Josefin Sans", sans-serif;
+}
+
+/* Éléments ponctuels de la fiche */
+.lore-sheet lintro {
+  display: block;
+  margin: 0 0 18px;
+  color: var(--lore-text);
+  background: linear-gradient(180deg, var(--lore-text), var(--lore-green) 60%, var(--lore-deep));
+  background-clip: text;
+  -webkit-background-clip: text;
+  font: 30px/.8 "Astone Nouvea", cursive;
+  letter-spacing: 2px;
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+}
+
+.lore-sheet :is(secr, kow) {
+  display: inline;
+}
+
+.lore-sheet secr {
+  color: #7a8a89;
+  color: color-mix(in srgb, #7a8a89 78%, var(--lore-text));
+}
+
+.lore-sheet kow {
+  color: #663333;
+  color: color-mix(in srgb, #663333 78%, var(--lore-text));
+}
+
+.lore-sheet flabel {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.lore-sheet ethfin {
+  display: block;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--lore-line);
+  color: #545d3c;
+  color: color-mix(in srgb, var(--lore-green) 72%, var(--lore-text));
+  font: 17px/1.5 "Instrument Serif", serif;
+}
+
+.lore-sheet ethnote {
+  display: block;
+  break-inside: avoid;
+  margin: 20px 0;
+  padding: 16px 0;
+  border-block: 1px solid var(--lore-deep);
+  color: #a5b596;
+  color: color-mix(in srgb, #a5b596 72%, var(--lore-text));
+  font: 17px/1.45 "Instrument Serif", serif;
 }
 
 /* Dialogues */
