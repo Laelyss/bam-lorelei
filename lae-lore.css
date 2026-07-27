@@ -189,6 +189,7 @@ lotab {
 /* Lien à l'Éther */
 .lore-section {
   padding: 10px;
+  color: #8a8a7e;
 }
 
 .lore-section-title {
@@ -212,14 +213,14 @@ lotab {
 .lore-section septdet {
   display: block;
   padding-left: 18px;
-  color: var(--lore-text);
+  color: #8a8a7e;
   font: 300 15px/1.8 "Newsreader", serif;
 }
 
 .lore-columns {
   column-count: 2;
   column-gap: 34px;
-  color: var(--lore-text);
+  color: #8a8a7e;
   font: 300 15px/1.5 "Newsreader", serif;
   hyphens: auto;
   text-align: justify;
