@@ -1,0 +1,100 @@
+/* ==================================================
+   SMS — CONVERSATION, GAUCHE, DROITE ET ÉCHEC
+================================================== */
+
+sms,
+sms * {
+  box-sizing: border-box;
+}
+
+sms {
+  --sms-in: #26262b;
+  --sms-out: #4b4f67;
+  --sms-text: #f4f4f5;
+  --sms-error: #c95252;
+
+  display: block;
+  margin: 20px 0;
+  font: 400 11px/1.5 system-ui, -apple-system,
+        "Segoe UI", Arial, sans-serif;
+}
+
+sms[data-name]::before {
+  content: attr(data-name);
+  display: block;
+  margin: 0 10px 8px;
+  color: #8b8b95;
+  color: color-mix(
+    in srgb,
+    var(--textColor3, #8b8b95) 72%,
+    transparent
+  );
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .03em;
+}
+
+sms :is(recu, envoi) {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 50%;
+  margin: 12px 0;
+  padding: 8px 13px;
+  color: var(--sms-text);
+  text-align: left;
+}
+
+sms recu {
+  margin-right: auto;
+  border-radius: 18px 18px 18px 6px;
+  background: var(--sms-in);
+}
+
+sms envoi {
+  margin-right: 12px;
+  margin-left: auto;
+  border-radius: 18px 18px 6px 18px;
+  background: var(--sms-out);
+}
+
+sms :is(recu, envoi)::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 12px;
+  height: 14px;
+  background: inherit;
+}
+
+sms recu::before {
+  left: -5px;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+sms envoi::before {
+  right: -5px;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+sms envoi.fail {
+  margin-bottom: 34px;
+}
+
+sms envoi.fail::after {
+  content: "⚠ Réessayer";
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  color: var(--sms-error);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  sms :is(recu, envoi) {
+    max-width: 72%;
+  }
+}
