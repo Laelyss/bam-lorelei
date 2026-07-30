@@ -1224,7 +1224,7 @@ tabs.story panel :is(i, em) {
   text-align: center;
 }
 
-papier {
+carnet {
   --papier-image: url("https://laelyss.github.io/bam-lorelei/papier1-optimise.png?v=papier1");
 
   aspect-ratio: 1400 / 307;
@@ -1232,11 +1232,11 @@ papier {
   transform: rotate(-1.75deg);
 }
 
-carnet {
+papier {
   --papier-image: url("https://laelyss.github.io/bam-lorelei/papier2-optimise.png?v=papier1");
 
   aspect-ratio: 1400 / 402;
-  padding: 24px 11% 20px;
+  padding: 13px 2% 16px;
   color: #26384f;
   transform: rotate(2.25deg);
 }
