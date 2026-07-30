@@ -1225,7 +1225,7 @@ tabs.story panel :is(i, em) {
 }
 
 carnet {
-  --papier-image: url("https://laelyss.github.io/bam-lorelei/papier1-optimise.png?v=papier1");
+  --papier-image: url("https://laelyss.github.io/bam-lorelei/carnet.png");
 
   aspect-ratio: 1400 / 307;
   padding: 20px 9%;
@@ -1233,7 +1233,7 @@ carnet {
 }
 
 papier {
-  --papier-image: url("https://laelyss.github.io/bam-lorelei/papier2-optimise.png?v=papier1");
+  --papier-image: url("https://laelyss.github.io/bam-lorelei/papier.png");
 
   aspect-ratio: 1400 / 402;
   padding: 13px 2% 16px;
