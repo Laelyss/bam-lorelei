@@ -1147,31 +1147,34 @@ tabs.story sp {
   width: 2.5em;
 }
 
-tabs.story lo,
-tabs.story do,
-tabs.story ei,
-tabs.story or {
+tabs.story :is(lo, lorelei, do, dori, dorian, ei, eid, eidric, or, ori, oriana) {
   display: inline;
 }
 
-tabs.story lo {
+tabs.story :is(lo, lorelei) {
   color: #9d5266;
   color: color-mix(in srgb, #9d5266 78%, var(--lae-ink));
 }
 
-tabs.story do {
+tabs.story :is(do, dori, dorian) {
   color: #9d5428;
   color: color-mix(in srgb, #9d5428 78%, var(--lae-ink));
 }
 
-tabs.story ei {
+tabs.story :is(ei, eid, eidric) {
   color: #056f61;
   color: color-mix(in srgb, #056f61 78%, var(--lae-ink));
 }
 
-tabs.story or {
+tabs.story :is(or, ori, oriana) {
   font-style: italic;
   font-weight: 600;
+}
+
+/* Italique Forumactif dans les panneaux d'histoire */
+tabs.story panel :is(i, em) {
+  color: #aaa99f;
+  font-style: italic;
 }
 
 @media (max-width: 700px) {
