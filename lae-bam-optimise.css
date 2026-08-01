@@ -1296,11 +1296,11 @@ polaroid img {
 polaroid pnom {
   position: absolute;
   right: 9%;
-  bottom: 25px;
+  bottom: 40px;
   left: 9%;
   display: block;
   color: #342b25;
-  font: 400 23px/1.1 "Segoe Print", "Bradley Hand", cursive;
+  font: 400 16px/1.1 "Segoe Print", "Bradley Hand", cursive;
   letter-spacing: .3px;
   text-align: center;
   transform: rotate(-1deg);
