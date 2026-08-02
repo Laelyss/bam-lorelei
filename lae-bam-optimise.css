@@ -367,7 +367,7 @@ lotab {
 }
 
 /* Dialogues */
-.lore-sheet :is(lorelei, dori, eid, ori) {
+.lore-sheet :is(lorelei, dori, eid, ori, pnj1, pnj2, pnj3, pnj4, pnj5) {
   display: inline;
 }
 
@@ -389,6 +389,26 @@ lotab {
 .lore-sheet ori {
   font-style: italic;
   font-weight: 600;
+}
+
+.lore-sheet pnj1 {
+  color: #52529d;
+}
+
+.lore-sheet pnj2 {
+  color: #1fcd5a;
+}
+
+.lore-sheet pnj3 {
+  color: #eb0000;
+}
+
+.lore-sheet pnj4 {
+  color: #7f7017;
+}
+
+.lore-sheet pnj5 {
+  color: #68b4e5;
 }
 
 /* Lien à l'Éther */
