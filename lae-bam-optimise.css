@@ -1169,7 +1169,6 @@ tabs.story scenehead {
 }
 
 tabs.story scenedate {
-  margin-bottom: 9px;
   color: color-mix(
     in srgb,
     var(--story-gold) 68%,
@@ -1204,6 +1203,7 @@ tabs.story scenehead::after {
   bottom: 5px;
   left: 43px;
   height: 7px;
+  width: 260px;
   color: var(--story-gold);
   background:
     linear-gradient(currentColor, currentColor)
