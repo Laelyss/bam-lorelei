@@ -99,7 +99,6 @@ tabs > panel {
   padding: var(--panels-padding, 20px 18px 0);
   overflow-x: hidden;
   overflow-y: auto;
-  color: var(--tabs-text, var(--lae-ink));
   scrollbar-color: var(--panels-scrollbar) transparent;
   scrollbar-width: thin;
   animation: lae-tabs-in .28s ease;
