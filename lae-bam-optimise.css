@@ -1150,6 +1150,86 @@ tabs.story panel :is(i, em) {
 }
 
 /* ==================================================
+   PETIT EN-TÊTE DE SCÈNE
+================================================== */
+
+tabs.story scenehead,
+tabs.story scenedate,
+tabs.story scenetitle {
+  display: block;
+}
+
+tabs.story scenehead {
+  position: relative;
+  width: min(420px, 82%);
+  margin: 0 0 34px;
+  padding-bottom: 24px;
+  color: var(--story-gold);
+  text-align: left;
+}
+
+tabs.story scenedate {
+  margin-bottom: 9px;
+  color: color-mix(
+    in srgb,
+    var(--story-gold) 68%,
+    var(--story-soft)
+  );
+  font: 400 10px/1.2 "Newsreader", serif;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+}
+
+tabs.story scenetitle {
+  color: var(--story-gold);
+  font: 400 29px/1.1 "Instrument Serif", serif;
+  letter-spacing: .02em;
+}
+
+tabs.story scenehead::before {
+  content: "✣ ··";
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  color: var(--story-gold);
+  font: 400 10px/1 Georgia, serif;
+  letter-spacing: 2px;
+  opacity: .55;
+}
+
+tabs.story scenehead::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  left: 43px;
+  height: 7px;
+  color: var(--story-gold);
+  background:
+    linear-gradient(currentColor, currentColor)
+      left center / calc(100% - 8px) 1px no-repeat,
+    linear-gradient(
+      45deg,
+      transparent 35%,
+      currentColor 35% 65%,
+      transparent 65%
+    )
+      right center / 7px 7px no-repeat;
+  opacity: .48;
+}
+
+@media (max-width: 700px) {
+  tabs.story scenehead {
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  tabs.story scenetitle {
+    font-size: 26px;
+  }
+}
+
+/* ==================================================
    PETITS MOTS
 ================================================== */
 
