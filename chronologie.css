@@ -358,7 +358,7 @@ sms :is(recu, envoi) {
   position: relative;
   display: block;
   width: fit-content;
-  max-width: 58%;
+  max-width: 72%;
   margin: 12px 0;
   padding: 8px 13px;
   color: var(--sms-text);
@@ -395,6 +395,22 @@ sms recu::before {
 sms envoi::before {
   right: -5px;
   clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+sms envoi.fail {
+  margin-bottom: 34px;
+}
+
+sms envoi.fail::after {
+  content: "⚠ Réessayer";
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  color: var(--sms-error);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 /* ==================================================
