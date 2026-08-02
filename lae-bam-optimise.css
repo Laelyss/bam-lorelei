@@ -455,7 +455,7 @@ tabs.chrono {
 }
 
 tabs.chrono > label {
-  font: 15px/1 "Bitter", serif;
+  font: 15px/1 "Spectral", serif;
 }
 
 tabs.chrono entree {
@@ -464,7 +464,6 @@ tabs.chrono entree {
   margin-bottom: 16px;
   padding: 0 0 16px 18px;
   text-align: justify;
-  font: 200 15px/1.6 "Crimson Pro", serif;
 }
 
 tabs.chrono entree::before {
