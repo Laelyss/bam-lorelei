@@ -1,1 +1,519 @@
+@import url("https://fonts.cdnfonts.com/css/morgalen");
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400&display=swap");
 
+/* ==================================================
+   PAGE EXTERNE — CHRONOLOGIE
+================================================== */
+
+:root {
+  --lore-text: #8a8a7e;
+  --lore-soft: #77766f;
+  --lore-line: rgba(126, 126, 114, .24);
+  --lore-gold: #c5b876;
+  --lore-green: #67851e;
+  --lore-deep: #3e4113;
+  --dialogue-lore: #9d5266;
+  --dialogue-dori: #9d5428;
+  --dialogue-eid: #056f61;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+}
+
+body {
+  overflow: hidden;
+  color: var(--lore-text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.chronologie-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  min-height: 0;
+  padding: 0 4px;
+}
+
+.chrono-intro {
+  flex: 0 0 auto;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 2px 20px 18px;
+  color: var(--lore-text);
+  font: 400 14px/1.65 "Lora", serif;
+  text-align: justify;
+  white-space: pre-line;
+}
+
+/* ==================================================
+   MOTEUR DES ONGLETS
+================================================== */
+
+tabs.chrono {
+  --tabs-line: var(--lore-line);
+  --tabs-color: var(--lore-soft);
+  --tabs-active: var(--lore-gold);
+  --panels-scrollbar: var(--lore-soft);
+
+  position: relative;
+  display: flex !important;
+  flex: 1 1 auto;
+  flex-wrap: wrap !important;
+  align-content: flex-start;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  gap: 0 !important;
+  width: min(650px, 100%);
+  min-height: 0;
+  margin: 0 auto;
+  color: var(--lore-text);
+  font: 400 14.5px/1.55 "Lora", serif;
+}
+
+tabs.chrono > input {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+tabs.chrono > label {
+  position: relative;
+  display: block !important;
+  order: 0 !important;
+  flex: 1 1 0 !important;
+  min-width: 90px !important;
+  margin: 0 !important;
+  padding: 0 10px 14px;
+  border-bottom: 1px solid var(--tabs-line);
+  color: var(--tabs-color);
+  cursor: pointer;
+  font: 400 14.5px/1.55 "Lora", serif;
+  text-align: center;
+  transition: color .25s ease;
+}
+
+tabs.chrono > label:hover,
+tabs.chrono > input:checked + label {
+  color: var(--tabs-active);
+}
+
+tabs.chrono > label::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  bottom: -1px;
+  left: 50%;
+  height: 2px;
+  border-radius: 20px;
+  background: currentColor;
+  opacity: .45;
+  box-shadow: 0 0 5px currentColor;
+  transition: right .25s ease, left .25s ease, opacity .25s ease;
+}
+
+tabs.chrono > input:checked + label::after {
+  right: 22%;
+  left: 22%;
+  opacity: .85;
+}
+
+tabs.chrono > panel {
+  display: none;
+  order: 2 !important;
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  height: calc(100% - 44px);
+  min-height: 0;
+  padding: 24px 20px 30px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: var(--lore-text);
+  scrollbar-color: var(--panels-scrollbar) transparent;
+  scrollbar-width: thin;
+  animation: chrono-in .28s ease;
+}
+
+tabs.chrono > input:checked + label + panel {
+  display: block;
+}
+
+tabs.chrono > panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+tabs.chrono > panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+tabs.chrono > panel::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: var(--panels-scrollbar);
+}
+
+@keyframes chrono-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================================================
+   ENTRÉES
+================================================== */
+
+tabs.chrono entree {
+  position: relative;
+  display: block;
+  margin-bottom: 16px;
+  padding: 0 0 16px 18px;
+  text-align: justify;
+  white-space: pre-line;
+}
+
+tabs.chrono entree::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 1px;
+  width: 5px;
+  height: 5px;
+  border: 1px solid var(--lore-gold);
+  transform: rotate(45deg);
+}
+
+tabs.chrono entree::after {
+  content: "";
+  position: absolute;
+  right: 10%;
+  bottom: 0;
+  left: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lore-gold), transparent);
+  opacity: .28;
+}
+
+tabs.chrono entree:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+tabs.chrono entree:last-child::after {
+  display: none;
+}
+
+tabs.chrono entree > date {
+  position: static !important;
+  display: block !important;
+  float: none !important;
+  width: auto !important;
+  margin: 0 0 7px !important;
+  padding: 0 !important;
+  color: var(--lore-gold);
+  font: 17px/1.1 "Morgalen", serif;
+  letter-spacing: 1px;
+  text-align: left !important;
+  white-space: normal;
+}
+
+sple {
+  display: inline-block;
+  width: 2.5em;
+}
+
+em {
+  color: inherit;
+  font-style: italic;
+}
+
+.texte-rouge {
+  color: #990000;
+}
+
+/* ==================================================
+   BALISES COLORÉES DU FORUM
+================================================== */
+
+:is(m0, m1, m2, m3, m4, i1, u1, u2, u3, u4, strike2, tag, tw,
+    lorelei, dori, eid, ori, pnj1, pnj2, pnj3, pnj4, pnj5) {
+  display: inline;
+}
+
+m0 { color: #586342; }
+m1 { color: var(--lore-green); }
+m2 { color: var(--lore-text); }
+m3 { color: #9e8d54; }
+m4 { color: #b0a16a; }
+
+i1 {
+  color: #829263;
+  font-style: italic;
+}
+
+u1 {
+  color: #84996a;
+  text-decoration: none;
+}
+
+u2 {
+  color: #ad9e6d;
+  text-decoration: none;
+}
+
+u3 {
+  color: #a88b59;
+  text-decoration: none;
+  text-shadow: 0 0 5px rgba(168, 139, 89, .22);
+}
+
+u4 {
+  color: #a86464;
+  text-decoration: none;
+  text-shadow: 0 0 5px rgba(168, 100, 100, .18);
+}
+
+strike2 {
+  text-decoration: line-through;
+  opacity: .72;
+}
+
+tag,
+tw {
+  color: #a86464;
+  font-size: .92em;
+}
+
+lorelei { color: var(--dialogue-lore); }
+dori { color: var(--dialogue-dori); }
+eid { color: var(--dialogue-eid); }
+
+ori {
+  font-style: italic;
+  font-weight: 600;
+}
+
+pnj1 { color: #52529d; }
+pnj2 { color: #1fcd5a; }
+pnj3 { color: #eb0000; }
+pnj4 { color: #7f7017; }
+pnj5 { color: #68b4e5; }
+
+/* ==================================================
+   SMS
+================================================== */
+
+sms,
+sms * {
+  box-sizing: border-box;
+}
+
+sms {
+  --sms-in: #26262b;
+  --sms-out: #4b4f67;
+  --sms-text: #f4f4f5;
+  --sms-error: #c95252;
+
+  display: block;
+  margin: 20px 0;
+  font: 400 11px/1.5 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  white-space: normal;
+}
+
+sms[data-name]::before {
+  content: attr(data-name);
+  display: block;
+  margin: 0 10px 8px;
+  color: #8b8b95;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .03em;
+}
+
+sms :is(recu, envoi) {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 58%;
+  margin: 12px 0;
+  padding: 8px 13px;
+  color: var(--sms-text);
+  text-align: left;
+}
+
+sms recu {
+  margin-right: auto;
+  border-radius: 18px 18px 18px 6px;
+  background: var(--sms-in);
+}
+
+sms envoi {
+  margin-right: 12px;
+  margin-left: auto;
+  border-radius: 18px 18px 6px 18px;
+  background: var(--sms-out);
+}
+
+sms :is(recu, envoi)::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 12px;
+  height: 14px;
+  background: inherit;
+}
+
+sms recu::before {
+  left: -5px;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+sms envoi::before {
+  right: -5px;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
+/* ==================================================
+   PETITS MOTS
+================================================== */
+
+:is(papier, carnet),
+:is(papier, carnet) * {
+  box-sizing: border-box;
+}
+
+:is(papier, carnet) {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(650px, 96%);
+  margin: 24px auto;
+  color: #302b26;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  font: 400 16px/1.25 "Segoe Print", "Bradley Hand", cursive;
+  letter-spacing: .15px;
+  text-align: center;
+  white-space: normal;
+}
+
+carnet {
+  --papier-image: url("https://laelyss.github.io/bam-lorelei/carnet.png");
+  aspect-ratio: 1400 / 307;
+  padding: 20px 9%;
+  transform: rotate(-1.75deg);
+}
+
+papier {
+  --papier-image: url("https://laelyss.github.io/bam-lorelei/papier.png");
+  aspect-ratio: 1400 / 402;
+  padding: 13px 2% 16px;
+  color: #26384f;
+  transform: rotate(2.25deg);
+}
+
+:is(papier, carnet)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--papier-image) center / 100% 100% no-repeat;
+  filter: drop-shadow(0 7px 7px rgba(0, 0, 0, .38));
+  pointer-events: none;
+}
+
+/* ==================================================
+   POLAROID
+================================================== */
+
+polaroid {
+  position: relative;
+  display: block;
+  width: min(370px, 88%);
+  margin: 28px auto;
+  transform: rotate(-1deg);
+  filter: drop-shadow(0 11px 12px rgba(0, 0, 0, .42));
+  white-space: normal;
+}
+
+polaroid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+}
+
+polaroid pnom {
+  position: absolute;
+  right: 9%;
+  bottom: 40px;
+  left: 9%;
+  display: block;
+  color: #342b25;
+  font: 400 16px/1.1 "Segoe Print", "Bradley Hand", cursive;
+  letter-spacing: .3px;
+  text-align: center;
+  transform: rotate(-1deg);
+}
+
+@media (max-width: 700px) {
+  .chronologie-page {
+    padding: 0;
+  }
+
+  .chrono-intro {
+    padding: 2px 12px 16px;
+    text-align: left;
+  }
+
+  tabs.chrono > label {
+    min-width: 78px !important;
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
+  tabs.chrono > panel {
+    padding: 22px 12px 28px;
+  }
+
+  tabs.chrono entree {
+    padding-left: 15px;
+    text-align: left;
+  }
+
+  sms :is(recu, envoi) {
+    max-width: 74%;
+  }
+
+  :is(papier, carnet) {
+    width: 100%;
+    font-size: 15px;
+  }
+}
