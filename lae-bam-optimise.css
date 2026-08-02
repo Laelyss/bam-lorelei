@@ -451,11 +451,11 @@ tabs.chrono {
   --panels-mobile-padding: 24px 12px 30px;
   --panels-scrollbar: var(--lore-soft);
 
-  font: 14px/1.55 "Spectral", serif;
+  font: 14.5px/1.55 "Lora", serif;
 }
 
 tabs.chrono > label {
-  font: 15px/1 "Spectral", serif;
+   font: 14.5px/1.55 "Lora", serif;
 }
 
 tabs.chrono entree {
