@@ -92,9 +92,4 @@ sms envoi.fail::after {
   line-height: 1;
   white-space: nowrap;
 }
-
-@media (max-width: 600px) {
-  sms :is(recu, envoi) {
-    max-width: 72%;
-  }
 }
