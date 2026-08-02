@@ -1,6 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/morgalen");
 @import url("https://fonts.cdnfonts.com/css/astone-nouvea");
-@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&family=Josefin+Sans:wght@400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:wght@200;400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&family=Josefin+Sans:wght@400&family=Lora:wght@400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap");
 
 /* ===== MOTEUR D’ONGLETS ===== */
 /* MOTEUR COMMUN — structure compacte :
@@ -145,7 +145,7 @@ tabs > panel::-webkit-scrollbar-thumb {
   }
 }
 
-/* Compatibilité Forumactif — limitée aux trois modules d’onglets */
+/* Compatibilité Forumactif */
 tabs.chrono,
 tabs.fuve,
 tabs.story {
@@ -464,6 +464,7 @@ tabs.chrono entree {
   margin-bottom: 16px;
   padding: 0 0 16px 18px;
   text-align: justify;
+  font: 200 15px/1.6 "Crimson Pro", serif;
 }
 
 tabs.chrono entree::before {
