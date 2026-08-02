@@ -451,7 +451,7 @@ tabs.chrono {
   --panels-mobile-padding: 24px 12px 30px;
   --panels-scrollbar: var(--lore-soft);
 
-  font: 14px/1.55 "Newsreader", serif;
+  font: 14px/1.55 "Bitter", serif;
 }
 
 tabs.chrono > label {
