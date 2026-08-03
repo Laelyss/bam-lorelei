@@ -1338,3 +1338,68 @@ polaroid pnom {
   text-align: center;
   transform: rotate(-1deg);
 }
+
+
+/* =========================================================
+   TICKET DE CAISSE
+   ========================================================= */
+
+.ticket {
+  display: block;
+  width: min(360px, 94%);
+  min-height: 620px;
+  margin: 25px auto;
+  padding: 55px 42px 70px;
+  box-sizing: border-box;
+  background: url("fondticket.png") center / 180% 150% no-repeat;
+  color: #252525;
+  font: 13px/1.5 "Courier New", monospace;
+}
+
+.ticket-head {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.ticket-head b {
+  display: block;
+  margin-bottom: 8px;
+  font: 500 30px/1 Arial, sans-serif;
+  letter-spacing: 7px;
+}
+
+.ticket-head span,
+.ticket-end {
+  display: block;
+}
+
+.ticket hr {
+  margin: 22px 0;
+  border: 0;
+  border-top: 1px dotted #d5819a;
+}
+
+.ticket-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.ticket-line i {
+  flex: 1;
+  border-bottom: 1px dotted currentColor;
+}
+
+.ticket-total {
+  font-weight: bold;
+}
+
+.ticket-end {
+  margin-top: 24px;
+}
+
+.ticket-thanks {
+  margin-top: 28px;
+  text-align: center;
+}
