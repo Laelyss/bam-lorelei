@@ -268,13 +268,18 @@ papier.carnet {
 
 .ticket {
   width: min(350px, 96%);
-  aspect-ratio: 1024 / 1536;
+  aspect-ratio: 572 / 1028;
   margin: 25px auto;
-  padding: 16% 14% 18%;
-  background: url("https://laelyss.github.io/bam-lorelei/fondticket.png")
-              center / 100% 100% no-repeat;
+  padding: 15% 8% 17%;
+
+  background:
+    url("https://laelyss.github.io/bam-lorelei/fondticket.png?v=1")
+    center / 179% 149.5% no-repeat;
+
   color: #252525;
   font: 12px/1.45 "Courier New", monospace;
+
+  white-space: normal;
 }
 
 .ticket-head {
