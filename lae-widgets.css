@@ -256,3 +256,74 @@ papier.carnet {
     padding-left: 12%;
   }
 }
+
+/* ==================================================
+   TICKET DE CAISSE
+================================================== */
+
+.ticket,
+.ticket * {
+  box-sizing: border-box;
+}
+
+.ticket {
+  width: min(350px, 96%);
+  aspect-ratio: 1024 / 1536;
+  margin: 25px auto;
+  padding: 16% 14% 18%;
+  background: url("https://laelyss.github.io/bam-lorelei/fondticket.png")
+              center / 100% 100% no-repeat;
+  color: #252525;
+  font: 12px/1.45 "Courier New", monospace;
+}
+
+.ticket-head {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ticket-head b {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 27px;
+  line-height: 1;
+  letter-spacing: 7px;
+}
+
+.ticket-head span,
+.ticket-end {
+  display: block;
+}
+
+.ticket hr {
+  margin: 18px 0;
+  border: 0;
+  border-top: 1px dotted #dc819b;
+}
+
+.ticket-line {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 3px 0;
+  white-space: nowrap;
+}
+
+.ticket-line i {
+  flex: 1;
+  min-width: 8px;
+  border-bottom: 1px dotted currentColor;
+}
+
+.ticket-total {
+  font-weight: 700;
+}
+
+.ticket-end {
+  margin-top: 20px;
+}
+
+.ticket-thanks {
+  margin-top: 24px;
+  text-align: center;
+}
