@@ -186,35 +186,52 @@ focus > span > b:nth-of-type(3) {
    PETITS MOTS — PAPIERS PNG
 ================================================== */
 
-papier,
-papier * {
+:is(papier, carnet),
+:is(papier, carnet) * {
   box-sizing: border-box;
 }
 
-papier {
-  --papier-image: url("https://laelyss.github.io/bam-lorelei/papier1-optimise.png?v=papier1");
-
+:is(papier, carnet) {
   position: relative;
   isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: center;
   width: min(650px, 96%);
-  aspect-ratio: 1400 / 307;
   margin: 24px auto;
-  padding: 20px 9%;
   color: #302b26;
   background: none;
   border: 0;
   box-shadow: none;
-  clip-path: none;
-  font: 400 20px/1.25 "Segoe Print", "Bradley Hand", cursive;
+  font: 400 16px/1.25 "Segoe Print", "Bradley Hand", cursive;
   letter-spacing: .15px;
   text-align: center;
-  transform: rotate(-.35deg);
 }
 
-papier::before {
+/* Papier blanc */
+
+papier {
+  --papier-image:
+    url("https://laelyss.github.io/bam-lorelei/papier.png?v=4");
+
+  aspect-ratio: 1400 / 402;
+  padding: 13px 10% 16px;
+  color: #26384f;
+  transform: rotate(2.25deg);
+}
+
+/* Papier brun déchiré */
+
+carnet {
+  --papier-image:
+    url("https://laelyss.github.io/bam-lorelei/carnet.png?v=4");
+
+  aspect-ratio: 1400 / 307;
+  padding: 20px 9%;
+  transform: rotate(-1.75deg);
+}
+
+:is(papier, carnet)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -224,34 +241,18 @@ papier::before {
   pointer-events: none;
 }
 
-papier::after {
-  display: none;
-}
-
-/* Papier brun déchiré : version par défaut */
-papier.ancien {
-  --papier-image: url("https://laelyss.github.io/bam-lorelei/papier1-optimise.png?v=papier1");
-}
-
-/* Papier blanc ligné */
-papier.carnet {
-  --papier-image: url("https://laelyss.github.io/bam-lorelei/papier2-optimise.png?v=papier1");
-
-  aspect-ratio: 1400 / 402;
-  padding: 24px 11% 20px;
-  color: #26384f;
-  transform: rotate(.25deg);
-}
-
 @media (max-width: 600px) {
-  papier {
+  :is(papier, carnet) {
     width: 100%;
-    padding-right: 10%;
-    padding-left: 10%;
     font-size: 16px;
   }
 
-  papier.carnet {
+  papier {
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+
+  carnet {
     padding-right: 12%;
     padding-left: 12%;
   }
