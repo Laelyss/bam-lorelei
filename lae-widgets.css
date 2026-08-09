@@ -338,38 +338,43 @@ carnet {
    BUMBLE — NOTIFICATION / SUPPRESSION / CHAT
 ================================================== */
 
-:is(bnotif, bdelete, bchat),
-:is(bnotif, bdelete, bchat) * {
+:is(bumble-notif, bumble-delete, bumble-chat),
+:is(bumble-notif, bumble-delete, bumble-chat) * {
   box-sizing: border-box;
+  white-space: normal !important;
 }
 
-:is(bnotif, bdelete, bchat) {
+:is(bumble-notif, bumble-delete, bumble-chat) {
   --bumble: #ffc629;
   --bumble-soft: #fff0ad;
   --bumble-text: #202020;
   --bumble-gray: #777;
+
   font-family: Arial, sans-serif;
 }
 
 
 /* ==================================================
-   ICÔNE
+   ICÔNE BUMBLE
 ================================================== */
 
-bicon {
+bumble-icon {
   position: relative;
   display: block;
+  flex: 0 0 30px;
+
   width: 30px;
   height: 30px;
-  flex: 0 0 30px;
   border-radius: 9px;
+
   background: var(--bumble);
 }
 
-bicon::before {
+bumble-icon::before {
   content: "≡";
   position: absolute;
   inset: 0;
+
   color: #fff;
   font: 700 19px/30px Arial, sans-serif;
   text-align: center;
@@ -380,9 +385,8 @@ bicon::before {
    NOTIFICATION
 ================================================== */
 
-bnotif {
-  display: grid;
-  grid-template-columns: 30px minmax(0, 1fr) 6px;
+bumble-notif {
+  display: flex;
   align-items: center;
   gap: 9px;
 
@@ -395,54 +399,51 @@ bnotif {
   color: var(--bumble-text);
   box-shadow: 0 5px 14px rgba(0, 0, 0, .12);
 
-  white-space: normal;
+  text-align: left;
 }
 
-bnotif btext {
-  display: grid;
-  grid-template-rows: auto auto;
-  align-content: center;
-  gap: 2px;
+bumble-notif-text {
+  display: flex;
+  flex: 1;
   min-width: 0;
-
-  white-space: normal;
-  line-height: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
 }
 
-bnotif small,
-bnotif strong {
+bumble-app,
+bumble-match {
   display: block;
   margin: 0;
   padding: 0;
-  white-space: normal;
 }
 
-bnotif small {
-  font-size: 9px;
-  font-weight: 400;
-  line-height: 1;
+bumble-app {
+  font: 400 9px/1 Arial, sans-serif;
 }
 
-bnotif strong {
-  font-size: 12.5px;
-  font-weight: 700;
-  line-height: 1.15;
+bumble-match {
+  font: 700 12.5px/1.15 Arial, sans-serif;
 }
 
-bnotif::after {
+bumble-notif::after {
   content: "";
   display: block;
+  flex: 0 0 6px;
+
   width: 6px;
   height: 6px;
   border-radius: 50%;
+
   background: var(--bumble);
 }
+
 
 /* ==================================================
    SUPPRESSION DU COMPTE
 ================================================== */
 
-bdelete {
+bumble-delete {
   display: block;
   width: min(260px, 92%);
   margin: 20px auto;
@@ -452,22 +453,23 @@ bdelete {
   background: #fafafa;
   color: var(--bumble-text);
   box-shadow: 0 7px 20px rgba(0, 0, 0, .14);
+
   text-align: center;
 }
 
-bdelete bicon {
+bumble-delete bumble-icon {
   width: 32px;
   height: 32px;
   margin: 16px auto 11px;
   border-radius: 50%;
 }
 
-bdelete bicon::before {
+bumble-delete bumble-icon::before {
   font-size: 19px;
   line-height: 32px;
 }
 
-bdelete bicon::after {
+bumble-delete bumble-icon::after {
   content: "!";
   position: absolute;
   right: -5px;
@@ -485,30 +487,38 @@ bdelete bicon::after {
   text-align: center;
 }
 
-bdelete h3 {
+bumble-delete-title {
+  display: block;
   margin: 0 16px;
+
   font-size: 15px;
+  font-weight: 700;
   line-height: 1.25;
 }
 
-bdelete p {
+bumble-delete-copy {
+  display: block;
   margin: 9px 20px 15px;
+
   color: #666;
   font-size: 10.5px;
   line-height: 1.45;
 }
 
-bdelete actions {
+bumble-delete-actions {
   display: flex;
   gap: 8px;
+
   padding: 10px 12px 12px;
   border-top: 1px solid #ddd;
 }
 
-bdelete actions span {
+bumble-cancel,
+bumble-remove {
+  display: block;
   flex: 1;
-  padding: 7px 4px;
 
+  padding: 7px 4px;
   border: 1px solid #ccc;
   border-radius: 15px;
 
@@ -517,7 +527,7 @@ bdelete actions span {
   letter-spacing: .7px;
 }
 
-bdelete actions .delete {
+bumble-remove {
   border-color: #e52626;
   background: #e52626;
   color: #fff;
@@ -528,79 +538,110 @@ bdelete actions .delete {
    CONVERSATION
 ================================================== */
 
-bchat {
+bumble-chat {
   display: block;
   width: min(390px, 96%);
   margin: 25px auto;
+  overflow: hidden;
+
   border-radius: 20px;
   background: #fafafa;
   color: var(--bumble-text);
   box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
-  overflow: hidden;
 }
 
-bchat bhead {
+bumble-chat-head {
   position: relative;
   display: block;
+
   padding: 15px 42px;
   border-bottom: 1px solid #ddd;
+
   font-size: 15px;
   font-weight: 700;
   text-align: center;
 }
 
-bchat bhead::before {
+bumble-chat-head::before {
   content: "‹";
   position: absolute;
-  left: 17px;
   top: 7px;
+  left: 17px;
+
   color: var(--bumble);
   font-size: 32px;
   font-weight: 400;
 }
 
-bchat bmessages {
+bumble-messages {
   display: block;
   height: 330px;
   padding: 18px 14px;
+
+  overflow-x: hidden;
   overflow-y: auto;
+
   scrollbar-width: thin;
   scrollbar-color: #ccc transparent;
 }
 
-bchat bubble {
+bumble-in,
+bumble-out {
   display: block;
   width: fit-content;
   max-width: 78%;
+
   margin: 0 0 17px;
   padding: 10px 13px;
-
-  border: 1px solid #e5e5e5;
-  border-radius: 17px 17px 17px 5px;
-  background: #fff;
 
   font-size: 12px;
   line-height: 1.45;
 }
 
-bchat bubble.me {
+bumble-in {
+  margin-right: auto;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 17px 17px 17px 5px;
+  background: #fff;
+}
+
+bumble-out {
   margin-left: auto;
-  border: 0;
+
   border-radius: 17px 17px 5px 17px;
   background: var(--bumble-soft);
 }
 
-bchat bubble small {
+bumble-time {
   display: block;
   margin-top: 5px;
+
   color: var(--bumble-gray);
   font-size: 9px;
 }
 
-bchat bubble.me small {
+bumble-out bumble-time {
   text-align: right;
 }
 
-bchat bubble small b {
+bumble-check {
   color: var(--bumble);
+  font-weight: 700;
+}
+
+bumble-system {
+  display: block;
+  clear: both;
+
+  width: 85%;
+  margin: 26px auto 8px;
+  padding-top: 12px;
+
+  border-top: 1px solid #e3e3e3;
+
+  color: #999;
+  font-size: 9.5px;
+  line-height: 1.4;
+  text-align: center;
 }
