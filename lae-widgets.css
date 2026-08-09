@@ -333,3 +333,224 @@ carnet {
   margin-top: 24px;
   text-align: center;
 }
+
+/* ==================================================
+   BUMBLE — NOTIFICATION / SUPPRESSION / CHAT
+================================================== */
+
+:is(bnotif, bdelete, bchat),
+:is(bnotif, bdelete, bchat) * {
+  box-sizing: border-box;
+}
+
+:is(bnotif, bdelete, bchat) {
+  --bumble: #ffc629;
+  --bumble-soft: #fff0ad;
+  --bumble-text: #202020;
+  --bumble-gray: #777;
+  font-family: Arial, sans-serif;
+}
+
+/* ---------- ICÔNE ---------- */
+
+bicon {
+  position: relative;
+  display: block;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 12px;
+  background: var(--bumble);
+}
+
+bicon::before {
+  content: "≡";
+  position: absolute;
+  inset: 0;
+  color: white;
+  font: 700 27px/42px Arial, sans-serif;
+  text-align: center;
+}
+
+
+/* ==================================================
+   NOTIFICATION
+================================================== */
+
+bnotif {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: min(390px, 96%);
+  margin: 22px auto;
+  padding: 13px 16px;
+  border-radius: 22px;
+  background: #fafafa;
+  color: var(--bumble-text);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .12);
+}
+
+bnotif btext {
+  display: block;
+  flex: 1;
+}
+
+bnotif small,
+bnotif strong {
+  display: block;
+}
+
+bnotif small {
+  margin-bottom: 3px;
+  font-size: 11px;
+}
+
+bnotif strong {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+bnotif::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bumble);
+}
+
+
+/* ==================================================
+   SUPPRESSION DU COMPTE
+================================================== */
+
+bdelete {
+  display: block;
+  width: min(330px, 94%);
+  margin: 25px auto;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fafafa;
+  color: var(--bumble-text);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .15);
+  text-align: center;
+}
+
+bdelete bicon {
+  margin: 24px auto 18px;
+  border-radius: 50%;
+}
+
+bdelete h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+bdelete p {
+  margin: 13px 28px 25px;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+bdelete actions {
+  display: flex;
+  gap: 10px;
+  padding: 15px 18px 18px;
+  border-top: 1px solid #ddd;
+}
+
+bdelete actions span {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+bdelete actions .delete {
+  border-color: #e52626;
+  background: #e52626;
+  color: white;
+}
+
+
+/* ==================================================
+   CONVERSATION
+================================================== */
+
+bchat {
+  display: block;
+  width: min(390px, 96%);
+  margin: 25px auto;
+  border-radius: 20px;
+  background: #fafafa;
+  color: var(--bumble-text);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+  overflow: hidden;
+}
+
+bchat bhead {
+  position: relative;
+  display: block;
+  padding: 15px 42px;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+bchat bhead::before {
+  content: "‹";
+  position: absolute;
+  left: 17px;
+  top: 7px;
+  color: var(--bumble);
+  font-size: 32px;
+  font-weight: 400;
+}
+
+bchat bmessages {
+  display: block;
+  height: 330px;
+  padding: 18px 14px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+bchat bubble {
+  display: block;
+  width: fit-content;
+  max-width: 78%;
+  margin: 0 0 17px;
+  padding: 10px 13px;
+  border: 1px solid #e5e5e5;
+  border-radius: 17px 17px 17px 5px;
+  background: white;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+bchat bubble.me {
+  margin-left: auto;
+  border: 0;
+  border-radius: 17px 17px 5px 17px;
+  background: var(--bumble-soft);
+}
+
+bchat bubble small {
+  display: block;
+  margin-top: 5px;
+  color: var(--bumble-gray);
+  font-size: 9px;
+}
+
+bchat bubble.me small {
+  text-align: right;
+}
+
+bchat bubble small b {
+  color: var(--bumble);
+}
