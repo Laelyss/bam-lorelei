@@ -575,7 +575,7 @@ bumble-chat-head::before {
 
 bumble-messages {
   display: block;
-  height: 330px;
+  height: 425px;
   padding: 18px 14px;
 
   overflow-x: hidden;
