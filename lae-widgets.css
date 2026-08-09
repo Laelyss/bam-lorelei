@@ -394,39 +394,49 @@ bnotif {
   background: #fafafa;
   color: var(--bumble-text);
   box-shadow: 0 5px 14px rgba(0, 0, 0, .12);
+
+  white-space: normal;
 }
 
 bnotif btext {
-  display: block;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-content: center;
+  gap: 2px;
   min-width: 0;
+
+  white-space: normal;
+  line-height: 1;
 }
 
 bnotif small,
 bnotif strong {
   display: block;
+  margin: 0;
+  padding: 0;
+  white-space: normal;
 }
 
 bnotif small {
-  margin: 0 0 3px;
   font-size: 9px;
-  line-height: 1;
   font-weight: 400;
+  line-height: 1;
 }
 
 bnotif strong {
   font-size: 12.5px;
-  line-height: 1.2;
   font-weight: 700;
+  line-height: 1.15;
 }
 
 bnotif::after {
   content: "";
+  display: block;
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--bumble);
 }
-
 
 /* ==================================================
    SUPPRESSION DU COMPTE
