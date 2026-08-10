@@ -1151,6 +1151,101 @@ tabs.story panel :is(i, em) {
 }
 
 /* ==================================================
+   HISTOIRE — BALISES COLORÉES
+================================================== */
+
+tabs.story :is(
+  m0, m1, m2, m3, m4,
+  i1,
+  u1, u2, u3, u4,
+  strike2, tag,
+  pnj1, pnj2, pnj3, pnj4, pnj5
+) {
+  display: inline;
+}
+
+tabs.story m0 {
+  color: #586342;
+}
+
+tabs.story m1 {
+  color: #67851e;
+  color: color-mix(in srgb, #67851e 76%, var(--lae-ink));
+}
+
+tabs.story m2 {
+  color: var(--story-text);
+}
+
+tabs.story m3 {
+  color: #9e8d54;
+}
+
+tabs.story m4 {
+  color: #b0a16a;
+}
+
+tabs.story i1 {
+  color: #829263;
+  font-style: italic;
+}
+
+tabs.story u1 {
+  color: #84996a;
+  text-decoration: none;
+}
+
+tabs.story u2 {
+  color: #ad9e6d;
+  text-decoration: none;
+}
+
+tabs.story u3 {
+  color: #a88b59;
+  text-decoration: none;
+  text-shadow: 0 0 5px rgba(168, 139, 89, .22);
+}
+
+tabs.story u4 {
+  color: #a86464;
+  text-decoration: none;
+  text-shadow: 0 0 5px rgba(168, 100, 100, .18);
+}
+
+tabs.story strike2 {
+  text-decoration: line-through;
+  opacity: .72;
+}
+
+tabs.story tag {
+  color: #a86464;
+  font-size: .92em;
+}
+
+
+/* PERSONNAGES / DIALOGUES */
+
+tabs.story pnj1 {
+  color: #52529d;
+}
+
+tabs.story pnj2 {
+  color: #1fcd5a;
+}
+
+tabs.story pnj3 {
+  color: #eb0000;
+}
+
+tabs.story pnj4 {
+  color: #7f7017;
+}
+
+tabs.story pnj5 {
+  color: #68b4e5;
+}
+
+/* ==================================================
    PETIT EN-TÊTE DE SCÈNE
 ================================================== */
 
