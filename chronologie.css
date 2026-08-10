@@ -533,3 +533,17 @@ polaroid pnom {
     font-size: 15px;
   }
 }
+
+/* ==================================================
+   CHRONOLOGIE — TW / TEXTE FLOUTÉ
+================================================== */
+
+flou {
+  filter: blur(5px);
+  transition: filter .2s ease;
+  cursor: pointer;
+}
+
+flou:hover {
+  filter: blur(0);
+}
