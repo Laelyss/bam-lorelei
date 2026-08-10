@@ -1,5 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/morgalen");
 @import url("https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600&display=swap");
 
 :is(slim, astro, focus),
 :is(slim, astro, focus) * {
@@ -645,4 +646,226 @@ bumble-system {
   font-size: 9.5px;
   line-height: 1.4;
   text-align: center;
+}
+
+/* ==================================================
+   NOTES PRATIQUES
+================================================== */
+
+notes-pratiques,
+notes-pratiques * {
+  box-sizing: border-box;
+  white-space: normal !important;
+}
+
+notes-pratiques {
+  --notes-paper: #f4f0e7;
+  --notes-ink: #34332f;
+  --notes-soft: #777263;
+  --notes-accent: #817852;
+  --notes-accent-soft: #d8d0b5;
+  --notes-line: rgba(91, 85, 66, .18);
+  --notes-postit: #e8dfc3;
+
+  display: block;
+  width: min(650px, 96%);
+  margin: 28px auto;
+  padding: 28px;
+
+  border-radius: 20px;
+  background: var(--notes-paper);
+  color: var(--notes-ink);
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .18);
+
+  font-family: "Kalam", sans-serif;
+}
+
+
+/* ==================================================
+   TITRE
+================================================== */
+
+notes-title {
+  position: relative;
+  display: block;
+
+  margin: 0 0 26px;
+  padding-bottom: 12px;
+
+  color: var(--notes-accent);
+
+  font: 500 28px/1 "Josefin Sans", Arial, sans-serif;
+  letter-spacing: .04em;
+  text-align: center;
+}
+
+notes-title::after {
+  content: "◇";
+  display: block;
+  margin-top: 8px;
+
+  color: var(--notes-accent-soft);
+  font-size: 11px;
+}
+
+
+/* ==================================================
+   GRILLE
+================================================== */
+
+notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+
+/* ==================================================
+   FICHE PERSONNE
+================================================== */
+
+notes-person {
+  display: block;
+  min-width: 0;
+  padding: 18px 16px 14px;
+
+  border: 1px solid var(--notes-accent-soft);
+  border-radius: 14px;
+}
+
+notes-name {
+  display: block;
+  width: 68%;
+  margin: -7px auto 13px;
+  padding: 6px 10px;
+
+  background: var(--notes-accent);
+  color: #f8f5ed;
+
+  font: 500 15px/1.1 "Josefin Sans", Arial, sans-serif;
+  letter-spacing: .05em;
+  text-align: center;
+}
+
+notes-line {
+  display: block;
+  padding: 7px 3px 6px;
+
+  border-bottom: 1px dotted var(--notes-line);
+
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+notes-person notes-line:last-child,
+notes-info notes-line:last-child {
+  border-bottom: 0;
+}
+
+
+/* ==================================================
+   INFOS UTILES
+================================================== */
+
+notes-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 125px;
+  gap: 18px;
+
+  margin-top: 16px;
+  padding: 17px 16px 15px;
+
+  border: 1px solid var(--notes-accent-soft);
+  border-radius: 14px;
+}
+
+notes-info {
+  display: block;
+  min-width: 0;
+}
+
+notes-info-title {
+  display: inline-block;
+
+  margin: -6px 0 8px;
+  padding: 5px 13px;
+
+  background: var(--notes-accent-soft);
+  color: #4d493d;
+
+  font: 500 10px/1 "Josefin Sans", Arial, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+
+/* ==================================================
+   PETIT POST-IT
+================================================== */
+
+notes-postit {
+  align-self: center;
+  position: relative;
+  display: block;
+
+  padding: 23px 13px 16px;
+
+  background: var(--notes-postit);
+  color: #504b3e;
+
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .12);
+
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: center;
+
+  transform: rotate(2deg);
+}
+
+notes-postit::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 32%;
+
+  width: 44%;
+  height: 12px;
+
+  background: rgba(129, 120, 82, .23);
+}
+
+notes-postit::after {
+  content: "♡";
+  display: block;
+  margin-top: 8px;
+
+  color: var(--notes-accent);
+  font-size: 17px;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 600px) {
+
+  notes-pratiques {
+    width: 96%;
+    padding: 20px 16px;
+  }
+
+  notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  notes-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  notes-postit {
+    width: 130px;
+    margin: 5px auto 0;
+  }
 }
