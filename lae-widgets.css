@@ -268,18 +268,19 @@ carnet {
 }
 
 .ticket {
-  width: min(350px, 96%);
-  aspect-ratio: 572 / 1028;
+  display: block;
+  width: min(360px, 96%);
+  aspect-ratio: 400 / 650;
   margin: 25px auto;
-  padding: 15% 8% 17%;
+  padding: 45px 55px 55px;
+  box-sizing: border-box;
 
   background:
-    url("https://laelyss.github.io/bam-lorelei/fondticket.png?v=1")
-    center / 179% 149.5% no-repeat;
+    url("https://laelyss.github.io/bam-lorelei/bipa.png?v=1")
+    center / 100% 100% no-repeat;
 
   color: #252525;
   font: 12px/1.45 "Courier New", monospace;
-
   white-space: normal;
 }
 
