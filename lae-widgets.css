@@ -1,6 +1,7 @@
 @import url("https://fonts.cdnfonts.com/css/morgalen");
 @import url("https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@400;500;600&display=swap");
 
 :is(slim, astro, focus),
 :is(slim, astro, focus) * {
@@ -659,26 +660,24 @@ notes-pratiques * {
 }
 
 notes-pratiques {
-  --notes-paper: #f4f0e7;
-  --notes-ink: #34332f;
-  --notes-soft: #777263;
-  --notes-accent: #817852;
-  --notes-accent-soft: #d8d0b5;
-  --notes-line: rgba(91, 85, 66, .18);
-  --notes-postit: #e8dfc3;
+  --notes-paper: #f5f1e8;
+  --notes-ink: #4a4942;
+  --notes-soft: #888474;
+  --notes-accent: #817b54;
+  --notes-accent-soft: #d8d2bc;
+  --notes-line: rgba(91, 87, 70, .17);
+  --notes-postit: #e9dfb8;
 
   display: block;
-  width: min(650px, 96%);
+  width: min(580px, 96%);
   margin: 28px auto;
-  padding: 28px;
-
-  border-radius: 20px;
+  padding: 30px 34px 28px;
+  
   background: var(--notes-paper);
-  color: var(--notes-ink);
+  
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .15);
 
-  box-shadow: 0 12px 28px rgba(0, 0, 0, .18);
-
-  font-family: "Kalam", sans-serif;
+  font-family: "Shantell Sans", system-ui, sans-serif;
 }
 
 
@@ -687,26 +686,29 @@ notes-pratiques {
 ================================================== */
 
 notes-title {
-  position: relative;
   display: block;
+  margin-bottom: 30px;
 
-  margin: 0 0 26px;
-  padding-bottom: 12px;
+  color: #5f5d50;
 
-  color: var(--notes-accent);
-
-  font: 500 28px/1 "Josefin Sans", Arial, sans-serif;
-  letter-spacing: .04em;
   text-align: center;
 }
 
 notes-title::after {
-  content: "◇";
+  content: "";
   display: block;
-  margin-top: 8px;
 
-  color: var(--notes-accent-soft);
-  font-size: 11px;
+  width: 72%;
+  height: 1px;
+  margin: 13px auto 0;
+
+  background:
+    linear-gradient(
+      to right,
+      var(--notes-accent-soft) 0 44%,
+      transparent 44% 56%,
+      var(--notes-accent-soft) 56% 100%
+    );
 }
 
 
@@ -717,49 +719,105 @@ notes-title::after {
 notes-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  column-gap: 34px;
+  row-gap: 34px;
+
+  position: relative;
+}
+
+notes-grid::after {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 50%;
+
+  width: 1px;
+  background: var(--notes-line);
 }
 
 
 /* ==================================================
-   FICHE PERSONNE
+   PERSONNES
 ================================================== */
 
 notes-person {
   display: block;
   min-width: 0;
-  padding: 18px 16px 14px;
-
-  border: 1px solid var(--notes-accent-soft);
-  border-radius: 14px;
+  padding: 0 5px;
 }
 
 notes-name {
+  position: relative;
+
   display: block;
-  width: 68%;
-  margin: -7px auto 13px;
-  padding: 6px 10px;
+  width: fit-content;
+  min-width: 130px;
 
+  margin: 0 0 15px 24px;
+  padding: 5px 18px 5px 25px;
+
+  color: #615e4c;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(129, 123, 84, .14),
+      rgba(129, 123, 84, .05)
+    );
+
+  font: 500 14px/1.2 system-ui, sans-serif;
+}
+
+notes-name::before {
+  content: attr(data-initial);
+
+  position: absolute;
+  top: 50%;
+  left: -24px;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
   background: var(--notes-accent);
-  color: #f8f5ed;
+  color: #f8f5ea;
 
-  font: 500 15px/1.1 "Josefin Sans", Arial, sans-serif;
-  letter-spacing: .05em;
+  font: 500 13px/30px system-ui, sans-serif;
   text-align: center;
+
+  transform: translateY(-50%);
 }
 
 notes-line {
+  position: relative;
+
   display: block;
-  padding: 7px 3px 6px;
+
+  margin-left: 7px;
+  padding: 7px 4px 7px 17px;
 
   border-bottom: 1px dotted var(--notes-line);
 
-  font-size: 12px;
-  line-height: 1.35;
+  font-size: 11.5px;
+  line-height: 1.4;
 }
 
-notes-person notes-line:last-child,
-notes-info notes-line:last-child {
+notes-line::before {
+  content: "";
+
+  position: absolute;
+  top: 13px;
+  left: 2px;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+  background: var(--notes-accent);
+}
+
+notes-person notes-line:last-child {
   border-bottom: 0;
 }
 
@@ -771,13 +829,15 @@ notes-info notes-line:last-child {
 notes-bottom {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 125px;
-  gap: 18px;
+  gap: 22px;
 
-  margin-top: 16px;
-  padding: 17px 16px 15px;
+  margin-top: 32px;
+  padding: 17px 18px;
 
-  border: 1px solid var(--notes-accent-soft);
-  border-radius: 14px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .40);
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .06);
 }
 
 notes-info {
@@ -788,60 +848,78 @@ notes-info {
 notes-info-title {
   display: inline-block;
 
-  margin: -6px 0 8px;
-  padding: 5px 13px;
+  margin: 0 0 7px;
+  padding: 5px 12px;
+
+  border-radius: 4px;
 
   background: var(--notes-accent-soft);
-  color: #4d493d;
+  color: #5d5946;
 
-  font: 500 10px/1 "Josefin Sans", Arial, sans-serif;
-  letter-spacing: .08em;
+  font: 500 9px/1 system-ui, sans-serif;
+  letter-spacing: .12em;
   text-transform: uppercase;
+}
+
+notes-info notes-line {
+  margin-left: 0;
+  padding-left: 4px;
+}
+
+notes-info notes-line::before {
+  display: none;
+}
+
+notes-info notes-line:last-child {
+  border-bottom: 0;
 }
 
 
 /* ==================================================
-   PETIT POST-IT
+   POST-IT
 ================================================== */
 
 notes-postit {
-  align-self: center;
   position: relative;
+  align-self: center;
+
   display: block;
 
-  padding: 23px 13px 16px;
+  padding: 25px 12px 17px;
 
   background: var(--notes-postit);
-  color: #504b3e;
+  color: #5d5846;
 
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .12);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .12);
 
   font-size: 11px;
-  line-height: 1.45;
+  line-height: 1.5;
   text-align: center;
 
-  transform: rotate(2deg);
+  transform: rotate(3deg);
 }
 
 notes-postit::before {
   content: "";
+
   position: absolute;
   top: -6px;
   left: 32%;
 
-  width: 44%;
+  width: 42%;
   height: 12px;
 
-  background: rgba(129, 120, 82, .23);
+  background: rgba(116, 111, 80, .22);
 }
 
 notes-postit::after {
   content: "♡";
+
   display: block;
-  margin-top: 8px;
+  margin-top: 7px;
 
   color: var(--notes-accent);
-  font-size: 17px;
+  font-size: 16px;
 }
 
 
@@ -853,11 +931,16 @@ notes-postit::after {
 
   notes-pratiques {
     width: 96%;
-    padding: 20px 16px;
+    padding: 24px 20px;
   }
 
   notes-grid {
     grid-template-columns: 1fr;
+    row-gap: 28px;
+  }
+
+  notes-grid::after {
+    display: none;
   }
 
   notes-bottom {
@@ -865,7 +948,7 @@ notes-postit::after {
   }
 
   notes-postit {
-    width: 130px;
-    margin: 5px auto 0;
+    width: 125px;
+    margin: 8px auto 0;
   }
 }
