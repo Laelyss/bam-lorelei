@@ -799,6 +799,7 @@ notes-line {
 
   border-bottom: 1px dotted var(--notes-line);
 
+  color: #111 !important;
   font-size: 11.5px;
   line-height: 1.4;
 }
