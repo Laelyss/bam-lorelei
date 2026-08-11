@@ -1,3 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap");
+
 /* ==================================================
-   LORELEÏ — CODES RP
+   LORELEÏ — RP
 ================================================== */
+
+lore-rp,
+lore-rp * {
+  box-sizing: border-box;
+}
+
+lore-rp {
+  --rp-paper: #f2eee5;
+  --rp-soft: #6f6a5f;
+  --rp-accent: #817852;
+  --rp-pencil: #777164;
+
+  display: block;
+  width: min(760px, 96%);
+  margin: 28px auto;
+  padding: 45px 35px 40px;
+
+  color: black;
+}
+
+
+/* ==================================================
+   EN-TÊTE
+================================================== */
+
+rp-head {
+  display: block;
+  width: calc(100% - 150px);
+  margin: 0 auto 32px;
+}
+
+rp-title {
+  display: block;
+
+  font: 500 36px/1.05 "Newsreader", Georgia, serif;
+  letter-spacing: -.02em;
+}
+
+rp-meta {
+  display: block;
+  margin-top: 4px;
+
+  color: var(--rp-soft);
+  font: italic 400 12px/1.4 "Newsreader", Georgia, serif;
+}
+
+rp-tw {
+  display: block;
+  width: fit-content;
+
+  margin-top: 10px;
+  padding-bottom: 7px;
+
+  border-bottom: 1px solid var(--rp-line);
+
+  color: var(--rp-soft);
+  font: 400 10px/1.2 "Newsreader", Georgia, serif;
+}
+
+
+/* ==================================================
+   TEXTE
+================================================== */
+
+rp-text {
+  display: block;
+  width: calc(100% - 150px);
+  margin: 0 auto;
+
+  font: 400 14px/1.8 "Newsreader", Georgia, serif;
+
+  text-align: justify;
+  hyphens: auto;
+}
+
+
+/* ==================================================
+   TABULATION
+================================================== */
+
+texesp {
+  display: inline;
+}
+
+texesp::after {
+  content: "\2003\2003";
+}
+
+
+/* ==================================================
+   NOTES MANUSCRITES
+================================================== */
+
+rp-note {
+  display: block;
+  width: 70px;
+
+  color: #212121;
+
+  font: 400 13px/1.3 "Handlee", cursive;
+  text-align: center;
+
+  opacity: .82;
+}
+
+rp-note[side="left"] {
+  float: left;
+
+  margin:
+    5px 15px 8px
+    -90px;
+
+  transform: rotate(-4deg);
+}
+
+rp-note[side="right"] {
+  float: right;
+
+  margin:
+    5px -90px 8px
+    15px;
+
+  transform: rotate(3deg);
+}
+
+
+/* ==================================================
+   PETITE MISE EN VALEUR
+================================================== */
+
+rp-mark {
+  display: inline;
+  border-bottom: 1px solid var(--rp-accent);
+}
+
+
+/* ==================================================
+   COULEURS PERSONNAGES
+================================================== */
+
+lore-rp :is(lei, .lei) {
+  color: #792271;
+}
+
+lore-rp :is(dori, .dori) {
+  color: #9d5428;
+}
+
+lore-rp :is(eid, .eid) {
+  color: #1592a7
+}
+
+lore-rp :is(ori, .ori) {
+  font-style: italic;
+  font-weight: 600;
+}
+
+lore-rp :is(mara, .mara) {
+  color: #b91e3a;
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 650px) {
+
+  lore-rp {
+    width: 96%;
+    padding: 34px 24px 40px;
+  }
+
+  rp-head,
+  rp-text {
+    width: 100%;
+  }
+
+  rp-title {
+    font-size: 30px;
+  }
+
+  rp-text {
+    font-size: 15px;
+  }
+
+  rp-note[side="left"],
+  rp-note[side="right"] {
+    float: none;
+
+    width: fit-content;
+    max-width: 150px;
+
+    margin: 10px 0;
+
+    text-align: left;
+    transform: rotate(-2deg);
+  }
+}
