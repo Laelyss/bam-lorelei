@@ -990,7 +990,7 @@ tabs.story {
 
   --tabs-width: 700px;
   --tabs-line: var(--story-line);
-  --tabs-min-width: 120px;
+  --tabs-min-width: 100px;
   --tabs-mobile-width: 96px;
   --tabs-label-padding: 0 12px 14px;
   --tabs-color: var(--story-soft);
