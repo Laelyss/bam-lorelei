@@ -89,6 +89,17 @@ fiche.lore-liens-sheet tag {
   font-size: .92em;
 }
 
+/* ==================================================
+   SECOND POST RPS — RETIRE L'HABILLAGE DE LA FICHE
+================================================== */
+
+fiche.hybrid.lore-rps-sheet {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
 
 /* ==================================================
    TABULATION
