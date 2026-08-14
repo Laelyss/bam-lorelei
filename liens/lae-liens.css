@@ -4,7 +4,7 @@
    LIENS — PALETTE LORELEÏ / OVERRIDE FORUMACTIF
 ================================================== */
 
-lae-liens {
+fiche.lore-liens-sheet {
   --lore-text: var(--textColor3, #8a8a7e);
   --lore-soft: #77766f;
   --lore-line: rgba(126, 126, 114, .24);
@@ -26,7 +26,7 @@ lae-liens {
    BALISES COLORÉES — FORCE LES COULEURS PERSONNELLES
 ================================================== */
 
-lae-liens :is(
+fiche.lore-liens-sheet :is(
   m0, m1, m2, m3, m4,
   i1,
   u1, u2, u3, u4,
@@ -35,59 +35,59 @@ lae-liens :is(
   display: inline !important;
 }
 
-lae-liens m0 {
+fiche.lore-liens-sheet m0 {
   color: #586342 !important;
 }
 
-lae-liens m1 {
+fiche.lore-liens-sheet m1 {
   color: var(--lore-green) !important;
 }
 
-lae-liens m2 {
+fiche.lore-liens-sheet m2 {
   color: var(--lore-text) !important;
 }
 
-lae-liens m3 {
+fiche.lore-liens-sheet m3 {
   color: #9e8d54 !important;
 }
 
-lae-liens m4 {
+fiche.lore-liens-sheet m4 {
   color: #b0a16a !important;
 }
 
-lae-liens i1 {
+fiche.lore-liens-sheet i1 {
   color: #829263 !important;
   font-style: italic !important;
 }
 
-lae-liens u1 {
+fiche.lore-liens-sheet u1 {
   color: #84996a !important;
   text-decoration: none !important;
 }
 
-lae-liens u2 {
+fiche.lore-liens-sheet u2 {
   color: #ad9e6d !important;
   text-decoration: none !important;
 }
 
-lae-liens u3 {
+fiche.lore-liens-sheet u3 {
   color: #a88b59 !important;
   text-decoration: none !important;
   text-shadow: 0 0 5px rgba(168, 139, 89, .22) !important;
 }
 
-lae-liens u4 {
+fiche.lore-liens-sheet u4 {
   color: #a86464 !important;
   text-decoration: none !important;
   text-shadow: 0 0 5px rgba(168, 100, 100, .18) !important;
 }
 
-lae-liens strike2 {
+fiche.lore-liens-sheet strike2 {
   text-decoration: line-through !important;
   opacity: .72;
 }
 
-lae-liens tag {
+fiche.lore-liens-sheet tag {
   color: #a86464 !important;
   font-size: .92em;
 }
