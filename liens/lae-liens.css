@@ -245,7 +245,7 @@ lae-lpanel {
   grid-row: 1 / 5;
 
   min-width: 0;
-  max-height: 275px;
+  max-height: 350px;
 
   padding-left: 14px;
 
@@ -292,10 +292,6 @@ lae-lien:last-child {
 
 lae-lnom {
   display: block;
-
-  color: var(--ll-text);
-
-  font: 500 15px/1.08 "Newsreader", Georgia, serif;
 }
 
 
