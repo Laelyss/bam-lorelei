@@ -510,8 +510,7 @@ lae-rps * {
 }
 
 lae-rps {
-  --lrp-soft: color-mix(in srgb, var(--lrp-text) 62%, transparent);
-  --lrp-line: color-mix(in srgb, var(--lrp-text) 18%, transparent);
+  --lrp-line: rgba(126, 126, 114, .18);
 
   --lrp-current: #718552;
   --lrp-done: #a48746;
@@ -520,9 +519,6 @@ lae-rps {
   display: block;
   width: min(580px, 100%);
   margin: 10px auto;
-
-  color: var(--lrp-text);
-  font: 400 10px/1.4 "Manrope", system-ui, sans-serif;
 }
 
 
@@ -534,13 +530,15 @@ lae-rps-tabs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
-  width: 67%;
-  min-width: 300px;
+  width: 60%;
+  min-width: 285px;
 
   border-bottom: 1px solid var(--lrp-line);
 }
 
 lae-rps-tabs label {
+  --tab-color: #718552;
+
   position: relative;
 
   display: flex;
@@ -553,22 +551,46 @@ lae-rps-tabs label {
 
   border: 1px solid var(--lrp-line);
   border-bottom: 0;
-  border-radius: 5px 5px 0 0;
-
-  color: var(--lrp-soft);
-  background: transparent;
 
   font-size: 8px;
   font-weight: 600;
-  letter-spacing: .1em;
+  letter-spacing: .09em;
   text-transform: uppercase;
 
   cursor: pointer;
 }
 
+lae-rps-tabs label:first-child {
+  border-radius: 5px 0 0 0;
+}
+
+lae-rps-tabs label:last-child {
+  border-radius: 0 5px 0 0;
+}
+
 lae-rps-tabs label + label {
   border-left: 0;
 }
+
+
+/* COULEURS DES ONGLETS */
+
+lae-rps-tabs label[data-tab="current"] {
+  --tab-color: var(--lrp-current);
+}
+
+lae-rps-tabs label[data-tab="done"] {
+  --tab-color: var(--lrp-done);
+}
+
+lae-rps-tabs label[data-tab="archive"] {
+  --tab-color: var(--lrp-archive);
+}
+
+
+/* ==================================================
+   RADIOS
+================================================== */
 
 lae-rps-tabs input {
   position: absolute;
@@ -585,15 +607,19 @@ lae-rps-tabs input {
 }
 
 
-/* PETITS SYMBOLES */
+/* ==================================================
+   PETITS SYMBOLES
+================================================== */
 
 lae-rps-tabs label::before {
-  font-size: 11px;
+  color: var(--tab-color);
+
+  font-size: 10px;
   line-height: 1;
 }
 
 lae-rps-tabs label[data-tab="current"]::before {
-  content: "◉";
+  content: "✧";
 }
 
 lae-rps-tabs label[data-tab="done"]::before {
@@ -606,40 +632,21 @@ lae-rps-tabs label[data-tab="archive"]::before {
 
 
 /* ==================================================
-   ONGLETS ACTIFS
+   ONGLET ACTIF
 ================================================== */
 
-lae-rps-tabs label[data-tab="current"]:has(input:checked) {
-  border-color: var(--lrp-current);
-  background: var(--lrp-current);
-  color: #fff;
-}
+lae-rps-tabs label:has(input:checked) {
+  color: var(--tab-color);
 
-lae-rps-tabs label[data-tab="done"]:has(input:checked) {
-  border-color: var(--lrp-done);
-  background: var(--lrp-done);
-  color: #fff;
-}
+  background:
+    color-mix(
+      in srgb,
+      var(--tab-color) 8%,
+      transparent
+    );
 
-lae-rps-tabs label[data-tab="archive"]:has(input:checked) {
-  border-color: var(--lrp-archive);
-  background: var(--lrp-archive);
-  color: #fff;
-}
-
-lae-rps-tabs label:has(input:checked)::after {
-  content: "";
-
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-
-  width: 8px;
-  height: 8px;
-
-  background: inherit;
-
-  transform: translateX(-50%) rotate(45deg);
+  box-shadow:
+    inset 0 -2px 0 var(--tab-color);
 }
 
 
@@ -648,19 +655,37 @@ lae-rps-tabs label:has(input:checked)::after {
 ================================================== */
 
 lae-rps-panel {
+  --panel-color: var(--lrp-current);
+
   display: none;
 
-  max-height: 205px;
-  padding: 6px 10px 4px;
+  max-height: 230px;
+  padding: 4px 12px 2px;
 
   overflow-y: auto;
 
   border: 1px solid var(--lrp-line);
+  border-top: 0;
   border-radius: 0 5px 5px 5px;
 
   scrollbar-width: thin;
   scrollbar-color: var(--lrp-line) transparent;
 }
+
+lae-rps-panel.current {
+  --panel-color: var(--lrp-current);
+}
+
+lae-rps-panel.done {
+  --panel-color: var(--lrp-done);
+}
+
+lae-rps-panel.archive {
+  --panel-color: var(--lrp-archive);
+}
+
+
+/* AFFICHAGE DU BON PANNEAU */
 
 lae-rps:has(
   label[data-tab="current"] input:checked
@@ -686,20 +711,18 @@ lae-rps:has(
 ================================================== */
 
 lae-rps-item {
+  position: relative;
+
   display: grid;
   grid-template-columns:
-    minmax(120px, 1.15fr)
-    minmax(65px, .6fr)
-    minmax(125px, 1.45fr)
-    52px;
+    minmax(0, 1fr)
+    auto;
 
-  align-items: center;
-  gap: 8px;
+  gap: 4px 12px;
 
-  min-height: 42px;
-  padding: 6px 3px;
+  padding: 12px 4px 11px 17px;
 
-  border-bottom: 1px solid var(--lrp-line);
+  border-bottom: 1px dotted var(--lrp-line);
 }
 
 lae-rps-item:last-child {
@@ -707,51 +730,97 @@ lae-rps-item:last-child {
 }
 
 
-/* TITRE */
+/* PETITE PUCE */
+
+lae-rps-item::before {
+  content: "";
+
+  position: absolute;
+  top: 18px;
+  left: 3px;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+  background: var(--panel-color);
+}
+
+
+/* ==================================================
+   TITRE + LIEN
+================================================== */
 
 lae-rps-title {
   display: block;
-
-  color: var(--lrp-text);
+  min-width: 0;
 
   font-size: 11px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.3;
+}
+
+lae-rps-title a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+lae-rps-title a:hover {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
 }
 
 
-/* TYPE */
+/* ==================================================
+   LIEU
+================================================== */
 
-lae-rps-type {
+lae-rps-place {
   display: block;
+  align-self: start;
 
-  color: var(--lrp-current);
+  padding: 3px 7px;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--panel-color) 45%,
+      transparent
+    );
+
+  border-radius: 4px;
+
+  color: var(--panel-color);
 
   font-size: 7px;
   font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  letter-spacing: .05em;
+  line-height: 1.2;
 }
 
 
-/* INFO */
+/* ==================================================
+   PARTENAIRES
+================================================== */
 
 lae-rps-info {
   display: block;
 
-  color: var(--lrp-soft);
+  min-width: 0;
 
   font-size: 8.5px;
   line-height: 1.4;
 }
 
 
-/* DATE */
+/* ==================================================
+   DATE
+================================================== */
 
 lae-rps-date {
   display: block;
 
-  color: var(--lrp-soft);
+  align-self: end;
 
   font-size: 7.5px;
   text-align: right;
@@ -772,24 +841,26 @@ lae-rps-date {
 
   lae-rps-tabs label {
     padding: 6px 3px;
+
     font-size: 7px;
+    letter-spacing: .06em;
+  }
+
+  lae-rps-panel {
+    padding-right: 8px;
+    padding-left: 8px;
   }
 
   lae-rps-item {
-    grid-template-columns: 1fr 65px;
-    gap: 4px 8px;
+    padding-left: 15px;
   }
 
-  lae-rps-type {
-    text-align: right;
+  lae-rps-title {
+    font-size: 10px;
   }
 
-  lae-rps-info {
-    grid-column: 1 / -1;
-  }
-
-  lae-rps-date {
-    grid-column: 2;
-    grid-row: 1;
+  lae-rps-place {
+    padding: 2px 5px;
+    font-size: 6.5px;
   }
 }
