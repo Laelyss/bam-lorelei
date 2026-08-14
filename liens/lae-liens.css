@@ -101,15 +101,20 @@ fiche.hybrid.lore-rps-sheet {
 }
 
 /* ==================================================
-   SECOND POST RPS — RETIRE LE CONTOUR DU FORUM
+   SECOND POST RPS — NETTOYAGE HABILLAGE FORUM
 ================================================== */
 
 fiche.hybrid.lore-rps-sheet {
-  --neutral3: transparent !important;
   --neutral5: transparent !important;
 
   background: transparent !important;
   border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* retire uniquement le contour natif de SECTION */
+fiche.hybrid.lore-rps-sheet > section {
+  border-color: transparent !important;
   box-shadow: none !important;
 }
 
