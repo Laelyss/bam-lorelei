@@ -2,7 +2,7 @@
    LIENS — PALETTE LORELEÏ / OVERRIDE FORUMACTIF
 ================================================== */
 
-liens-wrap {
+lae-liens {
   --lore-text: var(--textColor3, #8a8a7e);
   --lore-soft: #77766f;
   --lore-line: rgba(126, 126, 114, .24);
@@ -24,7 +24,7 @@ liens-wrap {
    BALISES COLORÉES — FORCE LES COULEURS PERSONNELLES
 ================================================== */
 
-liens-wrap :is(
+lae-liens :is(
   m0, m1, m2, m3, m4,
   i1,
   u1, u2, u3, u4,
@@ -33,62 +33,63 @@ liens-wrap :is(
   display: inline !important;
 }
 
-liens-wrap m0 {
+lae-liens m0 {
   color: #586342 !important;
 }
 
-liens-wrap m1 {
+lae-liens m1 {
   color: var(--lore-green) !important;
 }
 
-liens-wrap m2 {
+lae-liens m2 {
   color: var(--lore-text) !important;
 }
 
-liens-wrap m3 {
+lae-liens m3 {
   color: #9e8d54 !important;
 }
 
-liens-wrap m4 {
+lae-liens m4 {
   color: #b0a16a !important;
 }
 
-liens-wrap i1 {
+lae-liens i1 {
   color: #829263 !important;
   font-style: italic !important;
 }
 
-liens-wrap u1 {
+lae-liens u1 {
   color: #84996a !important;
   text-decoration: none !important;
 }
 
-liens-wrap u2 {
+lae-liens u2 {
   color: #ad9e6d !important;
   text-decoration: none !important;
 }
 
-liens-wrap u3 {
+lae-liens u3 {
   color: #a88b59 !important;
   text-decoration: none !important;
   text-shadow: 0 0 5px rgba(168, 139, 89, .22) !important;
 }
 
-liens-wrap u4 {
+lae-liens u4 {
   color: #a86464 !important;
   text-decoration: none !important;
   text-shadow: 0 0 5px rgba(168, 100, 100, .18) !important;
 }
 
-liens-wrap strike2 {
+lae-liens strike2 {
   text-decoration: line-through !important;
   opacity: .72;
 }
 
-liens-wrap tag {
+lae-liens tag {
   color: #a86464 !important;
   font-size: .92em;
 }
+
 
 /* ==================================================
    TABULATION
@@ -102,27 +103,28 @@ texesp::after {
   content: "\2003\2003";
 }
 
+
 /* ==================================================
    COULEURS PERSONNAGES
 ================================================== */
 
-lore-rp :is(lei, .lei) {
+:is(lore-rp, lae-liens) :is(lei, .lei) {
   color: #792271;
 }
 
-lore-rp :is(dori, .dori) {
+:is(lore-rp, lae-liens) :is(dori, .dori) {
   color: #9d5428;
 }
 
-lore-rp :is(eid, .eid) {
-  color: #1592a7
+:is(lore-rp, lae-liens) :is(eid, .eid) {
+  color: #1592a7;
 }
 
-lore-rp :is(ori, .ori) {
+:is(lore-rp, lae-liens) :is(ori, .ori) {
   font-style: italic;
   font-weight: 600;
 }
 
-lore-rp :is(mara, .mara) {
+:is(lore-rp, lae-liens) :is(mara, .mara) {
   color: #b91e3a;
 }
