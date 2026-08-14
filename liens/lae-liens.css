@@ -372,3 +372,299 @@ lae-lresume {
     grid-column: 1 / -1;
   }
 }
+
+/* ==================================================
+   LISTE DES RPS
+================================================== */
+
+lae-rps,
+lae-rps * {
+  box-sizing: border-box;
+  white-space: normal !important;
+}
+
+lae-rps {
+  --lrp-text: var(--textColor3, #8b8b83);
+  --lrp-soft: color-mix(in srgb, var(--lrp-text) 62%, transparent);
+  --lrp-line: color-mix(in srgb, var(--lrp-text) 18%, transparent);
+
+  --lrp-current: #718552;
+  --lrp-done: #a48746;
+  --lrp-archive: #718497;
+
+  display: block;
+  width: min(580px, 100%);
+  margin: 10px auto;
+
+  color: var(--lrp-text);
+  font: 400 10px/1.4 "Manrope", system-ui, sans-serif;
+}
+
+
+/* ==================================================
+   ONGLETS
+================================================== */
+
+lae-rps-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  width: 67%;
+  min-width: 300px;
+
+  border-bottom: 1px solid var(--lrp-line);
+}
+
+lae-rps-tabs label {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  min-height: 34px;
+  padding: 6px 8px;
+
+  border: 1px solid var(--lrp-line);
+  border-bottom: 0;
+  border-radius: 5px 5px 0 0;
+
+  color: var(--lrp-soft);
+  background: transparent;
+
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+lae-rps-tabs label + label {
+  border-left: 0;
+}
+
+lae-rps-tabs input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* PETITS SYMBOLES */
+
+lae-rps-tabs label::before {
+  font-size: 11px;
+  line-height: 1;
+}
+
+lae-rps-tabs label[data-tab="current"]::before {
+  content: "◉";
+}
+
+lae-rps-tabs label[data-tab="done"]::before {
+  content: "✓";
+}
+
+lae-rps-tabs label[data-tab="archive"]::before {
+  content: "□";
+}
+
+
+/* ==================================================
+   ONGLETS ACTIFS
+================================================== */
+
+lae-rps-tabs label[data-tab="current"]:has(input:checked) {
+  border-color: var(--lrp-current);
+  background: var(--lrp-current);
+  color: #fff;
+}
+
+lae-rps-tabs label[data-tab="done"]:has(input:checked) {
+  border-color: var(--lrp-done);
+  background: var(--lrp-done);
+  color: #fff;
+}
+
+lae-rps-tabs label[data-tab="archive"]:has(input:checked) {
+  border-color: var(--lrp-archive);
+  background: var(--lrp-archive);
+  color: #fff;
+}
+
+lae-rps-tabs label:has(input:checked)::after {
+  content: "";
+
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+
+  width: 8px;
+  height: 8px;
+
+  background: inherit;
+
+  transform: translateX(-50%) rotate(45deg);
+}
+
+
+/* ==================================================
+   PANNEAUX
+================================================== */
+
+lae-rps-panel {
+  display: none;
+
+  max-height: 205px;
+  padding: 6px 10px 4px;
+
+  overflow-y: auto;
+
+  border: 1px solid var(--lrp-line);
+  border-radius: 0 5px 5px 5px;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--lrp-line) transparent;
+}
+
+lae-rps:has(
+  label[data-tab="current"] input:checked
+) lae-rps-panel.current {
+  display: block;
+}
+
+lae-rps:has(
+  label[data-tab="done"] input:checked
+) lae-rps-panel.done {
+  display: block;
+}
+
+lae-rps:has(
+  label[data-tab="archive"] input:checked
+) lae-rps-panel.archive {
+  display: block;
+}
+
+
+/* ==================================================
+   UNE LIGNE RP
+================================================== */
+
+lae-rps-item {
+  display: grid;
+  grid-template-columns:
+    minmax(120px, 1.15fr)
+    minmax(65px, .6fr)
+    minmax(125px, 1.45fr)
+    52px;
+
+  align-items: center;
+  gap: 8px;
+
+  min-height: 42px;
+  padding: 6px 3px;
+
+  border-bottom: 1px solid var(--lrp-line);
+}
+
+lae-rps-item:last-child {
+  border-bottom: 0;
+}
+
+
+/* TITRE */
+
+lae-rps-title {
+  display: block;
+
+  color: var(--lrp-text);
+
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+
+/* TYPE */
+
+lae-rps-type {
+  display: block;
+
+  color: var(--lrp-current);
+
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+
+/* INFO */
+
+lae-rps-info {
+  display: block;
+
+  color: var(--lrp-soft);
+
+  font-size: 8.5px;
+  line-height: 1.4;
+}
+
+
+/* DATE */
+
+lae-rps-date {
+  display: block;
+
+  color: var(--lrp-soft);
+
+  font-size: 7.5px;
+  text-align: right;
+  white-space: nowrap !important;
+}
+
+
+/* ==================================================
+   PETITE LARGEUR
+================================================== */
+
+@media (max-width: 520px) {
+
+  lae-rps-tabs {
+    width: 100%;
+    min-width: 0;
+  }
+
+  lae-rps-tabs label {
+    padding: 6px 3px;
+    font-size: 7px;
+  }
+
+  lae-rps-item {
+    grid-template-columns: 1fr 65px;
+    gap: 4px 8px;
+  }
+
+  lae-rps-type {
+    text-align: right;
+  }
+
+  lae-rps-info {
+    grid-column: 1 / -1;
+  }
+
+  lae-rps-date {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
