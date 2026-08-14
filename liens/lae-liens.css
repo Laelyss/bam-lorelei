@@ -405,7 +405,7 @@ lae-rps {
    RADIOS
 ================================================== */
 
-lae-rps > input {
+lae-rps-tabs input {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -463,42 +463,42 @@ lae-rps-tabs label::before {
   line-height: 1;
 }
 
-lae-rps-tabs label[for="lae-rps-current"]::before {
+lae-rps-tabs label[data-tab="current"]::before {
   content: "◉";
 }
 
-lae-rps-tabs label[for="lae-rps-done"]::before {
+lae-rps-tabs label[data-tab="done"]::before {
   content: "✓";
 }
 
-lae-rps-tabs label[for="lae-rps-archive"]::before {
+lae-rps-tabs label[data-tab="archive"]::before {
   content: "□";
 }
 
 
-/* ACTIF */
+/* ==================================================
+   ONGLETS ACTIFS
+================================================== */
 
-#lae-rps-current:checked ~ lae-rps-tabs label[for="lae-rps-current"] {
+lae-rps-tabs label[data-tab="current"]:has(input:checked) {
   background: var(--lrp-current);
   border-color: var(--lrp-current);
   color: #fff;
 }
 
-#lae-rps-done:checked ~ lae-rps-tabs label[for="lae-rps-done"] {
+lae-rps-tabs label[data-tab="done"]:has(input:checked) {
   background: var(--lrp-done);
   border-color: var(--lrp-done);
   color: #fff;
 }
 
-#lae-rps-archive:checked ~ lae-rps-tabs label[for="lae-rps-archive"] {
+lae-rps-tabs label[data-tab="archive"]:has(input:checked) {
   background: var(--lrp-archive);
   border-color: var(--lrp-archive);
   color: #fff;
 }
 
-#lae-rps-current:checked ~ lae-rps-tabs label[for="lae-rps-current"]::after,
-#lae-rps-done:checked ~ lae-rps-tabs label[for="lae-rps-done"]::after,
-#lae-rps-archive:checked ~ lae-rps-tabs label[for="lae-rps-archive"]::after {
+lae-rps-tabs label:has(input:checked)::after {
   content: "";
 
   position: absolute;
@@ -533,12 +533,20 @@ lae-rps-panel {
   scrollbar-color: var(--lrp-line) transparent;
 }
 
-#lae-rps-current:checked ~ lae-rps-panel.current,
-#lae-rps-done:checked ~ lae-rps-panel.done,
-#lae-rps-archive:checked ~ lae-rps-panel.archive {
+lae-rps:has(label[data-tab="current"] input:checked)
+lae-rps-panel.current {
   display: block;
 }
 
+lae-rps:has(label[data-tab="done"] input:checked)
+lae-rps-panel.done {
+  display: block;
+}
+
+lae-rps:has(label[data-tab="archive"] input:checked)
+lae-rps-panel.archive {
+  display: block;
+}
 
 /* ==================================================
    UNE LIGNE RP
