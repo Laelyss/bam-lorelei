@@ -89,3 +89,40 @@ liens-wrap tag {
   color: #a86464 !important;
   font-size: .92em;
 }
+
+/* ==================================================
+   TABULATION
+================================================== */
+
+texesp {
+  display: inline;
+}
+
+texesp::after {
+  content: "\2003\2003";
+}
+
+/* ==================================================
+   COULEURS PERSONNAGES
+================================================== */
+
+lore-rp :is(lei, .lei) {
+  color: #792271;
+}
+
+lore-rp :is(dori, .dori) {
+  color: #9d5428;
+}
+
+lore-rp :is(eid, .eid) {
+  color: #1592a7
+}
+
+lore-rp :is(ori, .ori) {
+  font-style: italic;
+  font-weight: 600;
+}
+
+lore-rp :is(mara, .mara) {
+  color: #b91e3a;
+}
