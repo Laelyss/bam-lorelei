@@ -530,7 +530,6 @@ lae-rps-tabs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
-  width: 60%;
   min-width: 285px;
 
   border-bottom: 1px solid var(--lrp-line);
@@ -552,7 +551,7 @@ lae-rps-tabs label {
   border: 1px solid var(--lrp-line);
   border-bottom: 0;
 
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: .09em;
   text-transform: uppercase;
@@ -627,7 +626,7 @@ lae-rps-tabs label[data-tab="done"]::before {
 }
 
 lae-rps-tabs label[data-tab="archive"]::before {
-  content: "□";
+  content: "↻";
 }
 
 
@@ -792,7 +791,7 @@ lae-rps-place {
 
   color: var(--panel-color);
 
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: .05em;
   line-height: 1.2;
@@ -822,7 +821,7 @@ lae-rps-date {
 
   align-self: end;
 
-  font-size: 7.5px;
+  font-size: 10px;
   text-align: right;
   white-space: nowrap !important;
 }
