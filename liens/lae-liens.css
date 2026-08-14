@@ -132,7 +132,7 @@ texesp::after {
 }
 
 /* ==================================================
-   FICHE DE LIENS
+   FICHE DE LIENS — CARTES MODULAIRES
 ================================================== */
 
 lae-liens,
@@ -142,19 +142,14 @@ lae-liens * {
 }
 
 lae-liens {
-  --ll-soft: color-mix(in srgb, var(--ll-text) 68%, transparent);
-  --ll-line: color-mix(in srgb, var(--ll-text) 18%, transparent);
+  --ll-line: rgba(126, 126, 114, .18);
 
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
-  grid-template-rows: repeat(4, auto);
-  column-gap: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: auto auto;
 
   width: min(600px, 100%);
   margin: 10px auto;
-
-  color: var(--ll-text);
-  font: 11px/1.45 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 }
 
 
@@ -166,24 +161,24 @@ lae-liens > label {
   --tab-color: #7f8962;
 
   position: relative;
-  grid-column: 1;
+  grid-row: 1;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  min-height: 43px;
-  padding: 7px 5px;
+  min-width: 0;
+  min-height: 34px;
+  padding: 6px 5px;
 
   border: 1px solid var(--ll-line);
-  border-radius: 6px;
+  border-bottom: 0;
 
   color: var(--tab-color);
-  background: transparent;
 
-  font-size: 8px;
+  font-size: 7.5px;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .1em;
   text-align: center;
   text-transform: uppercase;
 
@@ -191,46 +186,86 @@ lae-liens > label {
   transition: .2s ease;
 }
 
-lae-liens > label + lae-lpanel + label {
-  margin-top: 5px;
+
+/* Position des quatre onglets */
+
+lae-liens > label[data-type="famille"] {
+  --tab-color: #a18446;
+  grid-column: 1;
+  border-radius: 6px 0 0 0;
 }
 
 lae-liens > label[data-type="amicaux"] {
   --tab-color: #758457;
+  grid-column: 2;
 }
 
 lae-liens > label[data-type="ennemis"] {
   --tab-color: #a05b52;
+  grid-column: 3;
 }
 
 lae-liens > label[data-type="neutres"] {
   --tab-color: #71869a;
+  grid-column: 4;
+  border-radius: 0 6px 0 0;
 }
 
-lae-liens > label[data-type="famille"] {
-  --tab-color: #a18446;
+lae-liens > label + lae-lpanel + label {
+  border-left: 0;
 }
 
 
-/* Radio invisible mais fonctionnelle */
+/* ==================================================
+   RADIOS
+================================================== */
 
 lae-liens > label > input {
   position: absolute;
+
   width: 1px;
   height: 1px;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+
   opacity: 0;
   pointer-events: none;
 }
 
 
-/* Onglet sélectionné */
+/* ==================================================
+   ONGLET ACTIF
+================================================== */
 
 lae-liens > label:has(input:checked) {
   background:
-    color-mix(in srgb, var(--tab-color) 11%, transparent);
+    color-mix(
+      in srgb,
+      var(--tab-color) 12%,
+      transparent
+    );
 
   box-shadow:
-    inset 3px 0 0 var(--tab-color);
+    inset 0 -2px 0 var(--tab-color);
+}
+
+lae-liens > label:has(input:checked)::after {
+  content: "";
+
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  background: var(--tab-color);
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
 }
 
 
@@ -239,50 +274,119 @@ lae-liens > label:has(input:checked) {
 ================================================== */
 
 lae-lpanel {
+  --tab-color: #7f8962;
+
   display: none;
 
-  grid-column: 2;
-  grid-row: 1 / 5;
+  grid-column: 1 / -1;
+  grid-row: 2;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 8px;
 
   min-width: 0;
   max-height: 350px;
 
-  padding-left: 14px;
-
-  border-left: 1px solid var(--ll-line);
+  padding: 10px 2px 2px;
 
   overflow-y: auto;
+
   scrollbar-width: thin;
   scrollbar-color: var(--ll-line) transparent;
 }
 
-lae-liens > label:has(input:checked) + lae-lpanel {
-  display: block;
+
+/* Couleur propre à chaque panneau */
+
+lae-liens >
+label[data-type="famille"] + lae-lpanel {
+  --tab-color: #a18446;
+}
+
+lae-liens >
+label[data-type="amicaux"] + lae-lpanel {
+  --tab-color: #758457;
+}
+
+lae-liens >
+label[data-type="ennemis"] + lae-lpanel {
+  --tab-color: #a05b52;
+}
+
+lae-liens >
+label[data-type="neutres"] + lae-lpanel {
+  --tab-color: #71869a;
+}
+
+
+/* Affichage du panneau sélectionné */
+
+lae-liens >
+label:has(input:checked) + lae-lpanel {
+  display: grid;
 }
 
 
 /* ==================================================
-   UNE RELATION
+   CARTE D'UNE RELATION
 ================================================== */
 
 lae-lien {
+  position: relative;
+
   display: grid;
   grid-template-columns:
-    minmax(105px, .9fr)
-    minmax(65px, .55fr)
-    minmax(0, 1.8fr);
+    minmax(0, 1fr)
+    auto;
 
-  align-items: center;
-  gap: 11px;
+  align-content: start;
+  gap: 3px 10px;
 
-  min-height: 63px;
-  padding: 9px 7px;
+  min-width: 0;
+  min-height: 74px;
 
-  border-bottom: 1px solid var(--ll-line);
+  padding: 10px 11px 9px;
+
+  border: 1px solid var(--ll-line);
+  border-left:
+    3px solid
+    color-mix(
+      in srgb,
+      var(--tab-color) 78%,
+      transparent
+    );
+
+  border-radius: 6px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--tab-color) 4%,
+      transparent
+    );
 }
 
-lae-lien:last-child {
-  border-bottom: 0;
+
+/* ==================================================
+   RYTHME 2 + 2 + 1 LARGE
+================================================== */
+
+/*
+   1  2
+   3  4
+     5
+
+   6  7
+   8  9
+    10
+
+   etc.
+*/
+
+lae-lpanel lae-lien:nth-of-type(5n) {
+  grid-column: 1 / -1;
 }
 
 
@@ -292,21 +396,27 @@ lae-lien:last-child {
 
 lae-lnom {
   display: block;
+  min-width: 0;
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
 }
 
 
 /* ==================================================
-   RACE
+   NATURE
 ================================================== */
 
 lae-lrace {
   display: block;
+  align-self: center;
 
-  color: var(--lore-green);
+  color: var(--tab-color);
 
-  font-size: 8px;
+  font-size: 7px;
   font-weight: 700;
-  letter-spacing: .12em;
+  letter-spacing: .11em;
   text-transform: uppercase;
 }
 
@@ -318,10 +428,42 @@ lae-lrace {
 lae-lresume {
   display: block;
 
-  color: var(--ll-text);
+  grid-column: 1 / -1;
 
-  font-size: 10px;
-  line-height: 1.45;
+  min-width: 0;
+  margin-top: 3px;
+
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+
+/* ==================================================
+   PETIT DÉTAIL DÉCORATIF
+================================================== */
+
+lae-lien::after {
+  content: "◇";
+
+  position: absolute;
+  top: 7px;
+  right: 8px;
+
+  color:
+    color-mix(
+      in srgb,
+      var(--tab-color) 50%,
+      transparent
+    );
+
+  font-size: 7px;
+  line-height: 1;
+
+  pointer-events: none;
+}
+
+lae-lrace {
+  margin-right: 12px;
 }
 
 
@@ -331,40 +473,28 @@ lae-lresume {
 
 @media (max-width: 520px) {
 
-  lae-liens {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto;
-    gap: 5px;
-  }
-
   lae-liens > label {
-    grid-column: auto;
-    grid-row: 1;
+    min-height: 32px;
+    padding: 5px 2px;
 
-    min-height: 36px;
-    margin: 0 !important;
-
-    font-size: 7px;
+    font-size: 6.5px;
+    letter-spacing: .07em;
   }
 
   lae-lpanel {
-    grid-column: 1 / -1;
-    grid-row: 2;
+    grid-template-columns: 1fr;
+    gap: 6px;
 
-    margin-top: 7px;
-    padding-left: 0;
+    max-height: 350px;
+    padding-top: 8px;
+  }
 
-    border-left: 0;
-    border-top: 1px solid var(--ll-line);
+  lae-lpanel lae-lien:nth-of-type(5n) {
+    grid-column: auto;
   }
 
   lae-lien {
-    grid-template-columns: 1fr 70px;
-    gap: 5px 10px;
-  }
-
-  lae-lresume {
-    grid-column: 1 / -1;
+    min-height: 0;
   }
 }
 
