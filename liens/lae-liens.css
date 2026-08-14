@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap");
+
 /* ==================================================
    LIENS — PALETTE LORELEÏ / OVERRIDE FORUMACTIF
 ================================================== */
@@ -368,5 +370,285 @@ lae-lresume {
 
   lae-lresume {
     grid-column: 1 / -1;
+  }
+}
+
+/* ==================================================
+   LISTE DES RPS
+================================================== */
+
+lae-rps,
+lae-rps * {
+  box-sizing: border-box;
+  white-space: normal !important;
+}
+
+lae-rps {
+  --lrp-text: var(--textColor3, #8b8b83);
+  --lrp-soft: color-mix(in srgb, var(--lrp-text) 62%, transparent);
+  --lrp-line: color-mix(in srgb, var(--lrp-text) 18%, transparent);
+
+  --lrp-current: #718552;
+  --lrp-done: #a48746;
+  --lrp-archive: #718497;
+
+  display: block;
+  width: min(600px, 100%);
+  margin: 10px auto;
+
+  color: var(--lrp-text);
+  font: 400 10px/1.4 "Manrope", system-ui, sans-serif;
+}
+
+
+/* ==================================================
+   RADIOS
+================================================== */
+
+lae-rps > input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* ==================================================
+   ONGLETS
+================================================== */
+
+lae-rps-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  width: 66%;
+  min-width: 310px;
+
+  border-bottom: 1px solid var(--lrp-line);
+}
+
+lae-rps-tabs label {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 36px;
+  padding: 7px 10px;
+
+  border: 1px solid var(--lrp-line);
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+
+  color: var(--lrp-soft);
+  background: transparent;
+
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+lae-rps-tabs label + label {
+  border-left: 0;
+}
+
+lae-rps-tabs label::before {
+  font-size: 13px;
+  line-height: 1;
+}
+
+lae-rps-tabs label[for="lae-rps-current"]::before {
+  content: "◉";
+}
+
+lae-rps-tabs label[for="lae-rps-done"]::before {
+  content: "✓";
+}
+
+lae-rps-tabs label[for="lae-rps-archive"]::before {
+  content: "□";
+}
+
+
+/* ACTIF */
+
+#lae-rps-current:checked ~ lae-rps-tabs label[for="lae-rps-current"] {
+  background: var(--lrp-current);
+  border-color: var(--lrp-current);
+  color: #fff;
+}
+
+#lae-rps-done:checked ~ lae-rps-tabs label[for="lae-rps-done"] {
+  background: var(--lrp-done);
+  border-color: var(--lrp-done);
+  color: #fff;
+}
+
+#lae-rps-archive:checked ~ lae-rps-tabs label[for="lae-rps-archive"] {
+  background: var(--lrp-archive);
+  border-color: var(--lrp-archive);
+  color: #fff;
+}
+
+#lae-rps-current:checked ~ lae-rps-tabs label[for="lae-rps-current"]::after,
+#lae-rps-done:checked ~ lae-rps-tabs label[for="lae-rps-done"]::after,
+#lae-rps-archive:checked ~ lae-rps-tabs label[for="lae-rps-archive"]::after {
+  content: "";
+
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+
+  width: 9px;
+  height: 9px;
+
+  background: inherit;
+
+  transform: translateX(-50%) rotate(45deg);
+}
+
+
+/* ==================================================
+   PANNEAUX
+================================================== */
+
+lae-rps-panel {
+  display: none;
+
+  max-height: 220px;
+  overflow-y: auto;
+
+  padding: 7px 12px 5px;
+
+  border: 1px solid var(--lrp-line);
+  border-radius: 0 6px 6px 6px;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--lrp-line) transparent;
+}
+
+#lae-rps-current:checked ~ lae-rps-panel.current,
+#lae-rps-done:checked ~ lae-rps-panel.done,
+#lae-rps-archive:checked ~ lae-rps-panel.archive {
+  display: block;
+}
+
+
+/* ==================================================
+   UNE LIGNE RP
+================================================== */
+
+lae-rps-item {
+  display: grid;
+  grid-template-columns:
+    minmax(125px, 1.15fr)
+    minmax(75px, .65fr)
+    minmax(150px, 1.5fr)
+    58px;
+
+  align-items: center;
+  gap: 10px;
+
+  min-height: 45px;
+  padding: 7px 3px;
+
+  border-bottom: 1px solid var(--lrp-line);
+}
+
+lae-rps-item:last-child {
+  border-bottom: 0;
+}
+
+
+/* TITRE */
+
+lae-rps-title {
+  display: block;
+
+  color: var(--lrp-text);
+
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+
+/* TYPE / PETIT REPÈRE */
+
+lae-rps-type {
+  display: block;
+
+  color: var(--lrp-current);
+
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+
+
+/* INFO */
+
+lae-rps-info {
+  display: block;
+
+  color: var(--lrp-soft);
+
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+
+/* DATE */
+
+lae-rps-date {
+  display: block;
+
+  color: var(--lrp-soft);
+
+  font-size: 8px;
+  text-align: right;
+  white-space: nowrap !important;
+}
+
+
+/* ==================================================
+   PETITE LARGEUR
+================================================== */
+
+@media (max-width: 520px) {
+
+  lae-rps-tabs {
+    width: 100%;
+    min-width: 0;
+  }
+
+  lae-rps-tabs label {
+    padding: 7px 4px;
+    font-size: 7px;
+  }
+
+  lae-rps-item {
+    grid-template-columns: 1fr 65px;
+    gap: 4px 10px;
+  }
+
+  lae-rps-type {
+    text-align: right;
+  }
+
+  lae-rps-info {
+    grid-column: 1 / -1;
+  }
+
+  lae-rps-date {
+    grid-column: 2;
+    grid-row: 1;
   }
 }
