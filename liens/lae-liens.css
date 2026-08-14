@@ -142,7 +142,6 @@ lae-liens * {
 }
 
 lae-liens {
-  --ll-text: var(--textColor3, #8b8b83);
   --ll-soft: color-mix(in srgb, var(--ll-text) 68%, transparent);
   --ll-line: color-mix(in srgb, var(--ll-text) 18%, transparent);
 
@@ -384,7 +383,6 @@ lae-rps * {
 }
 
 lae-rps {
-  --lrp-text: var(--textColor3, #8b8b83);
   --lrp-soft: color-mix(in srgb, var(--lrp-text) 62%, transparent);
   --lrp-line: color-mix(in srgb, var(--lrp-text) 18%, transparent);
 
