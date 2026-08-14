@@ -106,14 +106,7 @@ fiche.hybrid.lore-rps-sheet {
 
 fiche.hybrid.lore-rps-sheet {
   --neutral3: transparent !important;
-
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-fiche.hybrid.lore-rps-sheet {
---neutral5: transparent !important;
+  --neutral5: transparent !important;
 
   background: transparent !important;
   border: 0 !important;
