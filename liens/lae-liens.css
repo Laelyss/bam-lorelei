@@ -128,3 +128,245 @@ texesp::after {
 :is(lore-rp, lae-liens) :is(mara, .mara) {
   color: #b91e3a;
 }
+
+/* ==================================================
+   FICHE DE LIENS
+================================================== */
+
+lae-liens,
+lae-liens * {
+  box-sizing: border-box;
+  white-space: normal !important;
+}
+
+lae-liens {
+  --ll-text: var(--textColor3, #8b8b83);
+  --ll-soft: color-mix(in srgb, var(--ll-text) 68%, transparent);
+  --ll-line: color-mix(in srgb, var(--ll-text) 18%, transparent);
+
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  grid-template-rows: repeat(4, auto);
+  column-gap: 14px;
+
+  width: min(600px, 100%);
+  margin: 10px auto;
+
+  color: var(--ll-text);
+  font: 11px/1.45 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+
+/* ==================================================
+   ONGLETS
+================================================== */
+
+lae-liens > label {
+  --tab-color: #7f8962;
+
+  position: relative;
+  grid-column: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 43px;
+  padding: 7px 5px;
+
+  border: 1px solid var(--ll-line);
+  border-radius: 6px;
+
+  color: var(--tab-color);
+  background: transparent;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-align: center;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+lae-liens > label + lae-lpanel + label {
+  margin-top: 5px;
+}
+
+lae-liens > label[data-type="amicaux"] {
+  --tab-color: #758457;
+}
+
+lae-liens > label[data-type="ennemis"] {
+  --tab-color: #a05b52;
+}
+
+lae-liens > label[data-type="neutres"] {
+  --tab-color: #71869a;
+}
+
+lae-liens > label[data-type="famille"] {
+  --tab-color: #a18446;
+}
+
+
+/* Radio invisible mais fonctionnelle */
+
+lae-liens > label > input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* Onglet sélectionné */
+
+lae-liens > label:has(input:checked) {
+  background:
+    color-mix(in srgb, var(--tab-color) 11%, transparent);
+
+  box-shadow:
+    inset 3px 0 0 var(--tab-color);
+}
+
+
+/* ==================================================
+   PANNEAUX
+================================================== */
+
+lae-lpanel {
+  display: none;
+
+  grid-column: 2;
+  grid-row: 1 / 5;
+
+  min-width: 0;
+  max-height: 275px;
+
+  padding-left: 14px;
+
+  border-left: 1px solid var(--ll-line);
+
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ll-line) transparent;
+}
+
+lae-liens > label:has(input:checked) + lae-lpanel {
+  display: block;
+}
+
+
+/* ==================================================
+   UNE RELATION
+================================================== */
+
+lae-lien {
+  display: grid;
+  grid-template-columns:
+    minmax(105px, .9fr)
+    minmax(65px, .55fr)
+    minmax(0, 1.8fr);
+
+  align-items: center;
+  gap: 11px;
+
+  min-height: 63px;
+  padding: 9px 7px;
+
+  border-bottom: 1px solid var(--ll-line);
+}
+
+lae-lien:last-child {
+  border-bottom: 0;
+}
+
+
+/* ==================================================
+   NOM
+================================================== */
+
+lae-lnom {
+  display: block;
+
+  color: var(--ll-text);
+
+  font: 500 15px/1.08 "Newsreader", Georgia, serif;
+}
+
+
+/* ==================================================
+   RACE
+================================================== */
+
+lae-lrace {
+  display: block;
+
+  color: var(--lore-green);
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+
+/* ==================================================
+   RÉSUMÉ
+================================================== */
+
+lae-lresume {
+  display: block;
+
+  color: var(--ll-text);
+
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+
+/* ==================================================
+   MOBILE / PETITE LARGEUR
+================================================== */
+
+@media (max-width: 520px) {
+
+  lae-liens {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    gap: 5px;
+  }
+
+  lae-liens > label {
+    grid-column: auto;
+    grid-row: 1;
+
+    min-height: 36px;
+    margin: 0 !important;
+
+    font-size: 7px;
+  }
+
+  lae-lpanel {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    margin-top: 7px;
+    padding-left: 0;
+
+    border-left: 0;
+    border-top: 1px solid var(--ll-line);
+  }
+
+  lae-lien {
+    grid-template-columns: 1fr 70px;
+    gap: 5px 10px;
+  }
+
+  lae-lresume {
+    grid-column: 1 / -1;
+  }
+}
