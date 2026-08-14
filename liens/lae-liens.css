@@ -1,1 +1,91 @@
-test
+/* ==================================================
+   LIENS — PALETTE LORELEÏ / OVERRIDE FORUMACTIF
+================================================== */
+
+liens-wrap {
+  --lore-text: var(--textColor3, #8a8a7e);
+  --lore-soft: #77766f;
+  --lore-line: rgba(126, 126, 114, .24);
+
+  --lore-gold: #c5b876;
+  --lore-green: #67851e;
+  --lore-deep: #3e4113;
+
+  --accent0: #1f2d0abf !important;
+  --accent1: #393012 !important;
+  --accent2: var(--lore-gold) !important;
+  --accent3: var(--lore-green) !important;
+  --accent4: var(--lore-deep) !important;
+  --accent5: #191919 !important;
+}
+
+
+/* ==================================================
+   BALISES COLORÉES — FORCE LES COULEURS PERSONNELLES
+================================================== */
+
+liens-wrap :is(
+  m0, m1, m2, m3, m4,
+  i1,
+  u1, u2, u3, u4,
+  strike2, tag
+) {
+  display: inline !important;
+}
+
+liens-wrap m0 {
+  color: #586342 !important;
+}
+
+liens-wrap m1 {
+  color: var(--lore-green) !important;
+}
+
+liens-wrap m2 {
+  color: var(--lore-text) !important;
+}
+
+liens-wrap m3 {
+  color: #9e8d54 !important;
+}
+
+liens-wrap m4 {
+  color: #b0a16a !important;
+}
+
+liens-wrap i1 {
+  color: #829263 !important;
+  font-style: italic !important;
+}
+
+liens-wrap u1 {
+  color: #84996a !important;
+  text-decoration: none !important;
+}
+
+liens-wrap u2 {
+  color: #ad9e6d !important;
+  text-decoration: none !important;
+}
+
+liens-wrap u3 {
+  color: #a88b59 !important;
+  text-decoration: none !important;
+  text-shadow: 0 0 5px rgba(168, 139, 89, .22) !important;
+}
+
+liens-wrap u4 {
+  color: #a86464 !important;
+  text-decoration: none !important;
+  text-shadow: 0 0 5px rgba(168, 100, 100, .18) !important;
+}
+
+liens-wrap strike2 {
+  text-decoration: line-through !important;
+  opacity: .72;
+}
+
+liens-wrap tag {
+  color: #a86464 !important;
+  font-size: .92em;
+}
