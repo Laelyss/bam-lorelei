@@ -911,7 +911,7 @@ cxe-wrap {
   width: 100%;
   margin: 8px 0 4px;
   color: var(--cxe-text);
-  font: 400 14px/1.7 "Bitter", serif;
+  font: 400 14px/1.7;
 }
 
 /* ---------- LIGNE ---------- */
@@ -994,7 +994,7 @@ cxe-card {
 cxe-main {
   display: block;
   color: var(--cxe-text);
-  font-size: 13.5px;
+  font-size: 12px;
   line-height: 1.7;
 }
 
