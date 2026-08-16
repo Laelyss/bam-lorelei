@@ -11,8 +11,7 @@ lae-mail * {
 }
 
 lae-mail {
-  --mail-bg: rgba(248, 249, 252, .96);
-  --mail-bg-soft: rgba(241, 243, 249, .92);
+  --mail-bg: rgb(237 237 237 / 93%);
   --mail-line: rgba(28, 32, 44, .10);
   --mail-text: #1f2430;
   --mail-soft: #6f7687;
