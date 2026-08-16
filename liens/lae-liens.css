@@ -1029,14 +1029,6 @@ cxe-panel {
 
   border: 1px solid var(--cxe-line);
   border-radius: 0 0 7px 7px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,.012),
-      rgba(255,255,255,0)
-    ),
-    var(--cxe-card);
 }
 
 cxe-wrap > label:has(input:checked) + cxe-panel {
