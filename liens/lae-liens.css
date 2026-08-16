@@ -906,7 +906,7 @@ cxe-wrap {
   --cxe-card: rgba(19, 19, 19, .24);
 
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-template-rows: auto auto;
 
   width: 100%;
