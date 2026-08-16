@@ -888,3 +888,174 @@ lae-rps-date {
     font-size: 6.5px;
   }
 }
+
+/* ==================================================
+   CHRONO EXPRESS
+================================================== */
+
+cxe-wrap,
+cxe-wrap * {
+  box-sizing: border-box;
+  white-space: normal !important;
+}
+
+cxe-wrap {
+  --cxe-text: #9a998f;
+  --cxe-soft: #7c786c;
+  --cxe-gold: #c5b876;
+  --cxe-line: rgba(197, 184, 118, .58);
+  --cxe-border: rgba(197, 184, 118, .14);
+  --cxe-card: rgba(19, 19, 19, .38);
+
+  display: block;
+  width: 100%;
+  margin: 8px 0 4px;
+  color: var(--cxe-text);
+  font: 400 14px/1.7 "Bitter", serif;
+}
+
+/* ---------- LIGNE ---------- */
+
+cxe-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 130px 22px minmax(0, 1fr);
+  gap: 0 14px;
+  align-items: stretch;
+  margin: 0 0 14px;
+}
+
+cxe-date {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  padding: 18px 8px 18px 0;
+
+  color: var(--cxe-gold);
+  font: 700 15px/1.25 "Bitter", serif;
+  text-align: right;
+}
+
+cxe-rail {
+  position: relative;
+  display: block;
+  min-height: 100%;
+}
+
+cxe-rail::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--cxe-line);
+  transform: translateX(-50%);
+}
+
+cxe-row.first cxe-rail::before {
+  top: 50%;
+}
+
+cxe-row.last cxe-rail::before {
+  bottom: 50%;
+}
+
+cxe-mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  background: #111;
+  border: 2px solid var(--cxe-gold);
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: 2;
+}
+
+/* ---------- CARTE ---------- */
+
+cxe-card {
+  display: block;
+  min-width: 0;
+  padding: 18px 20px 16px;
+
+  border: 1px solid var(--cxe-border);
+  border-radius: 10px;
+  background: linear-gradient(
+      180deg,
+      rgba(255,255,255,.015),
+      rgba(255,255,255,0)
+    ),
+    var(--cxe-card);
+}
+
+cxe-main {
+  display: block;
+  color: var(--cxe-text);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+cxe-list {
+  display: block;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(197, 184, 118, .10);
+}
+
+cxe-item {
+  position: relative;
+  display: block;
+  margin: 6px 0 0;
+  padding-left: 16px;
+
+  color: #959389;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+cxe-item::before {
+  content: "◆";
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--cxe-gold);
+  font-size: 9px;
+  line-height: 1.9;
+}
+
+cxe-strong {
+  color: var(--cxe-gold);
+  font-weight: 700;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+  cxe-row {
+    grid-template-columns: 88px 18px minmax(0, 1fr);
+    gap: 0 10px;
+    margin-bottom: 12px;
+  }
+
+  cxe-date {
+    padding: 16px 6px 16px 0;
+    font-size: 13px;
+  }
+
+  cxe-mark {
+    width: 12px;
+    height: 12px;
+  }
+
+  cxe-card {
+    padding: 14px 14px 13px;
+  }
+
+  cxe-main,
+  cxe-item {
+    font-size: 12.5px;
+  }
+}
