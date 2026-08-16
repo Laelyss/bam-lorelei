@@ -890,7 +890,7 @@ lae-rps-date {
 }
 
 /* ==================================================
-   CHRONO EXPRESS
+   CHRONO EXPRESS — ONGLETS
 ================================================== */
 
 cxe-wrap,
@@ -900,162 +900,297 @@ cxe-wrap * {
 }
 
 cxe-wrap {
-  --cxe-text: #9a998f;
-  --cxe-soft: #7c786c;
   --cxe-gold: #c5b876;
-  --cxe-line: rgba(197, 184, 118, .58);
-  --cxe-border: rgba(197, 184, 118, .14);
-  --cxe-card: rgba(19, 19, 19, .38);
+  --cxe-line: rgba(197, 184, 118, .18);
+  --cxe-line-strong: rgba(197, 184, 118, .42);
+  --cxe-card: rgba(19, 19, 19, .24);
 
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+
   width: 100%;
   margin: 8px 0 4px;
-  color: var(--cxe-text);
-  font: 400 14px/1.7;
 }
 
-/* ---------- LIGNE ---------- */
 
-cxe-row {
+/* ==================================================
+   ONGLETS
+================================================== */
+
+cxe-wrap > label {
   position: relative;
-  display: grid;
-  grid-template-columns: 130px 22px minmax(0, 1fr);
-  gap: 0 14px;
-  align-items: stretch;
-  margin: 0 0 14px;
-}
+  grid-row: 1;
 
-cxe-date {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+
   min-width: 0;
-  padding: 18px 8px 18px 0;
+  min-height: 38px;
+  padding: 8px 5px;
 
-  color: var(--cxe-gold);
-  font: 700 15px/1.25 "Bitter", serif;
-  text-align: right;
+  border: 1px solid var(--cxe-line);
+  border-bottom: 0;
+
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+
+  cursor: pointer;
+  transition: .2s ease;
 }
 
-cxe-rail {
-  position: relative;
-  display: block;
-  min-height: 100%;
+cxe-wrap > label:first-of-type {
+  border-radius: 6px 0 0 0;
 }
 
-cxe-rail::before {
-  content: "";
+cxe-wrap > label:last-of-type {
+  border-radius: 0 6px 0 0;
+}
+
+cxe-wrap > label + cxe-panel + label {
+  border-left: 0;
+}
+
+
+/* ==================================================
+   RADIOS
+================================================== */
+
+cxe-wrap > label > input {
   position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
+
   width: 1px;
-  background: var(--cxe-line);
-  transform: translateX(-50%);
+  height: 1px;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  opacity: 0;
+  pointer-events: none;
 }
 
-cxe-row.first cxe-rail::before {
-  top: 50%;
+
+/* ==================================================
+   ONGLET ACTIF
+================================================== */
+
+cxe-wrap > label:has(input:checked) {
+  color: var(--cxe-gold);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--cxe-gold) 6%,
+      transparent
+    );
+
+  box-shadow:
+    inset 0 -2px 0 var(--cxe-gold);
 }
 
-cxe-row.last cxe-rail::before {
-  bottom: 50%;
-}
+cxe-wrap > label:has(input:checked)::after {
+  content: "";
 
-cxe-mark {
   position: absolute;
+  bottom: -4px;
   left: 50%;
-  top: 50%;
-  width: 14px;
-  height: 14px;
-  background: #111;
-  border: 2px solid var(--cxe-gold);
-  transform: translate(-50%, -50%) rotate(45deg);
+
+  width: 7px;
+  height: 7px;
+
+  background: var(--cxe-gold);
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
   z-index: 2;
 }
 
-/* ---------- CARTE ---------- */
 
-cxe-card {
-  display: block;
+/* ==================================================
+   PANNEAUX
+================================================== */
+
+cxe-panel {
+  position: relative;
+
+  display: none;
+
+  grid-column: 1 / -1;
+  grid-row: 2;
+
   min-width: 0;
-  padding: 18px 20px 16px;
+  padding: 22px 22px 22px 58px;
 
-  border: 1px solid var(--cxe-border);
-  border-radius: 10px;
-  background: linear-gradient(
+  border: 1px solid var(--cxe-line);
+  border-radius: 0 0 7px 7px;
+
+  background:
+    linear-gradient(
       180deg,
-      rgba(255,255,255,.015),
+      rgba(255,255,255,.012),
       rgba(255,255,255,0)
     ),
     var(--cxe-card);
 }
 
-cxe-main {
+cxe-wrap > label:has(input:checked) + cxe-panel {
   display: block;
-  color: var(--cxe-text);
+}
+
+
+/* ==================================================
+   PETITE FRISE DÉCORATIVE DU PANNEAU
+================================================== */
+
+cxe-panel::before {
+  content: "";
+
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 28px;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      var(--cxe-line-strong) 15%,
+      var(--cxe-line-strong) 85%,
+      transparent
+    );
+}
+
+cxe-panel::after {
+  content: "◇";
+
+  position: absolute;
+  top: 27px;
+  left: 21px;
+
+  color: var(--cxe-gold);
+
+  font-size: 15px;
+  line-height: 1;
+}
+
+
+/* ==================================================
+   TITRE DE LA PÉRIODE
+================================================== */
+
+cxe-title {
+  display: block;
+  margin: 0 0 14px;
+
+  color: var(--cxe-gold);
+
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+
+/* ==================================================
+   TEXTE
+================================================== */
+
+cxe-text {
+  display: block;
+
   font-size: 12px;
   line-height: 1.7;
 }
 
-cxe-list {
-  display: block;
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(197, 184, 118, .10);
-}
+/* ==================================================
+   DATES DANS LE TEXTE
+================================================== */
 
-cxe-item {
-  position: relative;
-  display: block;
-  margin: 6px 0 0;
-  padding-left: 16px;
+cxe-date {
+  display: inline;
 
-  color: #959389;
-  font-size: 13px;
-  line-height: 1.65;
-}
-
-cxe-item::before {
-  content: "◆";
-  position: absolute;
-  top: 0;
-  left: 0;
   color: var(--cxe-gold);
-  font-size: 9px;
-  line-height: 1.9;
-}
 
-cxe-strong {
-  color: var(--cxe-gold);
   font-weight: 700;
 }
 
-/* ---------- MOBILE ---------- */
+
+/* ==================================================
+   SÉPARATION FACULTATIVE
+================================================== */
+
+cxe-sep {
+  display: block;
+
+  width: 100%;
+  height: 1px;
+
+  margin: 13px 0;
+
+  background:
+    linear-gradient(
+      to right,
+      var(--cxe-line),
+      transparent
+    );
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
 
 @media (max-width: 700px) {
-  cxe-row {
-    grid-template-columns: 88px 18px minmax(0, 1fr);
-    gap: 0 10px;
-    margin-bottom: 12px;
+
+  cxe-wrap {
+    display: block;
+    overflow: hidden;
   }
 
-  cxe-date {
-    padding: 16px 6px 16px 0;
+  cxe-wrap > label {
+    display: inline-flex;
+
+    width: calc(33.333% - 3px);
+    min-height: 34px;
+
+    margin: 0 0 3px;
+
+    border: 1px solid var(--cxe-line);
+    border-radius: 4px !important;
+
+    vertical-align: top;
+
+    font-size: 8px;
+  }
+
+  cxe-panel {
+    margin-top: 5px;
+    padding: 18px 15px 18px 38px;
+
+    border-radius: 6px;
+  }
+
+  cxe-panel::before {
+    left: 19px;
+  }
+
+  cxe-panel::after {
+    left: 12px;
+  }
+
+  cxe-title {
     font-size: 13px;
   }
 
-  cxe-mark {
-    width: 12px;
-    height: 12px;
-  }
-
-  cxe-card {
-    padding: 14px 14px 13px;
-  }
-
-  cxe-main,
-  cxe-item {
-    font-size: 12.5px;
+  cxe-text {
+    font-size: 11.5px;
   }
 }
