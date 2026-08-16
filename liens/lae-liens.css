@@ -538,6 +538,7 @@ lae-rps {
   --lrp-line: rgba(126, 126, 114, .18);
 
   --lrp-current: #718552;
+  --lrp-epistolary: #806b9b;
   --lrp-done: #a48746;
   --lrp-archive: #718497;
 
@@ -553,7 +554,7 @@ lae-rps {
 
 lae-rps-tabs {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 
   min-width: 285px;
 
@@ -597,10 +598,16 @@ lae-rps-tabs label + label {
 }
 
 
-/* COULEURS DES ONGLETS */
+/* ==================================================
+   COULEURS DES ONGLETS
+================================================== */
 
 lae-rps-tabs label[data-tab="current"] {
   --tab-color: var(--lrp-current);
+}
+
+lae-rps-tabs label[data-tab="epistolary"] {
+  --tab-color: var(--lrp-epistolary);
 }
 
 lae-rps-tabs label[data-tab="done"] {
@@ -644,6 +651,10 @@ lae-rps-tabs label::before {
 
 lae-rps-tabs label[data-tab="current"]::before {
   content: "✧";
+}
+
+lae-rps-tabs label[data-tab="epistolary"]::before {
+  content: "⚚";
 }
 
 lae-rps-tabs label[data-tab="done"]::before {
@@ -700,6 +711,10 @@ lae-rps-panel.current {
   --panel-color: var(--lrp-current);
 }
 
+lae-rps-panel.epistolary {
+  --panel-color: var(--lrp-epistolary);
+}
+
 lae-rps-panel.done {
   --panel-color: var(--lrp-done);
 }
@@ -709,11 +724,19 @@ lae-rps-panel.archive {
 }
 
 
-/* AFFICHAGE DU BON PANNEAU */
+/* ==================================================
+   AFFICHAGE DU BON PANNEAU
+================================================== */
 
 lae-rps:has(
   label[data-tab="current"] input:checked
 ) lae-rps-panel.current {
+  display: block;
+}
+
+lae-rps:has(
+  label[data-tab="epistolary"] input:checked
+) lae-rps-panel.epistolary {
   display: block;
 }
 
@@ -754,7 +777,9 @@ lae-rps-item:last-child {
 }
 
 
-/* PETITE PUCE */
+/* ==================================================
+   PETITE PUCE
+================================================== */
 
 lae-rps-item::before {
   content: "";
@@ -851,6 +876,43 @@ lae-rps-date {
   white-space: nowrap !important;
 }
 
+
+/* ==================================================
+   PETITE LARGEUR
+================================================== */
+
+@media (max-width: 520px) {
+
+  lae-rps-tabs {
+    width: 100%;
+    min-width: 0;
+  }
+
+  lae-rps-tabs label {
+    padding: 6px 3px;
+
+    font-size: 7px;
+    letter-spacing: .06em;
+  }
+
+  lae-rps-panel {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  lae-rps-item {
+    padding-left: 15px;
+  }
+
+  lae-rps-title {
+    font-size: 10px;
+  }
+
+  lae-rps-place {
+    padding: 2px 5px;
+    font-size: 6.5px;
+  }
+}
 
 /* ==================================================
    PETITE LARGEUR
