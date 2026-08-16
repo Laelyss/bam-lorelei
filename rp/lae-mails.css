@@ -163,7 +163,7 @@ lae-mail-subject {
   display: block;
 
   color: var(--mail-text);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.35;
 }
@@ -172,8 +172,8 @@ lae-mail-content {
   display: block;
 
   color: var(--mail-text);
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 lae-mail-content b,
