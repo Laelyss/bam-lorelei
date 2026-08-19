@@ -1,9 +1,6 @@
 /* =========================================================
    LORELEÏ — CARNET D'ENQUÊTE
    Fichier : rp/lae-carnet.css
-   Images :
-   ./assets/carnet/forest1.png
-   ./assets/carnet/forest2.png
    ========================================================= */
 
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&display=swap");
@@ -22,8 +19,6 @@ lae-carnet *::after {
 
 lae-carnet {
     --lae-paper: #f5f0e7;
-    --lae-paper-back: #e8dfd0;
-    --lae-paper-back-2: #ded2c0;
 
     --lae-ink: #292722;
     --lae-ink-soft: #5d574e;
@@ -39,8 +34,9 @@ lae-carnet {
 
     display: block;
     width: 100%;
-    max-width: 760px;
-    margin: 35px auto;
+    max-width: 520px;
+    margin: 0 auto;
+
     color: var(--lae-ink);
 
     font-family: "Kalam", cursive;
@@ -53,7 +49,6 @@ lae-carnet {
 
 /* =========================================================
    INPUTS DES ONGLETS
-   Ils seront ajoutés dans le HTML.
    ========================================================= */
 
 lae-carnet > input[type="radio"] {
@@ -171,17 +166,11 @@ lae-carnet-page {
     padding:
         42px
         42px
-        125px
+        42px
         74px;
 
     border: 1px solid var(--lae-border);
     border-radius: 10px 14px 13px 11px;
-
-    /*
-       1. marge rouge verticale
-       2. lignes horizontales
-       3. très légères variations de papier
-    */
 
     background-color: var(--lae-paper);
 
@@ -202,59 +191,11 @@ lae-carnet-page {
             transparent 29px,
             var(--lae-line) 30px,
             transparent 31px
-        ),
-
-        radial-gradient(
-            circle at 16% 20%,
-            rgba(255, 255, 255, 0.32),
-            transparent 34%
-        ),
-
-        radial-gradient(
-            circle at 82% 70%,
-            rgba(129, 108, 76, 0.035),
-            transparent 30%
         );
 
     box-shadow:
         0 12px 26px var(--lae-shadow),
         0 3px 4px rgba(45, 39, 32, 0.08);
-}
-
-
-/* Feuilles sous la page */
-
-lae-carnet-page::before,
-lae-carnet-page::after {
-    content: "";
-    position: absolute;
-
-    z-index: -1;
-
-    left: 10px;
-    right: -10px;
-
-    height: 100%;
-
-    border: 1px solid rgba(78, 68, 55, 0.17);
-    border-radius: 10px 13px 12px 10px;
-
-    pointer-events: none;
-}
-
-lae-carnet-page::before {
-    top: 8px;
-    background: var(--lae-paper-back);
-}
-
-lae-carnet-page::after {
-    top: 15px;
-    left: 18px;
-    right: -17px;
-
-    background: var(--lae-paper-back-2);
-
-    z-index: -2;
 }
 
 
@@ -268,47 +209,6 @@ lae-carnet-page::after {
 ~ lae-carnet-pages
 #lae-page-google {
     display: block;
-}
-
-
-/* =========================================================
-   FAUX TROMBONE
-   Aucun fichier image nécessaire.
-   ========================================================= */
-
-lae-paperclip {
-    display: block;
-
-    position: absolute;
-    top: 22px;
-    left: 20px;
-
-    width: 16px;
-    height: 43px;
-
-    border: 2px solid rgba(50, 53, 53, 0.7);
-    border-radius: 12px;
-
-    transform: rotate(8deg);
-
-    z-index: 5;
-
-    pointer-events: none;
-}
-
-lae-paperclip::after {
-    content: "";
-
-    position: absolute;
-
-    width: 8px;
-    height: 29px;
-
-    left: 2px;
-    top: 5px;
-
-    border: 1.5px solid rgba(50, 53, 53, 0.55);
-    border-radius: 9px;
 }
 
 
@@ -569,7 +469,7 @@ lae-aside {
 }
 
 
-/* petite flèche manuscrite */
+/* Petite flèche manuscrite */
 
 lae-aside::before {
     content: "←";
@@ -661,50 +561,6 @@ lae-doodle.cross::before {
 
 
 /* =========================================================
-   IMAGES DE FORÊT / MONTAGNE
-   ========================================================= */
-
-lae-forest {
-    display: block;
-
-    position: absolute;
-
-    right: 12px;
-    bottom: 9px;
-
-    width: 185px;
-    height: 112px;
-
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: contain;
-
-    opacity: 0.29;
-
-    pointer-events: none;
-}
-
-
-/* Page Wyraj */
-
-lae-forest.forest-one {
-    background-image:
-        url("./assets/carnet/forest1.png");
-}
-
-
-/* Page Google */
-
-lae-forest.forest-two {
-    width: 205px;
-    height: 125px;
-
-    background-image:
-        url("./assets/carnet/forest2.png");
-}
-
-
-/* =========================================================
    PETITES NOTES LIBRES
    Pour ajouter une remarque random entre deux passages.
    ========================================================= */
@@ -768,10 +624,7 @@ lae-mark {
 @media (max-width: 680px) {
 
     lae-carnet {
-        margin:
-            28px
-            auto;
-
+        margin: 0 auto;
         font-size: 14px;
     }
 
@@ -794,7 +647,7 @@ lae-mark {
         padding:
             40px
             24px
-            120px
+            40px
             60px;
     }
 
@@ -833,16 +686,6 @@ lae-mark {
     lae-note-box.final {
         font-size: 18.5px;
     }
-
-    lae-forest {
-        width: 155px;
-        height: 95px;
-    }
-
-    lae-forest.forest-two {
-        width: 175px;
-        height: 108px;
-    }
 }
 
 
@@ -875,12 +718,8 @@ lae-mark {
         padding:
             37px
             18px
-            115px
+            37px
             48px;
-    }
-
-    lae-paperclip {
-        left: 13px;
     }
 
     lae-entry {
