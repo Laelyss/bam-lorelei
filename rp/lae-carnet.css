@@ -1,1 +1,893 @@
+/* =========================================================
+   LORELEÏ — CARNET D'ENQUÊTE
+   Fichier : rp/lae-carnet.css
+   Images :
+   ./assets/carnet/forest1.png
+   ./assets/carnet/forest2.png
+   ========================================================= */
 
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&display=swap");
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+lae-carnet,
+lae-carnet *,
+lae-carnet *::before,
+lae-carnet *::after {
+    box-sizing: border-box;
+}
+
+lae-carnet {
+    --lae-paper: #f5f0e7;
+    --lae-paper-back: #e8dfd0;
+    --lae-paper-back-2: #ded2c0;
+
+    --lae-ink: #292722;
+    --lae-ink-soft: #5d574e;
+
+    --lae-line: rgba(84, 78, 68, 0.11);
+    --lae-margin: rgba(158, 82, 72, 0.22);
+
+    --lae-tab-active: #f5f0e7;
+    --lae-tab-inactive: #d8cdbb;
+
+    --lae-border: rgba(79, 72, 62, 0.26);
+    --lae-shadow: rgba(42, 37, 31, 0.18);
+
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    margin: 35px auto;
+    color: var(--lae-ink);
+
+    font-family: "Kalam", cursive;
+    font-size: 15px;
+    line-height: 1.65;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   INPUTS DES ONGLETS
+   Ils seront ajoutés dans le HTML.
+   ========================================================= */
+
+lae-carnet > input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ONGLETS
+   ========================================================= */
+
+lae-carnet-tabs {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+
+    padding-left: 42px;
+
+    position: relative;
+    z-index: 10;
+
+    transform: translateY(1px);
+}
+
+lae-carnet-tab {
+    display: block;
+}
+
+lae-carnet-tab label {
+    display: block;
+
+    min-width: 165px;
+    padding: 13px 24px 11px;
+
+    text-align: center;
+
+    font-family: "Caveat", cursive;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1;
+
+    color: var(--lae-ink-soft);
+    background: var(--lae-tab-inactive);
+
+    border: 1px solid var(--lae-border);
+    border-bottom: 0;
+
+    border-radius: 13px 13px 0 0;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 -3px 9px rgba(50, 43, 35, 0.05),
+        inset 0 -7px 12px rgba(80, 68, 51, 0.04);
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
+}
+
+lae-carnet-tab label:hover {
+    color: var(--lae-ink);
+    transform: translateY(-2px);
+}
+
+
+/* Onglet actif */
+
+#lae-tab-wyraj:checked
+~ lae-carnet-tabs
+label[for="lae-tab-wyraj"],
+
+#lae-tab-google:checked
+~ lae-carnet-tabs
+label[for="lae-tab-google"] {
+    color: var(--lae-ink);
+    background: var(--lae-tab-active);
+
+    position: relative;
+    z-index: 5;
+
+    transform: translateY(1px);
+
+    box-shadow:
+        0 -4px 10px rgba(50, 43, 35, 0.07);
+}
+
+
+/* =========================================================
+   CONTENEUR DES PAGES
+   ========================================================= */
+
+lae-carnet-pages {
+    display: block;
+    position: relative;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+lae-carnet-page {
+    display: none;
+
+    position: relative;
+    z-index: 3;
+
+    width: 100%;
+    min-height: 690px;
+
+    padding:
+        42px
+        42px
+        125px
+        74px;
+
+    border: 1px solid var(--lae-border);
+    border-radius: 10px 14px 13px 11px;
+
+    /*
+       1. marge rouge verticale
+       2. lignes horizontales
+       3. très légères variations de papier
+    */
+
+    background-color: var(--lae-paper);
+
+    background-image:
+
+        linear-gradient(
+            to right,
+            transparent 0,
+            transparent 51px,
+            var(--lae-margin) 52px,
+            var(--lae-margin) 53px,
+            transparent 54px
+        ),
+
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 29px,
+            var(--lae-line) 30px,
+            transparent 31px
+        ),
+
+        radial-gradient(
+            circle at 16% 20%,
+            rgba(255, 255, 255, 0.32),
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at 82% 70%,
+            rgba(129, 108, 76, 0.035),
+            transparent 30%
+        );
+
+    box-shadow:
+        0 12px 26px var(--lae-shadow),
+        0 3px 4px rgba(45, 39, 32, 0.08);
+}
+
+
+/* Feuilles sous la page */
+
+lae-carnet-page::before,
+lae-carnet-page::after {
+    content: "";
+    position: absolute;
+
+    z-index: -1;
+
+    left: 10px;
+    right: -10px;
+
+    height: 100%;
+
+    border: 1px solid rgba(78, 68, 55, 0.17);
+    border-radius: 10px 13px 12px 10px;
+
+    pointer-events: none;
+}
+
+lae-carnet-page::before {
+    top: 8px;
+    background: var(--lae-paper-back);
+}
+
+lae-carnet-page::after {
+    top: 15px;
+    left: 18px;
+    right: -17px;
+
+    background: var(--lae-paper-back-2);
+
+    z-index: -2;
+}
+
+
+/* Affichage selon l'onglet */
+
+#lae-tab-wyraj:checked
+~ lae-carnet-pages
+#lae-page-wyraj,
+
+#lae-tab-google:checked
+~ lae-carnet-pages
+#lae-page-google {
+    display: block;
+}
+
+
+/* =========================================================
+   FAUX TROMBONE
+   Aucun fichier image nécessaire.
+   ========================================================= */
+
+lae-paperclip {
+    display: block;
+
+    position: absolute;
+    top: 22px;
+    left: 20px;
+
+    width: 16px;
+    height: 43px;
+
+    border: 2px solid rgba(50, 53, 53, 0.7);
+    border-radius: 12px;
+
+    transform: rotate(8deg);
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+lae-paperclip::after {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 29px;
+
+    left: 2px;
+    top: 5px;
+
+    border: 1.5px solid rgba(50, 53, 53, 0.55);
+    border-radius: 9px;
+}
+
+
+/* =========================================================
+   TEXTE / PARAGRAPHES DU CARNET
+   ========================================================= */
+
+lae-entry {
+    display: block;
+
+    position: relative;
+
+    margin: 0 0 23px;
+
+    padding-left: 22px;
+
+    font-size: 15.5px;
+    line-height: 1.75;
+}
+
+lae-entry::before {
+    content: "•";
+
+    position: absolute;
+    left: 2px;
+    top: -1px;
+
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: var(--lae-ink);
+}
+
+
+/* Variante avec astérisque */
+
+lae-entry.star::before {
+    content: "✶";
+
+    font-size: 16px;
+
+    top: 1px;
+}
+
+
+/* =========================================================
+   SOULIGNEMENTS
+   ========================================================= */
+
+lae-underline {
+    display: inline;
+
+    background-image:
+        linear-gradient(
+            transparent 80%,
+            rgba(56, 52, 46, 0.38) 80%,
+            rgba(56, 52, 46, 0.38) 87%,
+            transparent 87%
+        );
+
+    padding: 0 2px;
+}
+
+
+/* Soulignement volontairement irrégulier */
+
+lae-underline.rough {
+    position: relative;
+    background: none;
+}
+
+lae-underline.rough::after {
+    content: "";
+
+    position: absolute;
+
+    left: -2px;
+    right: -3px;
+
+    height: 5px;
+
+    bottom: -1px;
+
+    border-bottom:
+        2px solid rgba(54, 50, 45, 0.56);
+
+    transform: rotate(-1deg);
+}
+
+
+/* =========================================================
+   SURBRILLAGE "GRIFFONNÉ"
+   ========================================================= */
+
+lae-highlight {
+    display: inline;
+
+    padding: 0 5px;
+
+    background:
+        linear-gradient(
+            178deg,
+            transparent 15%,
+            rgba(169, 150, 116, 0.25) 15%,
+            rgba(169, 150, 116, 0.25) 82%,
+            transparent 82%
+        );
+}
+
+
+/* =========================================================
+   RATURE
+   ========================================================= */
+
+lae-rature {
+    position: relative;
+    display: inline-block;
+}
+
+lae-rature::before,
+lae-rature::after {
+    content: "";
+
+    position: absolute;
+
+    left: -3px;
+    right: -3px;
+
+    height: 1px;
+
+    background: rgba(42, 39, 35, 0.78);
+
+    top: 51%;
+
+    transform: rotate(-3deg);
+}
+
+lae-rature::after {
+    top: 57%;
+    transform: rotate(2deg);
+}
+
+
+/* =========================================================
+   NOTE ENCADRÉE
+   ========================================================= */
+
+lae-note-box {
+    display: block;
+
+    width: fit-content;
+    max-width: 92%;
+
+    margin:
+        -4px
+        0
+        22px
+        15px;
+
+    padding:
+        6px
+        12px
+        5px;
+
+    font-family: "Caveat", cursive;
+    font-size: 19px;
+    line-height: 1.25;
+
+    border:
+        1.5px solid
+        rgba(42, 39, 34, 0.72);
+
+    border-radius:
+        5px 8px 4px 7px;
+
+    transform: rotate(-0.3deg);
+
+    box-shadow:
+        1px 1px 0 rgba(42, 39, 34, 0.23);
+}
+
+
+/* Note finale plus grande */
+
+lae-note-box.final {
+    width: 100%;
+    max-width: none;
+
+    margin:
+        20px
+        0
+        0;
+
+    text-align: left;
+
+    font-size: 20px;
+
+    transform: rotate(0.2deg);
+}
+
+
+/* =========================================================
+   PAGE GOOGLE
+   LIGNE = INFO + NOTE PERSONNELLE
+   ========================================================= */
+
+lae-research-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(145px, 32%);
+
+    column-gap: 28px;
+
+    align-items: start;
+
+    position: relative;
+
+    margin-bottom: 24px;
+}
+
+
+/* Entrée principale dans la grille */
+
+lae-research-row lae-entry {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   NOTE PERSONNELLE LATÉRALE
+   ========================================================= */
+
+lae-aside {
+    display: block;
+
+    position: relative;
+
+    margin-top: 1px;
+
+    padding:
+        1px
+        0
+        2px
+        13px;
+
+    border-left:
+        1.5px solid
+        rgba(49, 46, 41, 0.65);
+
+    font-family: "Caveat", cursive;
+    font-size: 17.5px;
+    line-height: 1.18;
+
+    color: #38342f;
+
+    transform: rotate(-0.5deg);
+}
+
+
+/* petite flèche manuscrite */
+
+lae-aside::before {
+    content: "←";
+
+    position: absolute;
+
+    left: -28px;
+    top: 0;
+
+    font-family: "Caveat", cursive;
+    font-size: 21px;
+
+    color: rgba(49, 46, 41, 0.76);
+}
+
+
+/* Variations pour éviter que tout paraisse trop régulier */
+
+lae-research-row:nth-of-type(even) lae-aside {
+    transform: rotate(0.45deg);
+}
+
+lae-research-row:nth-of-type(3n) lae-aside {
+    transform: rotate(-0.9deg);
+}
+
+
+/* =========================================================
+   PETITS DOODLES CSS
+   ========================================================= */
+
+lae-doodle {
+    position: absolute;
+
+    display: block;
+
+    font-family: "Caveat", cursive;
+
+    color: rgba(48, 46, 42, 0.68);
+
+    pointer-events: none;
+}
+
+
+/* Petit nuage */
+
+lae-doodle.rain {
+    width: 52px;
+    height: 43px;
+}
+
+lae-doodle.rain::before {
+    content: "☁";
+
+    position: absolute;
+
+    left: 4px;
+    top: -9px;
+
+    font-family: Georgia, serif;
+    font-size: 33px;
+    font-weight: normal;
+}
+
+lae-doodle.rain::after {
+    content: "╱ ╱ ╱";
+
+    position: absolute;
+
+    left: 9px;
+    top: 24px;
+
+    font-size: 12px;
+
+    transform: rotate(-6deg);
+}
+
+
+/* Petite croix */
+
+lae-doodle.cross::before {
+    content: "†";
+
+    font-family: Georgia, serif;
+    font-size: 35px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   IMAGES DE FORÊT / MONTAGNE
+   ========================================================= */
+
+lae-forest {
+    display: block;
+
+    position: absolute;
+
+    right: 12px;
+    bottom: 9px;
+
+    width: 185px;
+    height: 112px;
+
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+
+    opacity: 0.29;
+
+    pointer-events: none;
+}
+
+
+/* Page Wyraj */
+
+lae-forest.forest-one {
+    background-image:
+        url("./assets/carnet/forest1.png");
+}
+
+
+/* Page Google */
+
+lae-forest.forest-two {
+    width: 205px;
+    height: 125px;
+
+    background-image:
+        url("./assets/carnet/forest2.png");
+}
+
+
+/* =========================================================
+   PETITES NOTES LIBRES
+   Pour ajouter une remarque random entre deux passages.
+   ========================================================= */
+
+lae-scribble {
+    display: block;
+
+    width: fit-content;
+
+    margin:
+        -8px
+        0
+        17px
+        auto;
+
+    padding-right: 10px;
+
+    font-family: "Caveat", cursive;
+    font-size: 17px;
+    line-height: 1.15;
+
+    color: rgba(52, 48, 43, 0.82);
+
+    transform: rotate(-1.2deg);
+}
+
+
+/* Variante à gauche */
+
+lae-scribble.left {
+    margin-left: 25px;
+    margin-right: auto;
+
+    transform: rotate(0.8deg);
+}
+
+
+/* =========================================================
+   PETIT ASTÉRISQUE / MARQUE MANUSCRITE
+   ========================================================= */
+
+lae-mark {
+    display: inline-block;
+
+    margin-right: 5px;
+
+    font-family: "Caveat", cursive;
+    font-size: 22px;
+    line-height: 1;
+
+    transform: rotate(-8deg);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   Les annotations passent sous le texte si la largeur
+   devient trop petite.
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+    lae-carnet {
+        margin:
+            28px
+            auto;
+
+        font-size: 14px;
+    }
+
+    lae-carnet-tabs {
+        padding-left: 20px;
+        gap: 4px;
+    }
+
+    lae-carnet-tab label {
+        min-width: 0;
+        padding:
+            11px
+            16px
+            9px;
+
+        font-size: 18px;
+    }
+
+    lae-carnet-page {
+        padding:
+            40px
+            24px
+            120px
+            60px;
+    }
+
+    lae-entry {
+        font-size: 14.5px;
+    }
+
+    lae-research-row {
+        grid-template-columns: 1fr;
+
+        row-gap: 6px;
+
+        margin-bottom: 27px;
+    }
+
+    lae-aside {
+        width: 78%;
+
+        margin-left: auto;
+        margin-right: 4px;
+
+        font-size: 16.5px;
+    }
+
+    lae-aside::before {
+        content: "↳";
+
+        left: -24px;
+    }
+
+    lae-note-box {
+        max-width: 100%;
+        font-size: 18px;
+    }
+
+    lae-note-box.final {
+        font-size: 18.5px;
+    }
+
+    lae-forest {
+        width: 155px;
+        height: 95px;
+    }
+
+    lae-forest.forest-two {
+        width: 175px;
+        height: 108px;
+    }
+}
+
+
+/* =========================================================
+   TRÈS PETITE LARGEUR
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    lae-carnet-tabs {
+        padding-left: 8px;
+    }
+
+    lae-carnet-tab {
+        flex: 1;
+    }
+
+    lae-carnet-tab label {
+        width: 100%;
+
+        padding:
+            10px
+            8px
+            8px;
+
+        font-size: 16px;
+    }
+
+    lae-carnet-page {
+        padding:
+            37px
+            18px
+            115px
+            48px;
+    }
+
+    lae-paperclip {
+        left: 13px;
+    }
+
+    lae-entry {
+        padding-left: 17px;
+    }
+
+    lae-aside {
+        width: 90%;
+    }
+}
