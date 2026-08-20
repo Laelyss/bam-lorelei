@@ -15,67 +15,124 @@ sms {
 
   display: block;
   margin: 20px 0;
+
   font: 400 11px/1.5 system-ui, -apple-system,
         "Segoe UI", Arial, sans-serif;
 }
 
+
+/* ==================================================
+   NOM DU CONTACT
+================================================== */
+
 sms[data-name]::before {
   content: attr(data-name);
+
   display: block;
+
   margin: 0 10px 8px;
+
   color: #8b8b95;
   color: color-mix(
     in srgb,
     var(--textColor3, #8b8b95) 72%,
     transparent
   );
+
   font-size: 11px;
   font-weight: 600;
   letter-spacing: .03em;
 }
 
+
+/* ==================================================
+   BASE DES BULLES
+================================================== */
+
 sms :is(recu, envoi) {
   position: relative;
+
   display: block;
+
   width: fit-content;
   max-width: 50%;
+
   margin: 12px 0;
   padding: 8px 13px;
+
   color: var(--sms-text);
+
   text-align: left;
 }
 
+
+/* ==================================================
+   MESSAGE REÇU
+================================================== */
+
 sms recu {
   margin-right: auto;
+
   border-radius: 18px 18px 18px 6px;
+
   background: var(--sms-in);
 }
+
+
+/* ==================================================
+   MESSAGE ENVOYÉ
+================================================== */
 
 sms envoi {
   margin-right: 12px;
   margin-left: auto;
+
   border-radius: 18px 18px 6px 18px;
+
   background: var(--sms-out);
 }
 
+
+/* ==================================================
+   PETITE POINTE DES BULLES
+================================================== */
+
 sms :is(recu, envoi)::before {
   content: "";
+
   position: absolute;
   bottom: 0;
+
   width: 12px;
   height: 14px;
+
   background: inherit;
 }
 
 sms recu::before {
   left: -5px;
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+
+  clip-path: polygon(
+    100% 0,
+    100% 100%,
+    0 100%
+  );
 }
 
 sms envoi::before {
   right: -5px;
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
+
+  clip-path: polygon(
+    0 0,
+    100% 100%,
+    0 100%
+  );
 }
+
+
+/* ==================================================
+   MESSAGE NON ENVOYÉ
+================================================== */
 
 sms envoi.fail {
   margin-bottom: 34px;
@@ -83,69 +140,107 @@ sms envoi.fail {
 
 sms envoi.fail::after {
   content: "⚠ Réessayer";
+
   position: absolute;
+
   top: calc(100% + 6px);
   right: 0;
+
   color: var(--sms-error);
+
   font-size: 10px;
   font-weight: 600;
   line-height: 1;
+
   white-space: nowrap;
 }
-}
+
 
 /* ==================================================
-   SMS REÇU — AFFICHER PLUS / DÉPLIER
+   SMS REÇU — AFFICHER PLUS
 ================================================== */
 
 sms recu.more {
-  --sms-preview-height: 48px;
+  --sms-preview-height: 3em;
 }
 
+
 /* Checkbox invisible */
-sms recu.more > input[type="checkbox"] {
+
+sms recu.more > .sms-toggle {
   position: absolute;
+
   width: 1px;
   height: 1px;
+
+  margin: 0;
+  padding: 0;
+
   opacity: 0;
+
+  overflow: hidden;
+
   pointer-events: none;
 }
 
-/* Texte complet, mais replié au départ */
-sms recu.more > sms-texte {
+
+/* ==================================================
+   TEXTE DU MESSAGE
+================================================== */
+
+sms recu.more > .sms-texte {
   display: block;
-  overflow: hidden;
 
   max-height: var(--sms-preview-height);
 
-  transition: max-height .35s ease;
+  overflow: hidden;
+
+  transition: max-height .3s ease;
 }
 
-/* Au clic : on ouvre réellement le message */
-sms recu.more > input[type="checkbox"]:checked ~ sms-texte {
+
+/* ==================================================
+   MESSAGE OUVERT
+================================================== */
+
+sms recu.more > .sms-toggle:checked
+~ .sms-texte {
   max-height: 1000px;
 }
 
-/* Bouton */
-sms recu.more > label {
+
+/* ==================================================
+   BOUTON AFFICHER PLUS
+================================================== */
+
+sms recu.more > .sms-more {
   display: block;
+
   width: fit-content;
 
   margin: 5px 0 0 auto;
 
   color: #b7b7c2;
+
   font-size: 10px;
   font-weight: 500;
   line-height: 1.2;
 
   cursor: pointer;
+
   user-select: none;
 }
 
-sms recu.more > label::after {
+sms recu.more > .sms-more::after {
   content: "Afficher plus";
 }
 
-sms recu.more > input[type="checkbox"]:checked ~ label::after {
+
+/* ==================================================
+   BOUTON LORSQUE LE MESSAGE EST OUVERT
+================================================== */
+
+sms recu.more > .sms-toggle:checked
+~ .sms-more::after {
   content: "Réduire";
 }
