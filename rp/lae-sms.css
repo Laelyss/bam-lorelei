@@ -95,14 +95,15 @@ sms envoi.fail::after {
 }
 
 /* ==================================================
-   SMS REÇU — MESSAGE RÉDUIT / AFFICHER PLUS
+   SMS REÇU — AFFICHER PLUS / DÉPLIER
 ================================================== */
 
 sms recu.more {
-  --sms-preview-lines: 2;
+  --sms-preview-height: 48px;
 }
 
-sms recu.more > input {
+/* Checkbox invisible */
+sms recu.more > input[type="checkbox"] {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -110,49 +111,41 @@ sms recu.more > input {
   pointer-events: none;
 }
 
-sms recu.more sms-texte {
-  display: -webkit-box;
+/* Texte complet, mais replié au départ */
+sms recu.more > sms-texte {
+  display: block;
   overflow: hidden;
 
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--sms-preview-lines);
+  max-height: var(--sms-preview-height);
+
+  transition: max-height .35s ease;
 }
 
-sms recu.more > input:checked ~ sms-texte {
-  display: block;
-  overflow: visible;
-
-  -webkit-line-clamp: unset;
+/* Au clic : on ouvre réellement le message */
+sms recu.more > input[type="checkbox"]:checked ~ sms-texte {
+  max-height: 1000px;
 }
 
+/* Bouton */
 sms recu.more > label {
   display: block;
   width: fit-content;
-  margin: 4px 0 0 auto;
 
-  color: #a9aab5;
+  margin: 5px 0 0 auto;
+
+  color: #b7b7c2;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
 
   cursor: pointer;
+  user-select: none;
 }
 
 sms recu.more > label::after {
   content: "Afficher plus";
 }
 
-sms recu.more > input:checked ~ label::after {
-  content: "Réduire";
-}
-
-
-/* Variante si tu préfères "Lire la suite" */
-
-sms recu.more.suite > label::after {
-  content: "Lire la suite";
-}
-
-sms recu.more.suite > input:checked ~ label::after {
+sms recu.more > input[type="checkbox"]:checked ~ label::after {
   content: "Réduire";
 }
