@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&family=Josefin+Sans:wght@400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap")
+@import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&family=Handlee&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&family=Josefin+Sans:wght@400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap");
+
+
 /* ==================================================
    LORELEÏ — RP
 ================================================== */
@@ -114,7 +116,7 @@ rp-text {
 
   margin: 0 auto;
 
-  font-family: Newsreader;
+  font-family: "Newsreader", Georgia, serif;
   font-size: 15.5px;
   line-height: 1.6;
 
@@ -219,10 +221,6 @@ lore-rp :is(ori, .ori) {
 
 lore-rp :is(mara, .mara) {
   color: #b91e3a;
-}
-
-lore-rp :is(pnj1, .pnj1) {
-  color: #53b769;
 }
 
 lore-rp :is(pnj1, .pnj1) {
